@@ -1,9 +1,9 @@
 <template>
   <div class="sign-up">
       <h2>Skapa ett nytt konto.</h2><br>
-     <p>E-Post: </p> <input type="text" placeholder="exempel@onegame.se"><br>
-      <p>Lösenord:  </p><input type="text" placeholder="******"><br>
-      <button>Let´s do it!</button><br>
+     <p>E-Post: </p> <input type="text" v-model="email" placeholder="exempel@onegame.se"><br>
+      <p>Lösenord:  </p><input type="password" v-model="password" placeholder="******"><br>
+      <button @click="signUp">Let´s do it!</button><br>
       <p>Tillbaka?, <router-link to="/login">Klicka här</router-link></p>
     </div>
 </template>
@@ -13,9 +13,23 @@
 export default {
   name: 'signUp',
   data() {
-    return {};
+    return {
+      email: '',
+      password: ''
+    };
   },
-  methods:{}
+  methods:{
+    signUp: function(){
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password). then(
+        (user) => {
+          this.$router.replace('home')
+        },
+        function(err){
+          alert( err.message )
+        }
+      );
+    }
+  }
 }
 </script>
 

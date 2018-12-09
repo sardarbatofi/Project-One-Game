@@ -1,8 +1,8 @@
 <template>
   <div class="login">
       <h2>Logga in</h2>
-     <p>E-Post: </p> <input type="text" placeholder="exempel@onegame.se"><br>
-      <p>Lösenord:  </p><input type="text" placeholder="******"><br>
+     <p>E-Post: </p> <input type="text" v-model="email" placeholder="exempel@onegame.se"><br>
+      <p>Lösenord:  </p><input type="password" v-model="password" placeholder="******" @keyup.enter="login"><br>
       <button @click="login">Logga in</button><br>
       <p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p>
     </div>
@@ -13,11 +13,21 @@
 export default {
   name: 'login',
   data() {
-    return {};
+    return {
+        email:'',
+        password:''
+    };
   },
   methods:{
       login: function(){
-          this.$router.replace('home');
+          firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
+              (user) => {
+                  this.$router.replace('home')
+              },
+              function(err){
+                  alert(err)
+              }
+          );
       }
   }
 }
