@@ -4,7 +4,10 @@
      <p>E-Post: </p> <input type="text" v-model="email" placeholder="exempel@onegame.se"><br>
       <p>Lösenord:  </p><input type="password" v-model="password" placeholder="******" @keyup.enter="login"><br>
       <button @click="login">Logga in</button><br>
-      <p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p>
+      <p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p><br><br>
+      <p>Eller logga in med Google <br>
+      <button @click="google" class="google">
+          <img src="../assets/google-logo.png" alt="Google logo"></button></p>
     </div>
 </template>
 
@@ -28,6 +31,15 @@ export default {
                   alert(err)
               }
           );
+      },
+      google(){
+          const provider = new firebase.auth.GoogleAuthProvider();
+
+          firebase.auth().signInWithPopup(provider).then((result) => {
+              this.$router.replace('home');
+          }).catch((err) => {
+              alert(err.message)
+              });
       }
   }
 }
@@ -51,5 +63,21 @@ p{
 }
 button, a {
 cursor: pointer;
+}
+.google{
+    width: 75px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    outline: 0;
+    border: 0;
+    margin: 10px;
+}
+.google:hover{
+    box-shadow: 0 2px 4px 0 rgba(31, 255, 117, 0.4);
+}
+.google img {
+    width: 100%;
 }
 </style>
