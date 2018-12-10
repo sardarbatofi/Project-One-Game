@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
+import {fb, db} from '../firebase-config'
 
 Vue.use(Router)
 
@@ -43,15 +44,26 @@ const router = new Router({
     }
   ]
 });
+router.beforeEach((to, from, next) => {
 
-router.beforeEach((to, from, next) =>{
-  const currentUser = firebase.auth().currentUser;
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const currentUser = fb.auth().currentUser;
 
-  if (requiresAuth && !currentUser) next('login');
-  else if (!requiresAuth && currentUser) next ('home');
-  else next();
-
-});
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!currentUser) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    }
+    else if (currentUser) {
+      next()
+    }
+  }
+  else {
+    next() // make sure to always call next()!
+  }
+})
 
 export default router;

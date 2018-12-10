@@ -1,19 +1,19 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <OneGame/>
     <button @click="logout">Logga ut</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import OneGame from '@/components/OneGame.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    OneGame
   },
   methods: {
     logout: function(){

@@ -6,6 +6,7 @@ import firebase from 'firebase'
 Vue.config.productionTip = false
 
 /* för att slippa importera firebase överallt */
+
 window.firebase=firebase;
 
 let app = '';

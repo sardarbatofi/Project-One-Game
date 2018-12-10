@@ -1,8 +1,8 @@
 <template>
   <div class="login">
       <h2>Logga in</h2>
-     <p>E-Post: </p> <input type="text" v-model="email" placeholder="exempel@onegame.se"><br>
-      <p>Lösenord:  </p><input type="password" v-model="password" placeholder="******" @keyup.enter="login"><br>
+     <label for="email">E-Post: <input type="text" v-model="email" placeholder="exempel@onegame.se"></label><br>
+      <label for="password">Lösenord: <input type="password" v-model="password" placeholder="******" @keyup.enter="login"></label><br>
       <button @click="login">Logga in</button><br>
       <p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p><br><br>
       <p>Eller logga in med Google <br>
@@ -23,6 +23,7 @@ export default {
   },
   methods:{
       login: function(){
+          var user = firebase.auth().currentUser;
           firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
               (user) => {
                   this.$router.replace('home')
@@ -79,5 +80,9 @@ cursor: pointer;
 }
 .google img {
     width: 100%;
+}
+input {
+  padding: 5px;
+  margin: 5px;
 }
 </style>
