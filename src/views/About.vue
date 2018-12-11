@@ -1,5 +1,34 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
   </div>
 </template>
+<script>
+    
+export default{
+  name: 'About',
+  data() {
+    return{
+        userInput: 0,
+    }
+},
+    
+  methods: {
+    randomNumber(){
+      return Math.floor(Math.random() * 10 + 1);
+    } 
+},
+    
+  computed: {
+    message(){
+      if (this.userInput == this.randomNumber()) {
+        return 'Correct answer!';
+      } else if (this.userInput < this.randomNumber()){
+        return 'Higher!';
+      } else if (this.userInput > this.randomNumber()){
+        return 'Lower!';
+      } 
+        return this.message;
+    }
+  }
+}
+</script>
