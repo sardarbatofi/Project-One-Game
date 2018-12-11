@@ -1,0 +1,12 @@
+//show game log both player and computer
+
+<section class="row log" v-if:"turns.length > 0">
+    <div>
+        <ul>
+            <li v-for: "turn in turns"
+            :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
+                {{turn.text}}
+            </li>
+        </ul>
+    </div>
+</section>
