@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <input v-model="newNumber" type="number"><br>
+    <button @click='addNumber'>Enter number</button> 
   </div>
 </template>
