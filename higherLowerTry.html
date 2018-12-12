@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="vue-instance">
+        Guess a number between 1 and 10:
+        <input type="number" v-model="guess"><br>
+        <button @click='message'> Check your fortune!</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#vue-instance',
+            data: {
+                guess: 5,
+                num: 5
+            },
+         
+            methods: {
+                message: function () {
+                    this.num = Math.ceil(Math.random() * 10);
+                    console.log("random is " + this.num);
+                    this.guess;
+                    console.log("input is " + this.guess);
+
+                    while (this.guess != this.num) {
+                        alert('the number is ' + (this.num > this.guess) ? 'lower' : 'higher')
+              //    ??? how tu make new input???
+                    }
+                    alert('Congratulations!\nThe number was ' + this.num);
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>
