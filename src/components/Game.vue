@@ -1,9 +1,10 @@
 
 <template>
   <div id="app">
+   
       <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
        <button @click="startGame" v-on:click="game = !game"> Start Game</button><br>
-     <div v-show="game" v-bind:style="win">
+     <div v-show="game">
        <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
        <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
        <p>Rick: {{opponent}}</p>
@@ -28,7 +29,8 @@ export default {
   numberOfGuess: 0,
   number:0,
   userGuess:0,
-  history: []
+  history: [],
+
      }
 },
       methods: {
@@ -89,7 +91,6 @@ export default {
           this.numberOfGuess++;
           this.inputClosed = true
           this.inputBtnClosed = true 
-          
         }
         else if (this.numberOfGuess > 9){
           alert('You have uesd all your guesses, GAME OVER');
