@@ -44,34 +44,39 @@ export default {
           this.history= []
           this.number = Math.floor(Math.random() * 100)+1;
       },
-      userInput: function(userGuess, number) {
-        if(this.userGuess < this.number /*&& numberOfGuess < 11 */){
+      userInput: function() {
+        if (this.opponent == this.number || this.opponent2 == this.number){
+          alert('Opponent Win')
+          this.inputClosed = true
+          this.inputBtnClosed = true 
+        }
+        else if(this.userGuess < this.number && this.numberOfGuess < 10 ){
           alert("Wrong, guess higher!")
           this.opponent +=7;
           this.opponent2 +=19;
           this.numberOfGuess++;
-          this.history.push('userGuess')
-          this.history.push('opponent')
-          this.history.push('opponent2')
+          this.history.push(this.userGuess)
+          this.history.push(this.opponent)
+          this.history.push(this.opponent2)
           
         }
-        else if (this.userGuess > this.number /*&& numberOfGuess < 11 */){
+        else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
           alert("Wrong, guess lower!")
           this.opponent -= 1;
           this.opponent2 += 11;
           this.numberOfGuess++;
-          this.history.push('userGuess')
-          this.history.push('opponent')
-          this.history.push('opponent2')
+          this.history.push(this.userGuess)
+          this.history.push(this.opponent)
+          this.history.push(this.opponent2)
         }
-        else if (this.userGuess == this.number /*&& numberOfGuess < 11 */){
+        else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
           alert("Yes sir, The Answere is " + this.number);
           this.numberOfGuess++;
           this.inputClosed = true
           this.inputBtnClosed = true 
           
         }
-        else /*if (numberOfGuess >= 10)*/{
+        else if (this.numberOfGuess > 9){
           alert('You have uesd all your guesses, GAME OVER');
        
           this.inputClosed = true
