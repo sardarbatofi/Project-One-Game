@@ -3,7 +3,7 @@
   <div id="app">
       <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
        <button @click="startGame" v-on:click="game = !game"> Start Game</button><br>
-     <div v-show="game">
+     <div v-show="game" v-bind:style="win">
        <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
        <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
        <p>Rick: {{opponent}}</p>
@@ -11,7 +11,7 @@
        <br>
        <p>You have uesed {{numberOfGuess}} of 10 Guesses.</p>
   
-      <p>{{history}}</p>
+      <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   numberOfGuess: 0,
   number:0,
   userGuess:0,
-  history: [] 
+  history: []
      }
 },
       methods: {
@@ -42,7 +42,7 @@ export default {
           this.number=0,
           this.userGuess =0,
           this.history= []
-          this.number = Math.floor(Math.random() * 100)+1; 
+          this.number =  2 /*Math.floor(Math.random() * 100)+1; */
       },
       userInput: function() {
        /* if (this.opponent == this.number || this.opponent2 == this.number){
@@ -103,5 +103,10 @@ export default {
 </script>
 
 <style scoped>
-
+.history{
+  background-color: peachpuff;
+  display: inline-block;
+  padding: 0.5%;
+  border: 1px solid #cccccc;
+}
 </style>
