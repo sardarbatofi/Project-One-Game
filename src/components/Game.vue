@@ -44,7 +44,7 @@ export default {
           this.number=0,
           this.userGuess =0,
           this.history= []
-          this.number =  2 /*Math.floor(Math.random() * 100)+1; */
+          this.number = Math.floor(Math.random() * 100)+1;
       },
       userInput: function() {
 
@@ -55,8 +55,8 @@ export default {
           this.inputBtnClosed = true 
         } else
           alert("Wrong, guess higher!")
-          this.opponent +=7;
-          this.opponent2 +=19;
+          this.opponent = Math.floor(Math.random() * 100)+1;
+          this.opponent2 = Math.floor(Math.random() * 100)+1;
           this.numberOfGuess++;
           this.history.push(this.userGuess)
           this.history.push(this.opponent)
