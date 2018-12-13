@@ -1,21 +1,18 @@
 
 <template>
-    <div id="app">
+  <div id="app">
       <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+       <button @click="startGame" v-on:click="game = !game"> Start Game</button><br>
+     <div v-show="game">
+       <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
+       <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
+       <p>Rick: {{opponent}}</p>
+       <p>Marty: {{opponent2}}</p>
+       <br>
+       <p>You have uesed {{numberOfGuess}} of 10 Guesses.</p>
   
-    <button @click="startGame" v-on:click="game = !game"> Start Game</button><br>
-  <div v-show="game">
-  <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
-  <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
-  
-  <p>Rick: {{opponent}}</p>
-  <p>Marty: {{opponent2}}</p>
-
-  <br>
-  <p>You have uesed {{numberOfGuess}} of 10 Guesses.</p>
-  
-  <p>{{history}}</p>
-</div>
+      <p>{{history}}</p>
+    </div>
   </div>
 </template>
 
