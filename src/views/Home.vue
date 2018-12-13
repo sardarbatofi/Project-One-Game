@@ -33,6 +33,6 @@ img{
  width: 200px; 
 }
 button{
-  margin: 250x;
+  margin: 25px;
 }
 </style>
