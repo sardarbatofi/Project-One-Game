@@ -47,11 +47,7 @@ export default {
           this.number =  2 /*Math.floor(Math.random() * 100)+1; */
       },
       userInput: function() {
-       /* if (this.opponent == this.number || this.opponent2 == this.number){
-          alert('Opponent Win')
-          this.inputClosed = true
-          this.inputBtnClosed = true 
-        }*/
+
          if(this.userGuess < this.number && this.numberOfGuess < 10 ){
             if (this.opponent == this.number || this.opponent2 == this.number){
           alert('Opponent Win')
