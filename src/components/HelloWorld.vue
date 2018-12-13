@@ -42,15 +42,20 @@ export default {
           this.number=0,
           this.userGuess =0,
           this.history= []
-          this.number = Math.floor(Math.random() * 100)+1;
+          this.number = Math.floor(Math.random() * 100)+1; 
       },
       userInput: function() {
-        if (this.opponent == this.number || this.opponent2 == this.number){
+       /* if (this.opponent == this.number || this.opponent2 == this.number){
           alert('Opponent Win')
           this.inputClosed = true
           this.inputBtnClosed = true 
-        }
-        else if(this.userGuess < this.number && this.numberOfGuess < 10 ){
+        }*/
+         if(this.userGuess < this.number && this.numberOfGuess < 10 ){
+            if (this.opponent == this.number || this.opponent2 == this.number){
+          alert('Opponent Win')
+          this.inputClosed = true
+          this.inputBtnClosed = true 
+        } else
           alert("Wrong, guess higher!")
           this.opponent +=7;
           this.opponent2 +=19;
@@ -61,6 +66,11 @@ export default {
           
         }
         else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
+             if (this.opponent == this.number || this.opponent2 == this.number){
+          alert('Opponent Win')
+          this.inputClosed = true
+          this.inputBtnClosed = true 
+        } else
           alert("Wrong, guess lower!")
           this.opponent -= 1;
           this.opponent2 += 11;
@@ -70,6 +80,11 @@ export default {
           this.history.push(this.opponent2)
         }
         else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
+             if (this.opponent == this.number || this.opponent2 == this.number){
+          alert('Opponent Win')
+          this.inputClosed = true
+          this.inputBtnClosed = true 
+        } else
           alert("Yes sir, The Answere is " + this.number);
           this.numberOfGuess++;
           this.inputClosed = true
