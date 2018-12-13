@@ -17,7 +17,7 @@ export default {
   name: 'home',
   components: {
     Game
-  }
+  },
   methods: {
     logout: function(){
       firebase.auth().signOut().then(() => {
@@ -31,5 +31,8 @@ export default {
 <style scoped>
 img{
  width: 200px; 
+}
+button{
+  margin: 250x;
 }
 </style>
