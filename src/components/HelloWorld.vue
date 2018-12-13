@@ -36,12 +36,26 @@ export default {
 },
       methods: {
       startGame: function(){
-
+          this.opponent= 0,
+          this.opponent2= 0,
+          this.game= false,
+          this.inputClosed= false,
+          this.inputBtnClosed= false,
+          this.numberOfGuess= 0,
+          this.number=0,
+          this.userGuess =0,
+          this.history= []
+          this.number = Math.floor(Math.random() * 100)+1;
       },
       userInput: function(userGuess, number) {
         if(this.userGuess < this.number /*&& numberOfGuess < 11 */){
           alert("Wrong, guess higher!")
- 
+          this.opponent +=7;
+          this.opponent2 +=19;
+          this.numberOfGuess++;
+          this.history.push('userGuess')
+          this.history.push('opponent')
+          this.history.push('opponent2')
           
         }
         else if (this.userGuess > this.number /*&& numberOfGuess < 11 */){
@@ -49,7 +63,9 @@ export default {
           this.opponent -= 1;
           this.opponent2 += 11;
           this.numberOfGuess++;
-  
+          this.history.push('userGuess')
+          this.history.push('opponent')
+          this.history.push('opponent2')
         }
         else if (this.userGuess == this.number /*&& numberOfGuess < 11 */){
           alert("Yes sir, The Answere is " + this.number);
