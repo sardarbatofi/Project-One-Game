@@ -11,6 +11,7 @@
 // @ is an alias to /src
 
 import Game from '@/components/Game.vue'
+import firebase from 'firebase'
 
 
 export default {
@@ -30,7 +31,7 @@ export default {
 </script>
 <style scoped>
 img{
- width: 200px; 
+ width: 200px;
 }
 button{
   margin: 25px;
