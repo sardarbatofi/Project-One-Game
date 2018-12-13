@@ -1,7 +1,7 @@
 
 <template>
   <div id="app">
-   
+
       <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
        <button @click="startGame" v-on:click="game = !game"> Start Game</button><br>
      <div v-show="game">
@@ -11,9 +11,16 @@
        <p>Marty: {{opponent2}}</p>
        <br>
        <p>You have uesed {{numberOfGuess}} of 10 Guesses.</p>
-  
+
       <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
     </div>
+
+    <div id="watch-example">
+  <p>
+  </p>
+  <p>{{ answer }}</p>
+</div>
+
   </div>
 </template>
 
@@ -21,8 +28,10 @@
 export default {
    data() {
      return{
-  opponent: 0,
-  opponent2: 0,
+       question: '',
+    answer: 'May the force be with you!',
+  opponent: 10,
+  opponent2: 10,
   game: false,
   inputClosed: false,
   inputBtnClosed: false,
@@ -33,6 +42,15 @@ export default {
 
      }
 },
+
+watch: {
+    // whenever question changes, this function will run
+    question: function (newQuestion, oldQuestion) {
+      this.answer = 'Waiting for you to stop typing...'
+      this.debouncedGetAnswer()
+    }
+  },
+
       methods: {
       startGame: function(){
           this.opponent= 0,
@@ -44,7 +62,7 @@ export default {
           this.number=0,
           this.userGuess =0,
           this.history= []
-          this.number = Math.floor(Math.random() * 100)+1;
+          this.number = 2/*Math.floor(Math.random() * 100)+1;*/
       },
       userInput: function() {
 
@@ -52,24 +70,24 @@ export default {
             if (this.opponent == this.number || this.opponent2 == this.number){
           alert('Opponent Win')
           this.inputClosed = true
-          this.inputBtnClosed = true 
+          this.inputBtnClosed = true
         } else
-          alert("Wrong, guess higher!")
+        this.answer = 'Wrong, guess higher!!'
           this.opponent = Math.floor(Math.random() * 100)+1;
           this.opponent2 = Math.floor(Math.random() * 100)+1;
           this.numberOfGuess++;
           this.history.push(this.userGuess)
           this.history.push(this.opponent)
           this.history.push(this.opponent2)
-          
+
         }
         else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number || this.opponent2 == this.number){
-          alert('Opponent Win')
+          this.answer = 'oponent win'
           this.inputClosed = true
-          this.inputBtnClosed = true 
+          this.inputBtnClosed = true
         } else
-          alert("Wrong, guess lower!")
+          this.answer = 'Wrong guess lower'
           this.opponent -= 1;
           this.opponent2 += 11;
           this.numberOfGuess++;
@@ -79,20 +97,21 @@ export default {
         }
         else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number || this.opponent2 == this.number){
-          alert('Opponent Win')
+          this.answer = 'oponent win'
           this.inputClosed = true
-          this.inputBtnClosed = true 
+          this.inputBtnClosed = true
         } else
-          alert("Yes sir, The Answere is " + this.number);
+
+          this.answer = 'WINNER.... the correct answere is ' + this.number;
           this.numberOfGuess++;
           this.inputClosed = true
-          this.inputBtnClosed = true 
+          this.inputBtnClosed = true
         }
         else if (this.numberOfGuess > 9){
-          alert('You have uesd all your guesses, GAME OVER');
-       
+          this.answer = 'GAME OVER'
+
           this.inputClosed = true
-          this.inputBtnClosed = true 
+          this.inputBtnClosed = true
         }
       }
     }
@@ -106,4 +125,6 @@ export default {
   padding: 0.5%;
   border: 1px solid #cccccc;
 }
+
+
 </style>
