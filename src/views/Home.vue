@@ -1,9 +1,16 @@
 <template>
   <div class="home">
-
-    <img alt="pepparkakshus" src="../assets/pepparkakshus.jpg">
-    <Game />
-    <button @click="logout">Logga ut</button>
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col"> 
+                <img alt="pepparkakshus" src="../assets/pepparkakshus.jpg">
+            </div>
+            <div class="col">   
+                <Game />
+                <button @click="logout">Logga ut</button>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -35,5 +42,8 @@ img{
 }
 button{
   margin: 25px;
+}
+.col {
+    
 }
 </style>
