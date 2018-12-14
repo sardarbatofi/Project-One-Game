@@ -1,7 +1,10 @@
 <template>
   <div class="about">
-      <p>Välkommen!</p>
-      <router-link :to="{name:'game',params}"><button>Spel</button></router-link>
+      <h3>Hello and welcome to One Game!</h3>
+      <p>Here you can play game against Grinchen and Krampus, I will ask you a question that has a numerical answer, 
+      try to guess it right! pst…I’m going to help you by telling you to go higher or lower after your guess!
+      You have maximun 10 guesses! Enjoy!</p>
+      <router-link :to="{name:'game',params}"><button>Game</button></router-link>
   </div>
 </template>
 

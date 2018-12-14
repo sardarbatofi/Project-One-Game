@@ -11,8 +11,8 @@
                 <div v-show="game">
                 <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
                 <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
-                <p>Rick: {{opponent}}</p>
-                <p>Marty: {{opponent2}}</p>
+                <p>Grinchen: {{opponent}}</p>
+                <p>Krampus: {{opponent2}}</p>
                 <br>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                   <p>{{ answer }}</p>
                 </div>
             </div>
-            <router-link :to="{name:'home',params}"><button>Hem</button></router-link>
+            <router-link :to="{name:'home',params}"><button>Home page</button></router-link>
         </div>
     </div> 
   </div>
@@ -74,11 +74,11 @@ export default {
 
          if(this.userGuess < this.number && this.numberOfGuess < 10 ){
             if (this.opponent == this.number){
-          this.answer = 'Rick is the winner! The correct answer is ' + this.number;
+          this.answer = 'Grinchen is the winner! The correct answer is ' + this.number;
           this.inputClosed = true
           this.inputBtnClosed = true}
              else if(this.opponent2 == this.number){
-                this.answer = 'Marty is the winner! The correct answer is ' + this.number;
+                this.answer = 'Krampus is the winner! The correct answer is ' + this.number;
                 this.inputClosed = true
                 this.inputBtnClosed = true
         }
@@ -93,11 +93,11 @@ export default {
         }
         else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number){
-        this.answer = 'Rick is the winner! The correct answer is ' + this.number;
+        this.answer = 'Grinchen is the winner! The correct answer is ' + this.number;
           this.inputClosed = true
           this.inputBtnClosed = true}
              else if(this.opponent2 == this.number){
-                this.answer = 'Marty is the winner! The correct answer is ' + this.number;
+                this.answer = 'Krampus is the winner! The correct answer is ' + this.number;
                 this.inputClosed = true
                 this.inputBtnClosed = true
         }
@@ -112,11 +112,11 @@ export default {
         }
         else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number){
-          this.answer = 'Rick is the winner! The correct answer is ' + this.number;
+          this.answer = 'Grinchen is the winner! The correct answer is ' + this.number;
           this.inputClosed = true
           this.inputBtnClosed = true}
              else if(this.opponent2 == this.number){
-                this.answer = 'Marty is the winner! The correct answer is ' + this.number;
+                this.answer = 'Krampus is the winner! The correct answer is ' + this.number;
                 this.inputClosed = true
                 this.inputBtnClosed = true
         }
