@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-      <p>bsbdskfdksj</p>
-      <router-link :to="{name:'home',params}">More info</router-link>
+      <p>Välkommen!</p>
+      <router-link :to="{name:'game',params}"><button>Spel</button></router-link>
   </div>
 </template>
 

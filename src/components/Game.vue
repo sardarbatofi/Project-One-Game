@@ -24,7 +24,7 @@
                   <p>{{ answer }}</p>
                 </div>
             </div>
-            <router-link :to="{name:'about',params}">More info</router-link>
+            <router-link :to="{name:'home',params}"><button>Hem</button></router-link>
         </div>
     </div> 
   </div>

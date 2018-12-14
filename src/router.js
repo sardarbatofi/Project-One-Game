@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Game from './views/Game.vue'
 import Home from './views/Home.vue'
-import About from './views/About.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import {fb, db} from '../firebase-config'
@@ -26,6 +26,14 @@ const router = new Router({
       component: Login
     },
     {
+      path: '/game',
+      name: 'game',
+      component: Game,
+      meta: {
+        requiresAuth: true
+      }
+    },
+      {
       path: '/home',
       name: 'home',
       component: Home,
@@ -33,18 +41,10 @@ const router = new Router({
         requiresAuth: true
       }
     },
-      {
-      path: '/about',
-      name: 'about',
-      component: About,
-      meta: {
-        requiresAuth: true
-      }
-    },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/home',
+      name: 'home',
+      component: () => import(/* webpackChunkName: "about" */ './views/Home.vue')
     },
     {
       path: '/sign-up',

@@ -1,30 +1,16 @@
 <template>
   <div class="home">
-     <div class="container-fluid">
-        <div class="row">
-            <div class="col"> 
-                <img alt="pepparkakshus" src="../assets/pepparkakshus.jpg">
-            </div>
-            <div class="col">   
-                <Game />
-                <button @click="logout">Logga ut</button>
-            </div>
-        </div>
-    </div>
+<Hem />
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-
-import Game from '@/components/Game.vue'
+   import Hem from '@/components/Hem.vue'
 import firebase from 'firebase'
-
-
+ 
 export default {
   name: 'home',
   components: {
-    Game
+    Hem
   },
   methods: {
     logout: function(){
@@ -36,14 +22,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-img{
- width: 200px;
-}
-button{
-  margin: 25px;
-}
-.col {
-    
-}
-</style>

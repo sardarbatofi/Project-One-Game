@@ -26,7 +26,7 @@ export default {
           var user = firebase.auth().currentUser;
           firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
               (user) => {
-                  this.$router.replace('about')
+                  this.$router.replace('home')
               },
               function(err){
                   alert(err)
@@ -37,7 +37,7 @@ export default {
           const provider = new firebase.auth.GoogleAuthProvider();
 
           firebase.auth().signInWithPopup(provider).then((result) => {
-              this.$router.replace('about');
+              this.$router.replace('home');
           }).catch((err) => {
               alert(err.message)
               });
