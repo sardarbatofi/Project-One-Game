@@ -24,6 +24,7 @@
                   <p>{{ answer }}</p>
                 </div>
             </div>
+            <router-link :to="{name:'about',params}">More info</router-link>
         </div>
     </div> 
   </div>
