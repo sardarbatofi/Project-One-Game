@@ -49,16 +49,11 @@ export default {
      }
 },
 
-/*watch: {
-    // whenever question changes, this function will run
-    question: function (newQuestion, oldQuestion) {
-      this.answer = 'Waiting for you to stop typing...'
-      this.debouncedGetAnswer()
-    }
-  },*/
 
       methods: {
+        
       startGame: function(){
+          this.answer = ''   /* tillagd, för att nollställa vid ni spel */ 
           this.opponent= 0,
           this.opponent2= 0,
           this.game= false,
@@ -70,67 +65,69 @@ export default {
           this.history= []
           this.number = Math.floor(Math.random() * 100)+1;
       },
+      
       userInput: function() {
-
+          this.opponent =  Math.floor(Math.random() * 100)+1;
+          this.opponent2 =  Math.floor(Math.random() * 100)+1;
+          this.numberOfGuess++;
          if(this.userGuess < this.number && this.numberOfGuess < 10 ){
             if (this.opponent == this.number){
           this.answer = 'Grinchen is the winner! The correct answer is ' + this.number;
-          this.inputClosed = true
-          this.inputBtnClosed = true}
+            this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true */}
              else if(this.opponent2 == this.number){
                 this.answer = 'Krampus is the winner! The correct answer is ' + this.number;
-                this.inputClosed = true
-                this.inputBtnClosed = true
+                  this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true */
         }
         else 
         this.answer = 'Wrong, guess higher!!'
-          this.opponent = Math.floor(Math.random() * 100)+1;
-          this.opponent2 = Math.floor(Math.random() * 100)+1;
-          this.numberOfGuess++;
-          this.history.push(this.userGuess)
-          this.history.push(this.opponent)
-          this.history.push(this.opponent2)
+       /*   this.opponent = Math.floor(Math.random() * 100)+1;
+          this.opponent2 = Math.floor(Math.random() * 100)+1; */
+         /* this.numberOfGuess++; */
+          this.history.push(this.userGuess, this.opponent, this.opponent2)
+         /* this.history.push(this.opponent)
+          this.history.push(this.opponent2) */
         }
         else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number){
         this.answer = 'Grinchen is the winner! The correct answer is ' + this.number;
-          this.inputClosed = true
-          this.inputBtnClosed = true}
+          this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true */ }
              else if(this.opponent2 == this.number){
                 this.answer = 'Krampus is the winner! The correct answer is ' + this.number;
-                this.inputClosed = true
-                this.inputBtnClosed = true
+                this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true */
         }
           else
           this.answer = 'Wrong guess lower'
-          this.opponent -= 1;
-          this.opponent2 += 11;
-          this.numberOfGuess++;
-          this.history.push(this.userGuess)
-          this.history.push(this.opponent)
-          this.history.push(this.opponent2)
+      /*    this.opponent =  Math.floor(Math.random() * 100)+1;
+          this.opponent2 =  Math.floor(Math.random() * 100)+1; */
+         /* this.numberOfGuess++; */
+          this.history.push(this.userGuess, this.opponent, this.opponent2)
+          /* this.history.push(this.opponent)
+          this.history.push(this.opponent2) */
         }
-        else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
-             if (this.opponent == this.number){
-          this.answer = 'Grinchen is the winner! The correct answer is ' + this.number;
-          this.inputClosed = true
-          this.inputBtnClosed = true}
+        else if (this.userGuess == this.number && this.numberOfGuess < 10 ){   /* funderar vad den koden gör där? */
+          /*   if (this.opponent == this.number){
+          this.answer = 'Grinchen is the WINNER! The correct answer is ' + this.number;
+            this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true *//* }
              else if(this.opponent2 == this.number){
-                this.answer = 'Krampus is the winner! The correct answer is ' + this.number;
-                this.inputClosed = true
-                this.inputBtnClosed = true
-        }
-          else
-          this.answer = 'WINNER.... the correct answer is ' + this.number;
-          this.numberOfGuess++;
-          this.inputClosed = true
-          this.inputBtnClosed = true
+                this.answer = 'Krampus is the WINNER! The correct answer is ' + this.number;
+                this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true */
+          /*   }
+          else */
+                 this.answer = 'WINNER.... The correct answer is ' + this.number;
+                 this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true */
         }
         else if (this.numberOfGuess > 9){
-          this.answer = 'GAME OVER'
-          this.inputClosed = true
-          this.inputBtnClosed = true
-        }
+                 this.answer = 'GAME OVER, The correct answer was ' + this.number;   /* ändrar/ tillagd för att jag är nyfiken */
+                 this.inputClosed, this.inputBtnClosed = true
+          /* this.inputBtnClosed = true */
+     } 
       }
     }
 }
