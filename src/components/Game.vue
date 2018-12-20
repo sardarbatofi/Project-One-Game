@@ -18,6 +18,9 @@
                 <div v-show="game">
                 <input v-model="userGuess" type="number" @keypress.enter="userInput" @keydown="key" min="0" :disabled="inputClosed"/>
                 <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
+                    <div id="timer" v-show="!gameOver">
+                        <span id="seconds">Seconds left:{{ seconds }}</span>
+                    </div>
                 <p>Grinchen: {{opponent}}</p>
                 <p>Krampus: {{opponent2}}</p>
                 <br>
@@ -48,6 +51,8 @@
 export default {
    data() {
      return{
+        timer: null,
+        totalTime: (30),
        question: '',
     answer: 'May the force be with you!',
   opponent: 10,
@@ -71,9 +76,18 @@ export default {
                   "e",
                   "E"
                 ],
-
-     }
+    }
 },
+    computed: {
+        minutes: function() {
+        const minutes = Math.floor(this.totalTime / 60);
+        return this.padTime(minutes);
+        },
+        seconds: function() {
+        const seconds = this.totalTime - (this.minutes * 60);
+        return this.padTime(seconds);
+        }
+      },
 
 
       methods: {
@@ -100,7 +114,38 @@ export default {
           this.userGuess=null,
           this.history= []
           this.number = Math.floor(Math.random() * 100)+1;
+          this.gameOver = false,
+          this.timer= null,
+          this.totalTime= (30)
+          this.startTimer ()
       },
+        startTimer: function() {
+          this.timer = setInterval(() => this.countdown(), 1000);
+          },
+          resetTimer: function() {
+          this.totalTime = (30);
+          clearInterval(this.timer); 
+          this.timer = null;
+          },
+          padTime: function(time) {
+            return (time < 10 ? '0' : '') + time;
+          },
+          countdown: function() {
+          if(this.totalTime >= 1){
+            this.totalTime--;
+          } else{ // när klockan når noll
+            this.totalTime ;
+            this.resetTimer()
+        
+            this.gameOver = true
+            this.answer = 'GAME OVER, The correct answer was ' + this.number;   /* ändrar/ tillagd för att jag är nyfiken */
+                this.inputClosed = true
+                this.inputBtnClosed = true
+                this.timer = null 
+                                       
+          }
+          },
+
 
       userInput: function() {
           this.opponent =  Math.floor(Math.random() * 100)+1;
@@ -165,7 +210,10 @@ export default {
                                        this.higher = ''
                                        this.lower = ''
                                        this.inputClosed = true
-                                        this.inputBtnClosed = true                              }
+                                        this.inputBtnClosed = true 
+                                        this.gameOver = true
+                                        this.timer = null      
+               }
       }
     }
 }
@@ -357,6 +405,12 @@ export default {
     margin-top: 30%;
     margin-left: 80%; } }
 
+#timer {
+  font-size: 30px;
+}
 
+#seconds {
+    color: red;
+}
 
 </style>
