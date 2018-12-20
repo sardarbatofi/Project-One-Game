@@ -16,7 +16,7 @@
               <p id="win" v-if="this.win"> {{ this.win }} </p>
                <button @click="startGame" v-on:click="game = !game">Start Game</button><br><br>
                 <div v-show="game">
-                <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
+                <input v-model="userGuess" type="number" @keypress.enter="userInput" @keydown="key" min="0" :disabled="inputClosed"/>
                 <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
                 <p>Grinchen: {{opponent}}</p>
                 <p>Krampus: {{opponent2}}</p>
@@ -64,12 +64,25 @@ export default {
   gameo: '',
   userGuess:0,
   history: [],
+  invalidChars: [
+                  "-",
+                  "+",
+                  ".",
+                  "e",
+                  "E"
+                ],
 
      }
 },
 
 
       methods: {
+          
+      key(e){
+            if (this.invalidChars.includes(e.key)) {
+                e.preventDefault();
+            }
+        },
 
       startGame: function(){
           this.answer = ''   /* tillagd, för att nollställa vid nytt spel */
@@ -79,13 +92,12 @@ export default {
           this.inputClosed= false,
           this.inputBtnClosed= false,
           this.numberOfGuess= 0,
-          this.number=0,
           this.win= '',
           this.loser= '',
           this.higher= '',
           this.lower= '',
           this.gameo= '',
-          this.userGuess =0,
+          this.userGuess=null,
           this.history= []
           this.number = Math.floor(Math.random() * 100)+1;
       },
