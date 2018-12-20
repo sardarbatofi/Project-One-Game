@@ -40,12 +40,8 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },/*
-    {
-      path: '/home',
-      name: 'home',
-      component: () => import( './views/Home.vue')
-    }*/,
+    },
+    
     {
       path: '/sign-up',
       name: 'SignUp',

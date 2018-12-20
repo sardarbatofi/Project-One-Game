@@ -1,10 +1,21 @@
 <template>
-  <div class="about">
+  <div class="grid-container">
+
+    <div class="item1">
       <h3>Hello and welcome to One Game!</h3>
       <p>Here you can play game against Grinchen and Krampus, I will ask you a question that has a numerical answer,
       try to guess it right! pst…I’m going to help you by telling you to go higher or lower after your guess!
       You have maximun 10 guesses! Enjoy!</p>
-      <router-link :to="{name:'game'/*,params*/}"><button class="button" >Game</button></router-link>
+  </div>
+
+  <div class="item2"></div>
+  <div class="item3">
+      <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link>
+  </div>
+  <div class="item4"></div>
+  <div class="item5"></div>
+  <div class="item6"></div>
+  <div class="item7"></div>
   </div>
 </template>
 
@@ -23,15 +34,10 @@ img{
 button{
   margin: 25px;
 }
-.col {
 
-}
 
 .button {
 display: inline-block;
--webkit-box-sizing:border-box;
- -moz-box-sizing:border-box;
-      box-sizing:border-box;
 min-width:100px;
 padding: 22px 33px;
 font-family: 'Lobster', cursive;

@@ -1,4 +1,6 @@
 <template>
+<div class="grid-container">
+  <div class="item3">
   <div class="sign-up">
       <h2>Skapa ett nytt konto.</h2><br>
       <label for="email">E-Post: <input type="text" v-model="email" placeholder="exempel@onegame.se"></label><br>
@@ -6,6 +8,8 @@
      
       <button @click="signUp">Let´s do it!</button><br>
       <p>Tillbaka?, <router-link to="/login">Klicka här</router-link></p>
+    </div>
+    </div>
     </div>
 </template>
 

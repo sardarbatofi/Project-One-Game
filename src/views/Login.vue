@@ -1,4 +1,6 @@
 <template>
+  <div class="grid-container">
+    <div class="item3">
   <div class="login">
       <h2>Logga in</h2>
      <label for="email">E-Post: <input type="text" v-model="email" placeholder="exempel@onegame.se"></label><br>
@@ -8,6 +10,8 @@
       <p>Eller logga in med Google <br>
       <button @click="google" class="google">
           <img src="../assets/google-logo.png" alt="Google logo"></button></p>
+    </div>
+    </div>
     </div>
 </template>
 

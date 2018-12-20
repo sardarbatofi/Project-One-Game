@@ -1,18 +1,9 @@
 <template>
   <div class="game">
-     <div class="container-fluid">
-        <div class="row">
-            <div class="col"> 
-                <img alt="pepparkakshus" src="../assets/pepparkakshus.jpg">
-            </div>
-            <div class="col">   
-                <Game />
-                <button @click="logout">Logga ut</button>
-            </div>
-        </div>
-    </div>
-  </div>
-</template>
+          <Game />
+              <button @click="logout">Logga ut</button> 
+ </div>
+ </template>
 
 <script>
 // @ is an alias to /src
