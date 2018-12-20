@@ -40,12 +40,12 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
+    },/*
     {
       path: '/home',
       name: 'home',
-      component: () => import(/* webpackChunkName: "about" */ './views/Home.vue')
-    },
+      component: () => import( './views/Home.vue')
+    }*/,
     {
       path: '/sign-up',
       name: 'SignUp',
