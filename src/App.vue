@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-     </div>
      <transition name="fade"><router-view/></transition>
   </div>
 </template>
@@ -42,4 +40,48 @@
 .fade-enter, .fade-leave-active {
  opacity: 0
 }
+
+
+
+
+/*- CSS Grid för hela projektet -*/
+
+* {
+    box-sizing: border-box;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-gap: 10px;
+}
+.item1{
+grid-column: 1 / 5;
+}
+.item2{
+grid-column: 1 / 2;
+}
+.item3{
+grid-column: 2 / 3;
+}
+.item4{
+grid-column: 4 / 5;
+}
+
+.item5{
+grid-column: 1 / 2;
+}
+.item6{
+grid-column: 2 / 3;
+}
+.item7{
+grid-column: 4 / 5;
+}
+
+@media (max-width: 721px){
+  .item1, .item2, .item3, .item4, .item5
+  {
+grid-column: 1/5;
+  }
+} 
+
 </style>
