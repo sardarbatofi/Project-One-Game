@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div>
     <div class="container">
     <div class="row">
@@ -30,20 +29,6 @@
   </div>
     
 
-=======
-<div class="grid-container">
-  <div class="item3">
-  <div class="sign-up">
-      <h2>Skapa ett nytt konto.</h2><br>
-      <label for="email">E-Post: <input type="text" v-model="email" placeholder="exempel@onegame.se"></label><br>
-      <label for="password">Lösenord: <input type="password" v-model="password" placeholder="******" @keyup.enter="login"></label><br>
-     
-      <button @click="signUp">Let´s do it!</button><br>
-      <p>Tillbaka?, <router-link to="/login">Klicka här</router-link></p>
-    </div>
-    </div>
-    </div>
->>>>>>> 18f9a59cf45024da73bebeafeb8cb5128acb2fb4
 </template>
 
 <script>
@@ -95,10 +80,7 @@ p{
 button, a {
 cursor: pointer;
 }
-<<<<<<< HEAD
 button{
   color: #000;
 }
-=======
->>>>>>> 18f9a59cf45024da73bebeafeb8cb5128acb2fb4
 </style>

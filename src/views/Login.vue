@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div>
     <div class="container">
     <div class="row">
@@ -29,22 +28,6 @@
   </div>
     
 
-=======
-  <div class="grid-container">
-    <div class="item3">
-  <div class="login">
-      <h2>Logga in</h2>
-     <label for="email">E-Post: <input type="text" v-model="email" placeholder="exempel@onegame.se"></label><br>
-      <label for="password">Lösenord: <input type="password" v-model="password" placeholder="******" @keyup.enter="login"></label><br>
-      <button @click="login">Logga in</button><br>
-      <p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p><br><br>
-      <p>Eller logga in med Google <br>
-      <button @click="google" class="google">
-          <img src="../assets/google-logo.png" alt="Google logo"></button></p>
-    </div>
-    </div>
-    </div>
->>>>>>> 18f9a59cf45024da73bebeafeb8cb5128acb2fb4
 </template>
 
 <script>
@@ -57,10 +40,7 @@ export default {
         password:''
     };
   },
-<<<<<<< HEAD
   
-=======
->>>>>>> 18f9a59cf45024da73bebeafeb8cb5128acb2fb4
   methods:{
       login: function(){
           var user = firebase.auth().currentUser;

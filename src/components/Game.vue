@@ -21,7 +21,7 @@
               <p id="win" v-if="this.win"> {{ this.win }} </p>
                <button @click="startGame" v-on:click="game = !game" :disabled="startBtnClosed">Start Game</button><br><br>
                 <div v-show="game">
-                <input v-model="userGuess" type="number" @keypress.enter="userInput" @keydown="key" min="0" :disabled="inputClosed"/>
+                <input style="color:blue" v-model="userGuess" type="number" @keypress.enter="userInput" @keydown="key" min="0" :disabled="inputClosed"/>
                 <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
                     <div id="timer" v-show="!gameOver">
                         <span id="seconds">Seconds left:{{ seconds }}
@@ -279,6 +279,7 @@ export default {
 </script>
 
 <style scoped>
+
 img {
   width: 30%;
 }
@@ -483,9 +484,6 @@ img {
       margin-top: 30%;
       margin-left: 80%; } }
       */
-  
-  
-  
   
   
 
