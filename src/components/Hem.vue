@@ -8,13 +8,25 @@
       You have maximun 10 guesses! Enjoy!</p>
   </div>
 
-  <div class="item2"></div>
+  <div class="item2"> <h2>Rules of the game</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores illo voluptatem culpa veritatis. Quis illo adipisci animi, quo sequi, a omnis soluta vero possimus molestias, cum sunt optio tempora id!</p>
+  </div>
   <div class="item3">
       <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link>
   </div>
-  <div class="item4"></div>
+  <div class="item4">
+
+    <h2>High Score!</h2>
+<ol>
+  <li>12sekunder</li>
+  <li>37sekunder</li>
+  <li>57sekunder</li>
+  </ol> 
+  </div>
   <div class="item5"></div>
-  <div class="item6"></div>
+  <div class="item6">
+  <button @click="logout">Logga ut</button> 
+  </div>
   <div class="item7"></div>
   </div>
 </template>

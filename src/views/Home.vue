@@ -1,7 +1,6 @@
 <template>
   <div class="home">
 <Hem />
-  <button @click="logout">Logga ut</button> 
   </div>
 </template>
 <script>

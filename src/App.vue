@@ -8,6 +8,8 @@
     body{
         overflow: scroll;
         background-color: lightgrey;
+        max-width: 900px;
+        width: 90%;
     }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -51,11 +53,11 @@
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-columns: 30% 40% 30%;
   grid-gap: 10px;
 }
 .item1{
-grid-column: 1 / 5;
+grid-column: 1 / 4;
 }
 .item2{
 grid-column: 1 / 2;
@@ -64,7 +66,7 @@ grid-column: 1 / 2;
 grid-column: 2 / 3;
 }
 .item4{
-grid-column: 4 / 5;
+grid-column: 3 / 4;
 }
 
 .item5{
@@ -74,13 +76,14 @@ grid-column: 1 / 2;
 grid-column: 2 / 3;
 }
 .item7{
-grid-column: 4 / 5;
+grid-column: 3 / 4;
 }
+
 
 @media (max-width: 721px){
   .item1, .item2, .item3, .item4, .item5
   {
-grid-column: 1/5;
+grid-column: 1/4;
   }
 } 
 
