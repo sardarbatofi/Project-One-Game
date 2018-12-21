@@ -30,7 +30,7 @@ export default {
           var user = firebase.auth().currentUser;
           firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
               (user) => {
-                  this.$router.replace('home')
+                  this.$router.replace('home');
               },
               function(err){
                   alert(err)

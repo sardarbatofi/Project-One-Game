@@ -19,7 +19,7 @@
 
             <div class="item3">
               <p id="win" v-if="this.win"> {{ this.win }} </p>
-               <button @click="startGame" v-on:click="game = !game">Start Game</button><br><br>
+               <button @click="startGame" v-on:click="game = !game" :disabled="startBtnClosed">Start Game</button><br><br>
                 <div v-show="game">
                 <input v-model="userGuess" type="number" @keypress.enter="userInput" @keydown="key" min="0" :disabled="inputClosed"/>
                 <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
@@ -34,7 +34,8 @@
                 </div>
             </div>
             <div class="item4"></div>
-            <div class="item5"></div>
+            <div class="item5">
+               <img src="../assets/grinch.png" alt="Grinch!"></div>
             <div class="item6">
                 <p>You have used {{numberOfGuess}} of 10 Guesses.</p>
                 <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
@@ -53,7 +54,9 @@
         
 
     </div>
-<div class="item7"></div>
+<div class="item7">
+  <img src="../assets/krampus.png" alt="Krampus!">
+</div>
 
 
   </div>
@@ -73,6 +76,7 @@ export default {
   game: false,
   inputClosed: false,
   inputBtnClosed: false,
+  startBtnClosed: false,
   numberOfGuess: 0,
   number:0,
   win: '',
@@ -118,6 +122,7 @@ export default {
           this.game= false,
           this.inputClosed= false,
           this.inputBtnClosed= false,
+           this.startBtnClosed= false,
           this.numberOfGuess= 0,
           this.win= '',
           this.loser= '',
@@ -145,6 +150,7 @@ export default {
           },
           countdown: function() {
               if(this.totalTime > 1){
+                this.startBtnClosed= true
                   this.totalTime--;
           } else if (!this.gameOver){ // när klockan når noll, lade till else if för att koden inte ska köras om det redan är gameOver.
             this.totalTime ;
@@ -166,6 +172,7 @@ export default {
 
 
       userInput: function() {
+        
           this.opponent =  Math.floor(Math.random() * 100)+1;
           this.opponent2 =  Math.floor(Math.random() * 100)+1;
           this.numberOfGuess++;
@@ -179,6 +186,9 @@ export default {
                   this.inputBtnClosed = true
                    this.gameOver = true
                    this.timer = null
+                    setTimeout( () => {
+                           this.$router.replace('home')   // TEST*****
+                       }, 5000); 
                  
              }
                   else if(this.opponent2 == this.number){
@@ -190,6 +200,9 @@ export default {
                            this.inputBtnClosed = true    
                          this.gameOver = true
                             this.timer = null
+                                                           setTimeout( () => {
+                                      this.$router.replace('home')   // TEST*****
+                                  }, 5000); 
                                       
                                    }
         else
@@ -207,6 +220,9 @@ export default {
                       this.inputClosed = true
                        this.inputBtnClosed = true
                            this.gameOver = true
+                                                          setTimeout( () => {
+                                      this.$router.replace('home')   // TEST*****
+                                  }, 5000); 
                                         
                                        }
                       else if(this.opponent2 == this.number){
@@ -218,6 +234,9 @@ export default {
                                this.inputBtnClosed = true
                                    this.gameOver = true
                                         this.timer = null
+                                                                       setTimeout( () => {
+                                      this.$router.replace('home')   // TEST*****
+                                  }, 5000); 
                                               
                                                    }
                               else
@@ -249,6 +268,9 @@ export default {
                                         this.inputBtnClosed = true 
                                         this.gameOver = true
                                         this.timer = null   
+                                          setTimeout( () => {
+                                      this.$router.replace('home')   // TEST*****
+                                  }, 5000); 
 
                }
       }
@@ -257,6 +279,9 @@ export default {
 </script>
 
 <style scoped>
+img {
+  width: 30%;
+}
 
 .history{
     background-color: peachpuff;
