@@ -48,6 +48,7 @@
                   <p id="gameo">{{ this.gameo }}</p>
                         
             <router-link :to="{name:'home'}"><button>Home page</button></router-link>
+                  <br> <button @click="logout">Logga ut</button> 
 </div>
         
 

@@ -1,7 +1,6 @@
 <template>
   <div class="game">
           <Game />
-              <button @click="logout">Logga ut</button> 
  </div>
  </template>
 
