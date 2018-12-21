@@ -54,6 +54,26 @@
 
 
     </div>
+
+    <form class="form-inline" @submit.prevent="highscore"  v-if="this.win">
+      <input type="text" id="score" placeholder="Skriv ditt namn här" v-model="newNameText">
+      <input type="submit" class="btn btn-primary"></input>
+    </form>
+
+      <div class="card-header" v-if="this.win" >
+        <h3>Results:</h3>
+        <h5>amount of guesses</h5>
+
+      <div class="success"
+      v-for="namn in guestName">
+
+    {{ namn }}
+
+
+  </div>
+    </div>
+
+
 <div class="item7">
   <img src="../assets/krampus.png" alt="Krampus!">
 </div>
@@ -85,6 +105,8 @@ export default {
   lower: '',
   gameo: '',
   userGuess:0,
+  newNameText: '',
+  guestName: [],
   history: [],
   invalidChars: [
       "-",
@@ -129,6 +151,7 @@ export default {
           this.higher= '',
           this.lower= '',
           this.gameo= '',
+          this.newNameText = '',
           this.userGuess=null,
           this.history= []
           this.number = Math.floor(Math.random() * 100)+1;
@@ -137,6 +160,14 @@ export default {
           this.totalTime= (30)
           this.startTimer ()
       },
+
+      highscore: function() {
+
+        this.guestName.push(this.newNameText)
+        this.newNameText = ''
+
+      },
+
         startTimer: function() {
             this.timer = setInterval(() => this.countdown(), 1000);
           },
@@ -168,7 +199,7 @@ export default {
 
 
           }
-          
+
           },
 
 
@@ -251,6 +282,8 @@ export default {
                              this.answer = ''
                               this.higher = ''
                               this.lower = ''
+                              this.history.push(this.userGuess, this.opponent, this.opponent2)
+                              this.guestName.push(this.numberOfGuess)
                               this.inputClosed = true
                                this.inputBtnClosed = true
                                     this.gameOver = true
@@ -348,20 +381,8 @@ img {
 
   @keyframes bang {
     from {
-      box-shadow: /*0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white,*/ 0 0 white; } }
-  /* @keyframes bang {
-    from {
-      box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
-  @keyframes bang {
-    from {
-      box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
-  @keyframes bang {
-    from {
-      box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
-  @keyframes bang {
-    from {
-      box-shadow: 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white, 0 0 white; } }
-  */
+      box-shadow: 0 0 white; } }
+
 
   @keyframes gravity {
     to {
@@ -369,18 +390,6 @@ img {
       opacity: 0; } }
 
 
-      /*
-  @keyframes gravity {
-    to {
-      transform: translateY(200px);
-      opacity: 0; } }
-  @keyframes gravity {
-    to {
-      transform: translateY(200px);
-      opacity: 0; } }
-      */
-
-
   @keyframes position {
     0%, 19.9% {
       margin-top: 10%;
@@ -402,89 +411,38 @@ img {
       margin-top: 30%;
       margin-left: 80%; } }
 
+      .success {
 
-       /*
-  @keyframes position {
-    0%, 19.9% {
-      margin-top: 10%;
-      margin-left: 40%; }
 
-    20%, 39.9% {
-      margin-top: 40%;
-      margin-left: 30%; }
+      color: white;
+        background: purple;
 
-    40%, 59.9% {
-      margin-top: 20%;
-      margin-left: 70%; }
+        display: inline-block;
+        margin: 10px;
+        padding: 10px;
+        width: 30px;
 
-    60%, 79.9% {
-      margin-top: 30%;
-      margin-left: 20%; }
 
-    80%, 99.9% {
-      margin-top: 30%;
-      margin-left: 80%; } }
-  @keyframes position {
-    0%, 19.9% {
-      margin-top: 10%;
-      margin-left: 40%; }
 
-    20%, 39.9% {
-      margin-top: 40%;
-      margin-left: 30%; }
+      }
 
-    40%, 59.9% {
-      margin-top: 20%;
-      margin-left: 70%; }
+      .card-header {
+        background: rgba(150, 0, 90, 0.1);
+        height: 350px;
+        padding: 15px;
+        width: 140px;
+        margin: auto;
+        margin-top: 20px;
 
-    60%, 79.9% {
-      margin-top: 30%;
-      margin-left: 20%; }
+      }
 
-    80%, 99.9% {
-      margin-top: 30%;
-      margin-left: 80%; } }
-  @keyframes position {
-    0%, 19.9% {
-      margin-top: 10%;
-      margin-left: 40%; }
+      #score {
 
-    20%, 39.9% {
-      margin-top: 40%;
-      margin-left: 30%; }
+        margin-top: 30px;
+      }
 
-    40%, 59.9% {
-      margin-top: 20%;
-      margin-left: 70%; }
 
-    60%, 79.9% {
-      margin-top: 30%;
-      margin-left: 20%; }
 
-    80%, 99.9% {
-      margin-top: 30%;
-      margin-left: 80%; } }
-  @keyframes position {
-    0%, 19.9% {
-      margin-top: 10%;
-      margin-left: 40%; }
-
-    20%, 39.9% {
-      margin-top: 40%;
-      margin-left: 30%; }
-
-    40%, 59.9% {
-      margin-top: 20%;
-      margin-left: 70%; }
-
-    60%, 79.9% {
-      margin-top: 30%;
-      margin-left: 20%; }
-
-    80%, 99.9% {
-      margin-top: 30%;
-      margin-left: 80%; } }
-      */
 
 
 
