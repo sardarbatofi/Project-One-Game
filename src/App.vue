@@ -10,6 +10,7 @@
         background-color: lightgrey;
         max-width: 900px;
         width: 90%;
+        margin: 0 auto;
     }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
