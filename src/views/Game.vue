@@ -33,7 +33,4 @@ img{
 button{
   margin: 25px;
 }
-.col {
-    
-}
 </style>
