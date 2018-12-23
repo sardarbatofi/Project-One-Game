@@ -174,7 +174,7 @@ export default {
           this.lower= '',
           this.gameo= '',
           this.newNameText = '',
-          this.userGuess=null,
+          this.userGuess= null,
           this.history= []
           
           this.gameOver = false,
@@ -238,6 +238,7 @@ export default {
        }, Math.floor(Math.random() * 400)+1)
 
           this.numberOfGuess++;
+          
          if(this.userGuess < this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number){
                  this.loser = 'Grinchen is the winner! The correct answer is ' + this.number;
@@ -272,6 +273,7 @@ export default {
           this.lower = ''
           this.answer = ''
           this.history.push(this.userGuess)
+          this.userGuess= null
         }
           else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
               if (this.opponent == this.number){
@@ -306,6 +308,7 @@ export default {
                               this.answer = ''
                               this.higher = ''
                               this.history.push(this.userGuess)
+                              this.userGuess= null
            }
                       else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
                           this.win = 'WINNER.... The correct answer is ' + this.number;
