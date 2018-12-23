@@ -46,6 +46,51 @@ export default {
 
 </script>
 <style scoped>
+
+/*BootstapjQuary-killer*/
+:disabled {
+  color: gray;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+#bootstrap-overrides {
+margin: 10px;
+ width: 150px;
+ border: 1px solid black;
+ height: 25px;
+ border-bottom: 1px solid black;
+  box-shadow: 2px 2px 2px grey;
+ background-color: white;
+ border-radius: 5px;
+}
+#bootstrap-overrides:focus{
+margin: 10px;
+ width: 150px;
+ border: 1px solid black;
+ height: 25px;
+ border-bottom: 1px solid black;
+ box-shadow: 2px 2px 2px grey;
+ background-color: white;
+ border-radius: 5px;
+} 
+button{
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+   background-color: white;
+}
+button:active {
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 1px 1px 1px black;
+    color: white;                  
+  border-radius: 15px;   
+
+}
+/*Bootstap/jQuary-killer*/
+
 img{
  width: 200px;
 }

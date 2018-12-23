@@ -22,7 +22,7 @@
               <p id="win" v-if="this.win"> {{ this.win }} </p>
                <button @click="startGame" v-on:click="game = !game" :disabled="startBtnClosed">Start Game</button><br><br>
                 <div v-show="game">
-                <input style="color:blue" v-model="userGuess" type="number" @keypress.enter="userInput" @keydown="key" min="0" :disabled="inputClosed"/>
+                <input id="bootstrap-overrides" v-model="userGuess" type="number" @keypress.enter="userInput" @keydown="key" min="0" :disabled="inputClosed"/>
                 <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
                     <div id="timer" v-show="!gameOver">
                         <span id="seconds">Seconds left:{{ seconds }}
@@ -49,8 +49,7 @@
                   <p id="lower">{{ this.lower }}</p>
                   <p id="gameo">{{ this.gameo }}</p>
 
-            <router-link :to="{name:'home'}"><button>Home page</button></router-link>
-
+ <router-link :to="{name:'home'}"><button @click="resetTimer()">Home page</button></router-link>
 </div>
 
 
@@ -224,8 +223,16 @@ export default {
 
       userInput: function() {
 
-          this.opponent =  Math.floor(Math.random() * 100)+1;
-          this.opponent2 =  Math.floor(Math.random() * 100)+1;
+              setTimeout( () => {
+             this.opponent =  Math.floor(Math.random() * 100)+1;
+               this.history.push(this.opponent)
+       }, Math.floor(Math.random() * 400)+1)
+
+             setTimeout( () => {
+             this.opponent2 =  Math.floor(Math.random() * 100)+1;
+               this.history.push(this.opponent2)
+       }, Math.floor(Math.random() * 400)+1)
+
           this.numberOfGuess++;
          if(this.userGuess < this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number){
@@ -260,7 +267,7 @@ export default {
           this.higher = 'Wrong, guess higher!!'
           this.lower = ''
           this.answer = ''
-          this.history.push(this.userGuess, this.opponent, this.opponent2)
+          this.history.push(this.userGuess)
         }
           else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
               if (this.opponent == this.number){
@@ -294,14 +301,14 @@ export default {
                               this.lower = 'Wrong guess lower'
                               this.answer = ''
                               this.higher = ''
-                              this.history.push(this.userGuess, this.opponent, this.opponent2)
+                              this.history.push(this.userGuess)
            }
                       else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
                           this.win = 'WINNER.... The correct answer is ' + this.number;
                              this.answer = ''
                               this.higher = ''
                               this.lower = ''
-                              this.history.push(this.userGuess, this.opponent, this.opponent2)
+                              this.history.push(this.userGuess)
                               this.guestName.push(this.numberOfGuess)
                               this.inputClosed = true
                                this.inputBtnClosed = true
@@ -332,6 +339,50 @@ export default {
 </script>
 
 <style scoped>
+
+
+/*BootstapjQuary-killer*/
+:disabled {
+  color: gray;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+#bootstrap-overrides {
+margin: 10px;
+ width: 150px;
+ border: 1px solid black;
+ height: 25px;
+ border-bottom: 1px solid black;
+  box-shadow: 2px 2px 2px grey;
+ background-color: white;
+ border-radius: 5px;
+}
+#bootstrap-overrides:focus{
+margin: 10px;
+ width: 150px;
+ border: 1px solid black;
+ height: 25px;
+ border-bottom: 1px solid black;
+ box-shadow: 2px 2px 2px grey;
+ background-color: white;
+ border-radius: 5px;
+} 
+button{
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+   background-color: white;
+}
+button:active {
+  border-radius: 5px;
+  border: 1px solid black;
+  color:black;
+  background-color: white;
+  box-shadow: 1px 1px 1px black;
+}
+/*Bootstap/jQuary-killer*/
+
 
 img {
   width: 30%;
