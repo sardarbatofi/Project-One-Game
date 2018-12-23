@@ -58,7 +58,7 @@
 
     <form class="form-inline" @submit.prevent="highscore"  v-if="this.win">
       <input type="text" id="score" placeholder="Skriv ditt namn här" v-model="newNameText">
-      <input type="submit" class="btn btn-primary"></input>
+      <input type="submit" class="btn btn-primary"> <!-- error fix -->
     </form>
 
       <div class="card-header" v-if="this.win" >
@@ -66,7 +66,7 @@
         <h5>amount of guesses</h5>
 
       <div class="success"
-      v-for="namn in guestName">
+      v-for="namn in guestName" :key="namn"> <!-- error fix -->
 
     {{ namn }}
 
@@ -94,7 +94,7 @@ export default {
         totalTime: (30),
 
         questions:[], //sardar
-       currentQuestion:0, //sardar
+       currentQuestion:Math.floor(Math.random() * 7)+1, //sardar
     answer: '',
   opponent: 10,
   opponent2: 10,
@@ -113,6 +113,7 @@ export default {
   newNameText: '',
   guestName: [],
   history: [],
+  
   invalidChars: [
       "-",
                   "+",
@@ -125,38 +126,38 @@ export default {
 
 //Sardar lagt till fetchar api
  created() {
-    fetch(quizData)
+   fetch(quizData)
     .then(res => res.json())
     .then(res => {
       this.title = res.title;
       this.quiz = res.text;
-      this.questions = res.questions;
-     
+    this.questions =  res.questions[this.currentQuestion].text; 
+    this.number = res.questions[this.currentQuestion].answer; 
     
     })
     },
     computed: {
-        minutes: function() {
-            const minutes = Math.floor(this.totalTime / 60);
+      minutes: function() {
+        const minutes = Math.floor(this.totalTime / 60);
         return this.padTime(minutes);
         },
         seconds: function() {
-            const seconds = this.totalTime - (this.minutes * 60);
+          const seconds = this.totalTime - (this.minutes * 60);
         return this.padTime(seconds);
         }
       },
 
 
       methods: {
-
-          key(e){
-              if (this.invalidChars.includes(e.key)) {
-                  e.preventDefault();
+        
+        key(e){
+          if (this.invalidChars.includes(e.key)) {
+            e.preventDefault();
             }
         },
 
       startGame: function(){
-          this.answer = ''   /* tillagd, för att nollställa vid nytt spel */
+        this.answer = ''   /* tillagd, för att nollställa vid nytt spel */
           this.opponent= 0,
           this.opponent2= 0,
           this.game= false,
@@ -172,12 +173,11 @@ export default {
           this.newNameText = '',
           this.userGuess=null,
           this.history= []
-          this.number = Math.floor(Math.random() * 100)+1;
+          
           this.gameOver = false,
           this.timer= null,
           this.totalTime= (30)
           this.startTimer ()
-          console.log('test'+JSON.stringify(this.questions[this.currentQuestion]));
       },
 
       highscore: function() {
