@@ -1,16 +1,18 @@
 <template>
   <div class="grid-container">
 
-    <div class="item1">
-      <h3>Hello and welcome to One Game!</h3>
+ <div class="item1"> <h3>Hello and welcome to One Game!</h3>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores illo voluptatem culpa veritatis. Quis illo adipisci animi, quo sequi, a omnis soluta vero possimus molestias, cum sunt optio tempora id!</p>
+  </div>
+
+    <div class="item2">
+      <h2>Rules of the game</h2>
       <p>Here you can play game against Grinchen and Krampus, I will ask you a question that has a numerical answer,
       try to guess it right! pst…I’m going to help you by telling you to go higher or lower after your guess!
       You have maximun 10 guesses! Enjoy!</p>
   </div>
 
-  <div class="item2"> <h2>Rules of the game</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores illo voluptatem culpa veritatis. Quis illo adipisci animi, quo sequi, a omnis soluta vero possimus molestias, cum sunt optio tempora id!</p>
-  </div>
+ 
   <div class="item3">
       <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link>
   </div>
@@ -48,6 +50,12 @@ export default {
 <style scoped>
 
 /*BootstapjQuary-killer*/
+h2 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.7em;
+}
 :disabled {
   color: gray;
   text-decoration: line-through;

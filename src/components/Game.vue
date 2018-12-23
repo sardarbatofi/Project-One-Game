@@ -14,7 +14,10 @@
           <br>
            <form class="form-inline" @submit.prevent="highscore"  v-if="this.win">
       <input id="bootstrap-overrides" type="text" placeholder="Add Name here..." v-model="newNameText">
-      <button @click="this.$router.replace('home') ">Add to High Score</button> <!-- error fix --> 
+   <router-link :to="{name:'home'}">
+     
+    <button>Add to High Score</button> <!-- error fix --> 
+</router-link>
     </form>
         </div>
 
