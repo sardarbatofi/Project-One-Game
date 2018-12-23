@@ -10,7 +10,8 @@
 
 
            <div class="item1">
-          <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+          <h2>{{questions}}</h2> <!--Sardar-->
+          
         </div>
 
 
@@ -84,13 +85,17 @@
 
 <script>
 
+ const quizData = 'https://api.myjson.com/bins/hkkhs'; //sardar
+
 export default {
     data() {
         return{
             timer: null,
         totalTime: (30),
-       question: '',
-    answer: 'May the force be with you!',
+
+        questions:[], //sardar
+       currentQuestion:0, //sardar
+    answer: '',
   opponent: 10,
   opponent2: 10,
   game: false,
@@ -117,6 +122,19 @@ export default {
                 ],
     }
 },
+
+//Sardar lagt till fetchar api
+ created() {
+    fetch(quizData)
+    .then(res => res.json())
+    .then(res => {
+      this.title = res.title;
+      this.quiz = res.text;
+      this.questions = res.questions;
+     
+    
+    })
+    },
     computed: {
         minutes: function() {
             const minutes = Math.floor(this.totalTime / 60);
@@ -159,6 +177,7 @@ export default {
           this.timer= null,
           this.totalTime= (30)
           this.startTimer ()
+          console.log('test'+JSON.stringify(this.questions[this.currentQuestion]));
       },
 
       highscore: function() {
