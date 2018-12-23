@@ -10,8 +10,12 @@
 
 
            <div class="item1">
-          <h2>{{questions}}</h2> <!--Sardar-->
-          
+          <h2 v-show="game">{{questions}}</h2> <!--Sardar-->
+          <br>
+           <form class="form-inline" @submit.prevent="highscore"  v-if="this.win">
+      <input id="bootstrap-overrides" type="text" placeholder="Add Name here..." v-model="newNameText">
+      <button @click="this.$router.replace('home') ">Add to High Score</button> <!-- error fix --> 
+    </form>
         </div>
 
 
@@ -55,14 +59,11 @@
 
     </div>
 
-    <form class="form-inline" @submit.prevent="highscore"  v-if="this.win">
-      <input type="text" id="score" placeholder="Skriv ditt namn här" v-model="newNameText">
-      <input type="submit" class="btn btn-primary"> <!-- error fix -->
-    </form>
+   
 
       <div class="card-header" v-if="this.win" >
         <h3>Results:</h3>
-        <h5>amount of guesses</h5>
+        <h5>Number of guesses: </h5>
 
       <div class="success"
       v-for="namn in guestName" :key="namn"> <!-- error fix -->
@@ -93,7 +94,7 @@ export default {
         totalTime: (30),
 
         questions:[], //sardar
-       currentQuestion:Math.floor(Math.random() * 7)+1, //sardar
+       currentQuestion:Math.floor(Math.random() * 8)+1, //sardar
     answer: '',
   opponent: 10,
   opponent2: 10,
@@ -314,9 +315,9 @@ export default {
                                this.inputBtnClosed = true
                                     this.gameOver = true
                                         this.timer = null
-                                  setTimeout( () => {
+                              /*    setTimeout( () => {
                                       this.$router.replace('home')   // TEST*****
-                                  }, 5000);
+                                  }, 5000); */
 
                                                    }
                               else if (this.numberOfGuess > 9){
@@ -357,9 +358,11 @@ margin: 10px;
   box-shadow: 2px 2px 2px grey;
  background-color: white;
  border-radius: 5px;
+ padding: 2px 5px;
 }
 #bootstrap-overrides:focus{
-margin: 10px;
+ padding: 2px 5px;
+ margin: 10px;
  width: 150px;
  border: 1px solid black;
  height: 25px;

@@ -55,6 +55,7 @@ export default {
 }
 
 #bootstrap-overrides {
+   padding: 2px 5px;
 margin: 10px;
  width: 150px;
  border: 1px solid black;
@@ -65,6 +66,7 @@ margin: 10px;
  border-radius: 5px;
 }
 #bootstrap-overrides:focus{
+   padding: 2px 5px;
 margin: 10px;
  width: 150px;
  border: 1px solid black;
