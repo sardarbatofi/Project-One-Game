@@ -135,7 +135,7 @@ export default {
       this.title = res.title;
       this.quiz = res.text;
     this.questions =  res.questions[this.currentQuestion].text; 
-    this.number = res.questions[this.currentQuestion].answer; 
+    this.number = 5 /*res.questions[this.currentQuestion].answer; */
     
     })
     },
@@ -224,21 +224,20 @@ export default {
 
           },
 
-
       userInput: function() {
 
               setTimeout( () => {
-             this.opponent =  Math.floor(Math.random() * 100)+1;
-               this.history.push(this.opponent)
-       }, Math.floor(Math.random() * 400)+1)
+            this.opponent++ /*= Math.floor(Math.random() * 100)+1; */
+               this.history.push(this.opponent) 
+       }, Math.floor(Math.random() * 245)+1)
 
              setTimeout( () => {
              this.opponent2 =  Math.floor(Math.random() * 100)+1;
                this.history.push(this.opponent2)
-       }, Math.floor(Math.random() * 400)+1)
+       }, Math.floor(Math.random() * 245)+1)
 
           this.numberOfGuess++;
-          
+          setTimeout(() =>{
          if(this.userGuess < this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number){
                  this.loser = 'Grinchen is the winner! The correct answer is ' + this.number;
@@ -340,7 +339,8 @@ export default {
                                   }, 5000);
 
                }
-      }
+          },250);
+      } 
     }
 }
 </script>
