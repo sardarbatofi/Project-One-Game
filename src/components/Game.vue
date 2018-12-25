@@ -131,15 +131,14 @@ export default {
     }
 },
 
-//Sardar lagt till fetchar api
  created() {
    fetch(quizData)
     .then(res => res.json())
     .then(res => {
       this.title = res.title;
       this.quiz = res.text;
-    this.questions =  res.questions[this.currentQuestion].text; 
-    this.number = 5 /*res.questions[this.currentQuestion].answer; */
+    this.questions =  res.questions[this.currentQuestion].text; // för att skriva ut frågan
+    this.number = res.questions[this.currentQuestion].answer;   // för att få svaret
     
     })
     },
@@ -229,17 +228,28 @@ export default {
           },
 
       userInput: function() {
+/**/ 
 
+function userGuessToMax(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min; // Gör botarna lite smartare, gissar aldrig lägre än användaren.
+}
+
+/**/
               setTimeout( () => {
-            this.opponent++ /*= Math.floor(Math.random() * 100)+1; */
+            this.opponent = /* Math.floor(Math.random() * 100)+; */ userGuessToMax(100,this.userGuess)
                this.history.push(this.opponent) 
        }, Math.floor(Math.random() * 245)+1)
 
              setTimeout( () => {
-             this.opponent2 =  Math.floor(Math.random() * 100)+1;
+             this.opponent2 = /* Math.floor(Math.random() * 100)+1; */ userGuessToMax(100,this.userGuess)
                this.history.push(this.opponent2)
        }, Math.floor(Math.random() * 245)+1)
 
+/*        Försöker göra botarna lite smartare, går dåligt med denna kod, men tror det är åt rätt håll.
+            if (this.userGuess < this.number) {
+             this.opponent = userGuessToMax(this.userGuess,100) 
+              } else this.opponent = userGuessToMax(100, this.userGuess)
+*/ 
           this.numberOfGuess++;
           setTimeout(() =>{ // Denna timeout behövs för att simulera betänketiden för våra motståndare
                            // utan den vinner motståndarna först nästa omgång. Detta löser även higer/lower som blev problem när botarna fick fördröjningen.
