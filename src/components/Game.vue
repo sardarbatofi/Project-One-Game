@@ -43,9 +43,13 @@
             </div>
             <div class="item4"></div>
             <div class="item5">
-               <img src="../assets/grinch.png" alt="Grinch!"></div>
+               <img class="img-responsive" src="../assets/grinch.png" alt="Grinch!">
+            <img class="mobile" src="../assets/iPiccy-collage.png" alt="Grinch/Krampus">
+               
+               </div>  <!-- 721px -->
+            
             <div class="item6">
-                <p>You have used {{numberOfGuess}} of 10 Guesses.</p>
+                <p  v-show="game">You have used {{numberOfGuess}} of 10 Guesses.</p>
                 <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
                 <div id="watch-example">
                   <p>{{ answer }}</p>
@@ -63,23 +67,23 @@
     </div>
 
    
-
+<!--
       <div class="card-header" v-if="this.win" >
         <h3>Results:</h3>
         <h5>Number of guesses: </h5>
 
       <div class="success"
-      v-for="namn in guestName" :key="namn"> <!-- error fix -->
+      v-for="namn in guestName" :key="namn"> 
 
     {{ namn }}
 
-
   </div>
     </div>
+-->
 
 
 <div class="item7">
-  <img src="../assets/krampus.png" alt="Krampus!">
+  <img class="img-responsive"  src="../assets/krampus.png" alt="Krampus!">
 </div>
 
 
@@ -237,7 +241,8 @@ export default {
        }, Math.floor(Math.random() * 245)+1)
 
           this.numberOfGuess++;
-          setTimeout(() =>{
+          setTimeout(() =>{ // Denna timeout behövs för att simulera betänketiden för våra motståndare
+                           // utan den vinner motståndarna först nästa omgång. Detta löser även higer/lower som blev problem när botarna fick fördröjningen.
          if(this.userGuess < this.number && this.numberOfGuess < 10 ){
              if (this.opponent == this.number){
                  this.loser = 'Grinchen is the winner! The correct answer is ' + this.number;
@@ -521,8 +526,9 @@ img {
       }
 
 
-
-
+.img-responsive.mobile {
+  display: none;
+}
 
 
 </style>

@@ -80,11 +80,23 @@ grid-column: 2 / 3;
 grid-column: 3 / 4;
 }
 
-
+ .mobile {
+   display: none;
+ }
+  .img-responsive {
+    display: inline-block;
+  }
 @media (max-width: 721px){
-  .item1, .item2, .item3, .item4, .item5
+  .item1, .item2, .item3, .item4, .item5, .item6, .item7
   {
 grid-column: 1/4;
+  }
+
+  .img-responsive {
+    display: none;
+  }
+  .mobile {
+   display: inline-block;
   }
 } 
 
