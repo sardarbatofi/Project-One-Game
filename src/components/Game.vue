@@ -92,43 +92,41 @@
 
 <script>
 
- const quizData = 'https://api.myjson.com/bins/hkkhs'; //sardar
+ const quizData = 'https://api.myjson.com/bins/hkkhs'; 
 
 export default {
     data() {
         return{
-            timer: null,
+        timer: null,
         totalTime: (30),
-
-        questions:[], //sardar
-       currentQuestion:Math.floor(Math.random() * 8)+1, //sardar
-    answer: '',
-  opponent: 10,
-  opponent2: 10,
-  game: false,
-  inputClosed: false,
-  inputBtnClosed: false,
-  startBtnClosed: false,
-  numberOfGuess: 0,
-  number:0,
-  win: '',
-  loser: '',
-  higher: '',
-  lower: '',
-  gameo: '',
-  userGuess:0,
-  newNameText: '',
-  guestName: [],
-  history: [],
-  
-  invalidChars: [
-      "-",
-                  "+",
-                  ".",
-                  "e",
-                  "E"
-                ],
-    }
+        questions:[], 
+        currentQuestion:Math.floor(Math.random() * 8)+1, 
+        answer: '',
+        opponent: 10,
+        opponent2: 10,
+        game: false,
+        inputClosed: false,
+        inputBtnClosed: false,
+        startBtnClosed: false,
+        numberOfGuess: 0,
+        number:0,
+        win: '',
+        loser: '',
+        higher: '',
+        lower: '',
+        gameo: '',
+        userGuess:0,
+        newNameText: '',
+        guestName: [],
+        history: [],
+        invalidChars: [
+            "-",
+                        "+",
+                        ".",
+                        "e",
+                        "E"
+                      ],
+          }
 },
 
  created() {
@@ -138,7 +136,7 @@ export default {
       this.title = res.title;
       this.quiz = res.text;
     this.questions =  res.questions[this.currentQuestion].text; // för att skriva ut frågan
-    this.number = 90 // res.questions[this.currentQuestion].answer;   // för att få svaret
+    this.number =  res.questions[this.currentQuestion].answer;   // för att få svaret
     
     })
     },
@@ -178,8 +176,7 @@ export default {
           this.gameo= '',
           this.newNameText = '',
           this.userGuess= null,
-          this.history= []
-          
+          this.history= []   
           this.gameOver = false,
           this.timer= null,
           this.totalTime= (30)
@@ -218,57 +215,34 @@ export default {
                 this.inputBtnClosed = true
                 this.timer = null
                     setTimeout( () => {
-           this.$router.replace('home')   // TEST*****
+           this.$router.replace('home')   
                               }, 5000);
-
-
-
           }
-
           },
 
-      userInput: function() {
-/**/ 
+              userInput: function() {
 
-function userGuessToMax(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min; // Gör botarna lite smartare, gissar aldrig lägre än användaren.
-}
+                  function userGuessToMax(min, max) {
+                          return Math.floor(Math.random() * (max - min)) + min; // Gör botarna lite smartare, reagerar på "ledtråden"
+                    }
+                  function userGuessToMin(min, max) {
+                         return Math.floor(Math.random() * (max - min)) + 1; 
+                    }
 
-
-function userGuessToMin(min, max) {
-  return Math.floor(Math.random() * (max - min)) + 1; // Gör botarna lite smartare, gissar aldrig lägre än användaren.
-}
-
-/**/
               setTimeout( () => {
-            /*this.opponent =*/ /* Math.floor(Math.random() * 100)+; *//* userGuessToMax(100,this.userGuess) */
-              
-              
                       if (this.userGuess > this.number) {
              this.opponent = userGuessToMin(1, this.userGuess) 
               } else if (this.userGuess < this.number) this.opponent = userGuessToMax(100,this.userGuess)
-
-              
               this.history.push(this.opponent) 
        }, Math.floor(Math.random() * 245)+1)
 
-             setTimeout( () => {
-            // this.opponent2 = /* Math.floor(Math.random() * 100)+1; */ userGuessToMax(100,this.userGuess)
-              
+             setTimeout( () => {              
               if (this.userGuess > this.number) {
                this.opponent2 = userGuessToMin(1,this.userGuess) 
               } else if (this.userGuess < this.number) this.opponent2 = userGuessToMax(100, this.userGuess)
-
-              
-              
-              this.history.push(this.opponent2)
+               this.history.push(this.opponent2)
        }, Math.floor(Math.random() * 245)+1)
 
-/*        Försöker göra botarna lite smartare, går dåligt med denna kod, men tror det är åt rätt
-            if (this.userGuess > this.number) {
-             this.opponent = userGuessToMax(this.userGuess,100) 
-              } else if (this.userGuess < this.number) this.opponent = userGuessToMax(this.userGuess, 100)
-*/ 
           this.numberOfGuess++;
           setTimeout(() =>{ // Denna timeout behövs för att simulera betänketiden för våra motståndare
                            // utan den vinner motståndarna först nästa omgång. Detta löser även higer/lower som blev problem när botarna fick fördröjningen.
@@ -283,7 +257,7 @@ function userGuessToMin(min, max) {
                    this.gameOver = true
                    this.timer = null
                     setTimeout( () => {
-                           this.$router.replace('home')   // TEST*****
+                           this.$router.replace('home')  
                        }, 5000);
 
              }
@@ -297,7 +271,7 @@ function userGuessToMin(min, max) {
                          this.gameOver = true
                             this.timer = null
                                                            setTimeout( () => {
-                                      this.$router.replace('home')   // TEST*****
+                                      this.$router.replace('home')  
                                   }, 5000);
 
                                    }
@@ -318,7 +292,7 @@ function userGuessToMin(min, max) {
                        this.inputBtnClosed = true
                            this.gameOver = true
                                                           setTimeout( () => {
-                                      this.$router.replace('home')   // TEST*****
+                                      this.$router.replace('home')   
                                   }, 5000);
 
                                        }
@@ -329,10 +303,10 @@ function userGuessToMin(min, max) {
                               this.lower = ''
                               this.inputClosed = true
                                this.inputBtnClosed = true
-                                   this.gameOver = true
-                                        this.timer = null
-                                                                       setTimeout( () => {
-                                      this.$router.replace('home')   // TEST*****
+                               this.gameOver = true
+                               this.timer = null
+                                   setTimeout( () => {
+                                      this.$router.replace('home')  
                                   }, 5000);
 
                                                    }
@@ -351,15 +325,12 @@ function userGuessToMin(min, max) {
                               this.history.push(this.userGuess)
                               this.guestName.push(this.numberOfGuess)
                               this.inputClosed = true
-                               this.inputBtnClosed = true
-                                    this.gameOver = true
-                                        this.timer = null
-                              /*    setTimeout( () => {
-                                      this.$router.replace('home')   // TEST*****
-                                  }, 5000); */
+                              this.inputBtnClosed = true
+                              this.gameOver = true
+                              this.timer = null
 
-                                                   }
-                              else if (this.numberOfGuess > 9){
+                            }
+                             else if (this.numberOfGuess > 9){
                                   this.gameo = 'GAME OVER, The correct answer was ' + this.number;
                                        this.answer = ''
                                        this.higher = ''
@@ -369,9 +340,8 @@ function userGuessToMin(min, max) {
                                         this.gameOver = true
                                         this.timer = null
                                           setTimeout( () => {
-                                      this.$router.replace('home')   // TEST*****
+                                      this.$router.replace('home')  
                                   }, 5000);
-
                }
           },250);
       } 
