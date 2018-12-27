@@ -138,7 +138,7 @@ export default {
       this.title = res.title;
       this.quiz = res.text;
     this.questions =  res.questions[this.currentQuestion].text; // för att skriva ut frågan
-    this.number = res.questions[this.currentQuestion].answer;   // för att få svaret
+    this.number = 90 // res.questions[this.currentQuestion].answer;   // för att få svaret
     
     })
     },
@@ -234,21 +234,40 @@ function userGuessToMax(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; // Gör botarna lite smartare, gissar aldrig lägre än användaren.
 }
 
+
+function userGuessToMin(min, max) {
+  return Math.floor(Math.random() * (max - min)) + 1; // Gör botarna lite smartare, gissar aldrig lägre än användaren.
+}
+
 /**/
               setTimeout( () => {
-            this.opponent = /* Math.floor(Math.random() * 100)+; */ userGuessToMax(100,this.userGuess)
-               this.history.push(this.opponent) 
+            /*this.opponent =*/ /* Math.floor(Math.random() * 100)+; *//* userGuessToMax(100,this.userGuess) */
+              
+              
+                      if (this.userGuess > this.number) {
+             this.opponent = userGuessToMin(1, this.userGuess) 
+              } else if (this.userGuess < this.number) this.opponent = userGuessToMax(100,this.userGuess)
+
+              
+              this.history.push(this.opponent) 
        }, Math.floor(Math.random() * 245)+1)
 
              setTimeout( () => {
-             this.opponent2 = /* Math.floor(Math.random() * 100)+1; */ userGuessToMax(100,this.userGuess)
-               this.history.push(this.opponent2)
+            // this.opponent2 = /* Math.floor(Math.random() * 100)+1; */ userGuessToMax(100,this.userGuess)
+              
+              if (this.userGuess > this.number) {
+               this.opponent2 = userGuessToMin(1,this.userGuess) 
+              } else if (this.userGuess < this.number) this.opponent2 = userGuessToMax(100, this.userGuess)
+
+              
+              
+              this.history.push(this.opponent2)
        }, Math.floor(Math.random() * 245)+1)
 
-/*        Försöker göra botarna lite smartare, går dåligt med denna kod, men tror det är åt rätt håll.
-            if (this.userGuess < this.number) {
+/*        Försöker göra botarna lite smartare, går dåligt med denna kod, men tror det är åt rätt
+            if (this.userGuess > this.number) {
              this.opponent = userGuessToMax(this.userGuess,100) 
-              } else this.opponent = userGuessToMax(100, this.userGuess)
+              } else if (this.userGuess < this.number) this.opponent = userGuessToMax(this.userGuess, 100)
 */ 
           this.numberOfGuess++;
           setTimeout(() =>{ // Denna timeout behövs för att simulera betänketiden för våra motståndare
