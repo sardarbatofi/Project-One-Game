@@ -229,7 +229,7 @@ export default {
                          return Math.floor(Math.random() * (max - min)) + 1; 
                     }
 
-              setTimeout( () => {
+              setTimeout( () => {  // beroende på om boten ska gissa högre eller lägre, så ringer han olika funktioner, som har lite olika inställningar.
                       if (this.userGuess > this.number) {
              this.opponent = userGuessToMin(1, this.userGuess) 
               } else if (this.userGuess < this.number) this.opponent = userGuessToMax(100,this.userGuess)
