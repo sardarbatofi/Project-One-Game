@@ -20,23 +20,7 @@ export default{
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  font-family: arial;
-}
 
-body {
-  background: #404040;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  font-family: arial;
-  color: #fff;
-}
-
-/*=====================*/
 .social-nav {
   padding: 0;
   list-style: none;
