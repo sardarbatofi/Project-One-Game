@@ -19,8 +19,9 @@ export default{
 
 </script>
 
-<style scoped>
 
+
+<style scoped>
 .social-nav {
   padding: 0;
   list-style: none;
@@ -72,6 +73,8 @@ export default{
 .model-0 .facebook {
   background: #3B579D;
 }
+.fa-google-plus:before{content:"\f0d5"}
+
 .model-0 .google-plus {
   background: #DD4A3A;
 }
