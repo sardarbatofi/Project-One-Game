@@ -1,6 +1,7 @@
 <template>
   <div class="home">
 <Hem />
+<social />
   </div>
 </template>
 <script>

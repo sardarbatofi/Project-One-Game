@@ -1,6 +1,7 @@
 <template>
   <div class="game">
           <Game />
+          <social />
  </div>
  </template>
 

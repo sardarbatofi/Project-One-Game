@@ -5,6 +5,13 @@
 </template>
 
 <style>
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: arial;
+}
+
     body{
         overflow: scroll;
         background-color: lightgrey;
