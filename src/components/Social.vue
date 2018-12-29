@@ -26,7 +26,7 @@ export default{
   padding: 0;
   list-style: none;
   display: inline-block;
-  margin: 10px auto;
+  margin: 200px auto;
 }
 .social-nav li {
   display: inline-block;

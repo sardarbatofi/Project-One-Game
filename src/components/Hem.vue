@@ -9,7 +9,7 @@
       <h2>Rules of the game</h2>
       <p>Here you can play game against Grinchen and Krampus, I will ask you a question that has a numerical answer,
       try to guess it right! pst…I’m going to help you by telling you to go higher or lower after your guess!
-      You have maximun 10 guesses! Enjoy!</p>
+      You have 10 guesses by default, but you can make it easier (15 tries, wow!) or harder (only 5 tries or you are dead!) Enjoy!</p>
   </div>
 
  
