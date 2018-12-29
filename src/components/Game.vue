@@ -7,7 +7,9 @@
         <div class="before" v-if="this.win"></div>
         <div class="after" v-if="this.win"></div>
     </div>
+<div> Choose number of tries: <input type="number" v-model="tries">
 
+</div>
 
            <div class="item1">
           <h2 v-show="game">{{questions}}</h2> <!--Sardar-->
@@ -49,7 +51,7 @@
                </div>  <!-- 721px -->
             
             <div class="item6">
-                <p  v-show="game">You have used {{numberOfGuess}} of 10 Guesses.</p>
+                <p  v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
                 <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
                 <div id="watch-example">
                   <p>{{ answer }}</p>
@@ -109,6 +111,7 @@ export default {
         inputBtnClosed: false,
         startBtnClosed: false,
         numberOfGuess: 0,
+        tries:5,
         number:0,
         win: '',
         loser: '',
@@ -246,7 +249,7 @@ export default {
           this.numberOfGuess++;
           setTimeout(() =>{ // Denna timeout behövs för att simulera betänketiden för våra motståndare
                            // utan den vinner motståndarna först nästa omgång. Detta löser även higer/lower som blev problem när botarna fick fördröjningen.
-         if(this.userGuess < this.number && this.numberOfGuess < 10 ){
+         if(this.userGuess < this.number && this.numberOfGuess < this.tries ){
              if (this.opponent == this.number){
                  this.loser = 'Grinchen is the winner! The correct answer is ' + this.number;
                  this.higher = ''
@@ -282,7 +285,7 @@ export default {
           this.history.push(this.userGuess)
           this.userGuess= null
         }
-          else if (this.userGuess > this.number && this.numberOfGuess < 10 ){
+          else if (this.userGuess > this.number && this.numberOfGuess < this.tries ){
               if (this.opponent == this.number){
                   this.loser = 'Grinchen is the winner! The correct answer is ' + this.number;
                       this.higher = ''
@@ -317,7 +320,7 @@ export default {
                               this.history.push(this.userGuess)
                               this.userGuess= null
            }
-                      else if (this.userGuess == this.number && this.numberOfGuess < 10 ){
+                      else if (this.userGuess == this.number && this.numberOfGuess < this.tries ){
                           this.win = 'WINNER.... The correct answer is ' + this.number;
                              this.answer = ''
                               this.higher = ''
@@ -330,7 +333,7 @@ export default {
                               this.timer = null
 
                             }
-                             else if (this.numberOfGuess > 9){
+                             else if (this.numberOfGuess > (this.tries-1)){
                                   this.gameo = 'GAME OVER, The correct answer was ' + this.number;
                                        this.answer = ''
                                        this.higher = ''
