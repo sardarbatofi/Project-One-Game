@@ -7,9 +7,10 @@
 <style>
 * {
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   font-family: arial;
+}
+p {
+  font-size: 0.95em;
 }
 
     body{

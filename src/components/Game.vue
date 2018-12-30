@@ -13,7 +13,7 @@
 
     <div class="difficulty" v-show="!game">
       <div>Choose difficulty:</div>
-      <button @click="tries=15" v-on:click="diffTime=40">Easy</button>
+      <button @click="tries=15" v-on:click="diffTime=40">Easy</button>  
       <button @click="tries=10" v-on:click="diffTime=30">Medium</button>
       <button @click="tries=5" v-on:click="diffTime=15">Hard</button>
     </div>
@@ -64,7 +64,7 @@
               <p id="lower">{{ this.lower }}</p>
                <p id="gameo">{{ this.gameo }}</p>
             </div>
-        <br>
+        
       </div>
     </div>
     <div class="item4"></div>
