@@ -18,6 +18,7 @@
         max-width: 900px;
         width: 90%;
         margin: 0 auto;
+        padding: 5%;
     }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

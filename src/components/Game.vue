@@ -5,16 +5,19 @@
       <div class="after" v-if="this.win"></div>
     </div>
 
-    <div class="difficulty" v-show="!game">
-      <div>Choose number of tries:</div>
-      <button @click="tries=15">easy</button>
-      <button @click="tries=10">medium</button>
-      <button @click="tries=5">hard</button>
-    </div>
 
     <div class="item1">
+
       <h2 v-show="game">{{questions}}</h2>
-      <!--Sardar-->
+    
+
+    <div class="difficulty" v-show="!game">
+      <div>Choose number of tries:</div>
+      <button @click="tries=15">Easy</button>
+      <button @click="tries=10">Medium</button>
+      <button @click="tries=5">Hard</button>
+    </div>
+
       <br>
       <form class="form-inline" @submit.prevent="highscore" v-if="this.win">
         <input
@@ -517,10 +520,10 @@ img {
 }
 .difficulty {
   width: 200px;
-  margin-top: 20%;
-  margin-left: 130%;
+  margin: 0 auto;
+/*  margin-left: 130%;
   text-align: center;
-  display: inline-block;
+  display: inline-block;*/
 }
 .img-responsive.mobile {
   display: none;
