@@ -12,10 +12,10 @@
     
 
     <div class="difficulty" v-show="!game">
-      <div>Choose number of tries:</div>
-      <button @click="tries=15">Easy</button>
-      <button @click="tries=10">Medium</button>
-      <button @click="tries=5">Hard</button>
+      <div>Choose difficulty:</div>
+      <button @click="tries=15" v-on:click="diffTime=40">Easy</button>
+      <button @click="tries=10" v-on:click="diffTime=30">Medium</button>
+      <button @click="tries=5" v-on:click="diffTime=15">Hard</button>
     </div>
 
       <br>
@@ -54,32 +54,30 @@
         <div id="timer" v-show="!gameOver">
           <span id="seconds">Seconds left:{{ seconds }}</span>
         </div>
+      <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
         <p>Grinchen: {{opponent}}</p>
         <p>Krampus: {{opponent2}}</p>
+        <p>{{ answer }}</p>
+             <div id="watch-example">
+               <p id="higher">{{ this.higher }}</p>
+              <p id="loser">{{ this.loser }}</p>
+              <p id="lower">{{ this.lower }}</p>
+               <p id="gameo">{{ this.gameo }}</p>
+            </div>
         <br>
       </div>
     </div>
     <div class="item4"></div>
     <div class="item5">
+      <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
+      <br>
       <img class="img-responsive" src="../assets/grinch.png" alt="Grinch!">
       <img class="mobile" src="../assets/iPiccy-collage.png" alt="Grinch/Krampus">
     </div>
     <!-- 721px -->
     <div class="item6">
-      <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
       <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
-      <div id="watch-example">
-        <p>{{ answer }}</p>
-
-        <p id="higher">{{ this.higher }}</p>
-        <p id="loser">{{ this.loser }}</p>
-        <p id="lower">{{ this.lower }}</p>
-        <p id="gameo">{{ this.gameo }}</p>
-
-        <router-link :to="{name:'home'}">
-          <button @click="resetTimer()">Home page</button>
-        </router-link>
-      </div>
+      <p>Spelarens namn här typ</p>
     </div>
 
     <!--
@@ -93,7 +91,14 @@
     </div>
     -->
     <div class="item7">
+      <div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
+      <br>
       <img class="img-responsive" src="../assets/krampus.png" alt="Krampus!">
+    </div>
+    <div class="item8">
+            <router-link :to="{name:'home'}">
+             <button @click="resetTimer()">Home page</button>
+            </router-link>
     </div>
   </div>
 </template>
@@ -116,6 +121,7 @@ export default {
       startBtnClosed: false,
       numberOfGuess: 0,
       tries: 10,
+      diffTime: 30,
       number: 0,
       win: "",
       loser: "",
@@ -126,6 +132,8 @@ export default {
       newNameText: "",
       guestName: [],
       history: [],
+      historyGrinch: [],
+      historyKrampus: [],
       invalidChars: ["-", "+", ".", "e", "E"]
     };
   },
@@ -173,7 +181,9 @@ export default {
         (this.newNameText = ""),
         (this.userGuess = null),
         (this.history = []);
-      (this.gameOver = false), (this.timer = null), (this.totalTime = 30);
+        (this.historyGrinch = []);
+        (this.historyKrampus = []);
+      (this.gameOver = false), (this.timer = null), (this.totalTime = this.diffTime);
       this.startTimer();
     },
     highscore: function() {
@@ -184,7 +194,7 @@ export default {
       this.timer = setInterval(() => this.countdown(), 1000);
     },
     resetTimer: function() {
-      this.totalTime = 30;
+      this.totalTime = this.diffTime;
       clearInterval(this.timer);
       this.timer = null;
     },
@@ -222,14 +232,14 @@ export default {
           this.opponent = userGuessToMin(1, this.userGuess);
         } else if (this.userGuess < this.number)
           this.opponent = userGuessToMax(100, this.userGuess);
-        this.history.push(this.opponent);
+        this.historyGrinch.push(this.opponent);
       }, Math.floor(Math.random() * 245) + 1);
       setTimeout(() => {
         if (this.userGuess > this.number) {
           this.opponent2 = userGuessToMin(1, this.userGuess);
         } else if (this.userGuess < this.number)
           this.opponent2 = userGuessToMax(100, this.userGuess);
-        this.history.push(this.opponent2);
+        this.historyKrampus.push(this.opponent2);
       }, Math.floor(Math.random() * 245) + 1);
       this.numberOfGuess++;
       setTimeout(() => {
@@ -383,12 +393,14 @@ img {
 .clicked {
   background-color: red;
 }
-.history {
-  background-color: peachpuff;
+.history{                               
+  /*  background-color: peachpuff; */
+  margin: 10px;
   display: inline-block;
   padding: 0.5%;
-  border: 1px solid #cccccc;
+ /* border: 1px solid #cccccc; */
 }
+
 #higher {
   color: red;
 }
@@ -399,7 +411,6 @@ img {
   font-size: 20px;
 }
 #seconds {
-  /* added for future work with the timer, Rebeckas JulAfton är räddad! */
   /*30sek*/
   color: rgb(26, 153, 15);
   /*20sek*/

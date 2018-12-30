@@ -51,9 +51,18 @@
 .fade-enter, .fade-leave-active {
  opacity: 0
 }
-
-
-
+.item5 {
+background-color: red;
+height: 175px;
+}
+.item6 {
+background-color: green;
+height: 175px;
+}
+.item7 {
+background-color: red;
+height: 175px;
+}
 
 /*- CSS Grid för hela projektet -*/
 
@@ -86,6 +95,9 @@ grid-column: 2 / 3;
 }
 .item7{
 grid-column: 3 / 4;
+}
+.item8{
+grid-column: 1 / 4;
 }
 
  .mobile {
