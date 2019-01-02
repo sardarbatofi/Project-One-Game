@@ -21,14 +21,14 @@
       <div class="container">
           <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
            <div class="middle">
-      <div class="text">Grinchen - The one who stole X-mas. He is a strong gusser and have a heart, the size of a toe-nail.
+      <div class="text">Grinchen - The one who stole X-mas. Spends his days, watchinng documetery, so he knews his shit. 
         </div> 
          </div>
           </div>
       <div class="container">
           <img class="krampus"  src="../assets/krampus.png" alt="Krampus!">
            <div class="middle">
-      <div class="text">Krampus - The devil of X-mas. A tricky basterd, be awere!
+      <div class="text">Krampus - The devil of X-mas. A tricky basterd, knews nothing about the quastion, but is extremly luckey, be awere!
         </div> 
          </div>
           </div>
@@ -90,8 +90,8 @@ export default {
 
 .grinch {
   opacity: 1;
-  width: 40%;
-  height: auto;
+  width: 45%;
+  height: 30%;
   transition: .5s ease;
   backface-visibility: hidden;
 }
@@ -101,9 +101,8 @@ export default {
   width: 100%;
   opacity: 0;
   position: absolute;
-  top: -350%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: -700%;
+  left: 0%;
   text-align: center;
 }
 
@@ -117,9 +116,10 @@ export default {
   background-color: #fff;
   color: black;
   font-weight:bolder;
-  opacity: 0.7;
-  padding: 5% 16%;
+  opacity: 0.8;
+  padding: 15% 16%;
   border-radius: 10px;
+  font-size: 0.75em;
 }
 .krampus {
   width: 50%;
