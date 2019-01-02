@@ -74,7 +74,7 @@
     <div class="item5">
    <p>Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
       <br>
-      <img class="img-responsive" src="../assets/grinch.png" alt="Grinch!">
+      <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
     </div>
    
     <div class="item6">
@@ -95,7 +95,7 @@
     <div class="item7">
       <p>Krampus: </p><div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
       <br>
-      <img class="img-responsive" src="../assets/krampus.png" alt="Krampus!">
+      <img class="krampus" src="../assets/krampus.png" alt="Krampus!">
     </div>
     <div class="item8">
             <router-link :to="{name:'home'}">
@@ -113,7 +113,7 @@ export default {
       timer: null,
       totalTime: 30,
       questions: [],
-      currentQuestion: Math.floor(Math.random() * 24) + 1,
+      currentQuestion: Math.floor(Math.random() * 23) + 1,
       answer: "",
       opponent: 10,
       opponent2: 10,
@@ -337,6 +337,9 @@ export default {
 
 <style scoped>
 
+.grinch {
+  width: 25%;
+}
 .item5, .item7{
 background-color:#ce1329ee;
 height: 175px;
