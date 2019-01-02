@@ -1,7 +1,8 @@
 <template>
   <div class="grid-container">
 
- <div class="item1"> <h3>Hello and welcome to One Game!</h3>
+ <div class="item1"> <p v-if="isLoggedIn"><span id="email" class="email black-text">You´re logged in as:<br>{{currentUser}}</span></p>
+   <h3>Hello and welcome to One Game!</h3>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores illo voluptatem culpa veritatis. Quis illo adipisci animi, quo sequi, a omnis soluta vero possimus molestias, cum sunt optio tempora id!</p>
   </div>
 
@@ -37,6 +38,19 @@
 // @ is an alias to /src
 
 export default {
+   name: 'navbar',
+  data() {
+    return {
+      isLoggedIn: false,
+      currentUser: false
+    };
+  },
+  created() {
+    if (firebase.auth().currentUser) {
+      this.isLoggedIn = true;
+      this.currentUser = firebase.auth().currentUser.email;
+    }
+  },
     methods: {
     logout: function(){
       firebase.auth().signOut().then(() => {
@@ -48,6 +62,13 @@ export default {
 
 </script>
 <style scoped>
+
+#email {
+  float: right;
+    position: absolute;
+  top: 8px;
+  right: 16px;
+}
 
 /*BootstapjQuary-killer*/
 h2 {

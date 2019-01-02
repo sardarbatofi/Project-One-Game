@@ -6,14 +6,17 @@
     </div>
 
 
-    <div class="item1">
+    <div class="item1"><p v-if="isLoggedIn"><span id="email" class="email black-text">You´re logged in as:<br>{{currentUser}}</span></p>
 
       <h2 v-show="game">{{questions}}</h2>
-    
+    <!-- -->
+
+
+    <!-- -->
 
     <div class="difficulty" v-show="!game">
       <div>Choose difficulty:</div>
-      <button @click="tries=15" v-on:click="diffTime=40">Easy</button>  
+      <button @click="tries=15" v-on:click="diffTime=40" >Easy</button>  
       <button @click="tries=10" v-on:click="diffTime=30">Medium</button>
       <button @click="tries=5" v-on:click="diffTime=15">Hard</button>
     </div>
@@ -69,15 +72,15 @@
     </div>
     <div class="item4"></div>
     <div class="item5">
-      <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
+   <p>Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
       <br>
       <img class="img-responsive" src="../assets/grinch.png" alt="Grinch!">
       <img class="mobile" src="../assets/iPiccy-collage.png" alt="Grinch/Krampus">
     </div>
     <!-- 721px -->
     <div class="item6">
-      <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
-      <p>Spelarens namn här typ</p>
+    <p>Spelaren: </p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
+      
     </div>
 
     <!--
@@ -91,7 +94,7 @@
     </div>
     -->
     <div class="item7">
-      <div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
+      <p>Krampus: </p><div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
       <br>
       <img class="img-responsive" src="../assets/krampus.png" alt="Krampus!">
     </div>
@@ -104,14 +107,14 @@
 </template>
 
 <script>
-const quizData = "https://api.myjson.com/bins/hkkhs";
+const quizData = "https://api.myjson.com/bins/1e3s5g";
 export default {
   data() {
     return {
       timer: null,
       totalTime: 30,
       questions: [],
-      currentQuestion: Math.floor(Math.random() * 8) + 1,
+      currentQuestion: Math.floor(Math.random() * 24) + 1,
       answer: "",
       opponent: 10,
       opponent2: 10,
@@ -137,6 +140,7 @@ export default {
       invalidChars: ["-", "+", ".", "e", "E"]
     };
   },
+  
   created() {
     fetch(quizData)
       .then(res => res.json())
@@ -214,9 +218,7 @@ export default {
         this.inputClosed = true;
         this.inputBtnClosed = true;
         this.timer = null;
-        setTimeout(() => {
-          this.$router.replace("home");
-        }, 5000);
+     
       }
     },
     userInput: function() {
@@ -228,7 +230,7 @@ export default {
       }
       setTimeout(() => {
         // beroende på om boten ska gissa högre eller lägre, så ringer han olika funktioner, som har lite olika inställningar.
-        if (this.userGuess > this.number) {
+  if (this.userGuess > this.number) {
           this.opponent = userGuessToMin(1, this.userGuess);
         } else if (this.userGuess < this.number)
           this.opponent = userGuessToMax(100, this.userGuess);
@@ -256,9 +258,7 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-            setTimeout(() => {
-              this.$router.replace("home");
-            }, 5000);
+          
           } else if (this.opponent2 == this.number) {
             this.loser =
               "Krampus is the winner! The correct answer is " + this.number;
@@ -269,9 +269,7 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-            setTimeout(() => {
-              this.$router.replace("home");
-            }, 5000);
+           
           } else this.higher = "Wrong, guess higher!!";
           this.lower = "";
           this.answer = "";
@@ -290,9 +288,7 @@ export default {
             this.inputClosed = true;
             this.inputBtnClosed = true;
             this.gameOver = true;
-            setTimeout(() => {
-              this.$router.replace("home");
-            }, 5000);
+         
           } else if (this.opponent2 == this.number) {
             this.loser =
               "Krampus is the winner! The correct answer is " + this.number;
@@ -303,9 +299,7 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-            setTimeout(() => {
-              this.$router.replace("home");
-            }, 5000);
+           
           } else this.lower = "Wrong guess lower";
           this.answer = "";
           this.higher = "";
@@ -334,9 +328,7 @@ export default {
           this.inputBtnClosed = true;
           this.gameOver = true;
           this.timer = null;
-          setTimeout(() => {
-            this.$router.replace("home");
-          }, 5000);
+         
         }
       }, 250);
     }
@@ -345,6 +337,33 @@ export default {
 </script>
 
 <style scoped>
+.item5 {
+background-color: red;
+height: 175px;
+}
+.item6 {
+background-color: green;
+height: 175px;
+}
+.item7 {
+background-color: red;
+height: 175px;
+}
+
+.item5 {
+background-color: red;
+height: 175px;
+}
+.item6 {
+background-color: green;
+height: 175px;
+}
+.item7 {
+background-color: red;
+height: 175px;
+}
+
+
 /*BootstapjQuary-killer*/
 :disabled {
   color: gray;
@@ -361,7 +380,7 @@ export default {
   background-color: white;
   border-radius: 5px;
   padding: 2px 5px;
-}
+}*
 #bootstrap-overrides:focus {
   padding: 2px 5px;
   margin: 10px;
@@ -411,6 +430,7 @@ img {
   font-size: 20px;
 }
 #seconds {
+ 
   /*30sek*/
   color: rgb(26, 153, 15);
   /*20sek*/
