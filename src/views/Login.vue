@@ -171,8 +171,8 @@
     <div class="row">
       <div class="col s12 m8 offset-m2">
         <div class="loginbox">
-          <h3>Login</h3>
-     
+          <h3>Enter One Game!</h3>
+     <p>Save Christmas!</p>
             <div class="input-field">
               <i class="material-icons prefix">email</i>
               <input type="email" id="email" v-model="email">
