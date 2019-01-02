@@ -233,6 +233,7 @@ export default {
 </script>
 
 <style scoped>
+
 .login{
   margin: 0 10%;
   padding: 1%;
@@ -241,17 +242,17 @@ export default {
     
 }
     img{
-        border-radius: 5px;
+        border-radius: 10px;
     }
 .loginbox{
         background: linear-gradient( rgba(255,255,255,0.1),rgba(255,255,255,0.9),rgba(255,255,255,0.9),rgba(255,255,255,0.1));
         padding: 5%;
-        border-radius: 5px;
+        border-radius: 10px;
         margin: 7%;
     }
 p{
-    display: inline-block;
-    font-size: 1em;
+    display: block;
+   
 }
 button, a {
 cursor: pointer;
@@ -326,7 +327,7 @@ span{
 .delaying{
   animation-delay: 5s;
 }
-.delaying1{s
+.delaying1{
   animation-delay: 10s;
 }
 .delaying2{

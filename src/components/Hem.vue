@@ -1,7 +1,8 @@
 <template>
+<div>
+<p v-if="isLoggedIn"><span id="email" >You´re logged in as: {{currentUser}}</span></p><br>
   <div class="grid-container">
-
- <div class="item1"> <p v-if="isLoggedIn"><span id="email" class="email black-text">You´re logged in as:<br>{{currentUser}}</span></p>
+ <div class="item1"> 
    <h3>Hello and welcome to One Game!</h3>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores illo voluptatem culpa veritatis. Quis illo adipisci animi, quo sequi, a omnis soluta vero possimus molestias, cum sunt optio tempora id!</p>
   </div>
@@ -32,6 +33,7 @@
   </div>
   <div class="item7"></div>
   </div>
+</div>
 </template>
 
 <script>
@@ -65,9 +67,9 @@ export default {
 
 #email {
   float: right;
-    position: absolute;
   top: 8px;
   right: 16px;
+  color: wheat;
 }
 
 /*BootstapjQuary-killer*/

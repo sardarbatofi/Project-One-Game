@@ -6,7 +6,7 @@
     </div>
 
 
-    <div class="item1"><p v-if="isLoggedIn"><span id="email" class="email black-text">You´re logged in as:<br>{{currentUser}}</span></p>
+    <div class="item1">
 
       <h2 v-show="game">{{questions}}</h2>
     <!-- -->
@@ -75,9 +75,8 @@
    <p>Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
       <br>
       <img class="img-responsive" src="../assets/grinch.png" alt="Grinch!">
-      <img class="mobile" src="../assets/iPiccy-collage.png" alt="Grinch/Krampus">
     </div>
-    <!-- 721px -->
+   
     <div class="item6">
     <p>Spelaren: </p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
       
@@ -337,31 +336,18 @@ export default {
 </script>
 
 <style scoped>
-.item5 {
-background-color: red;
+
+.item5, .item7{
+background-color:#ce1329ee;
 height: 175px;
+margin: 0% 2% 2% 2%;  /* Ta bort om ej behövs */
 }
 .item6 {
-background-color: green;
-height: 175px;
-}
-.item7 {
-background-color: red;
+background-color: rgb(194, 183, 89);
+margin: 0% 2% 2% 2%;
 height: 175px;
 }
 
-.item5 {
-background-color: red;
-height: 175px;
-}
-.item6 {
-background-color: green;
-height: 175px;
-}
-.item7 {
-background-color: red;
-height: 175px;
-}
 
 
 /*BootstapjQuary-killer*/

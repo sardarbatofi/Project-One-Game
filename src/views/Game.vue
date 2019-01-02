@@ -1,7 +1,7 @@
 <template>
   <div class="game">
           <Game />
-          <social />
+          <social /> 
  </div>
  </template>
 
