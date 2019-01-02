@@ -16,7 +16,22 @@
 
  
   <div class="item3">
-      <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link>
+      <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link><br>
+      <p id="opp">Your Opponents:</p>
+      <div class="container">
+          <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
+           <div class="middle">
+      <div class="text">Grinchen - The one who stole X-mas. He is a strong gusser and have a heart, the size of a toe-nail.
+        </div> 
+         </div>
+          </div>
+      <div class="container">
+          <img class="krampus"  src="../assets/krampus.png" alt="Krampus!">
+           <div class="middle">
+      <div class="text">Krampus - The devil of X-mas. A tricky basterd, be awere!
+        </div> 
+         </div>
+          </div>
   </div>
   <div class="item4">
 
@@ -64,6 +79,51 @@ export default {
 
 </script>
 <style scoped>
+#opp{
+  padding: 0% 0% 5% 0%;
+}
+
+.container {
+  position: relative;
+  display: inline;
+}
+
+.grinch {
+  opacity: 1;
+  width: 40%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  top: -350%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #fff;
+  color: black;
+  font-weight:bolder;
+  opacity: 0.7;
+  padding: 5% 16%;
+  border-radius: 10px;
+}
+.krampus {
+  width: 50%;
+}
 
 #email {
   float: right;
