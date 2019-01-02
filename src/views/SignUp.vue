@@ -189,7 +189,7 @@
           
  
       <button @click="signUp">Let´s do it!</button><br>
-      <p>Tillbaka?, <router-link to="/login">Klicka här</router-link></p>
+      <p>Back?, <router-link to="/login">Click here!</router-link></p>
  
           </div>
       </div>

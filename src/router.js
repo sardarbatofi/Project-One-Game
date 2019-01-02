@@ -50,7 +50,7 @@ const router = new Router({
   ]
 });
 router.beforeEach((to, from, next) => {
-
+ 
   const currentUser = fb.auth().currentUser;
 
   if (to.matched.some(record => record.meta.requiresAuth)) {

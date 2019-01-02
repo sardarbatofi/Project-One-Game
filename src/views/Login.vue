@@ -184,8 +184,8 @@
               <label class="black-text" for="password">Password</label>
             </div>
             <button v-on:click="login">Login</button>
-          <br><p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p>
-          <p>Eller logga in med Google <br>
+          <br><p>Create account? <router-link to="/sign-up"> Click here! </router-link> </p>
+          <p>Login with Google? <br>
       <button @click="google" class="google">
           <img src="../assets/google-logo.png" alt="Google logo"></button></p>
           </div>
