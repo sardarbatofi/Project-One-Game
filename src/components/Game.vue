@@ -78,7 +78,7 @@
     </div>
    
     <div class="item6">
-    <p>Spelaren: </p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
+    <p v-if="isLoggedIn">{{currentUser}}</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
       
     </div>
 
@@ -99,7 +99,7 @@
     </div>
     <div class="item8">
             <router-link :to="{name:'home'}">
-             <button @click="resetTimer()">Home page</button>
+             <button @click="resetTimer()">Home</button>
             </router-link>
     </div>
   </div>
@@ -136,7 +136,9 @@ export default {
       history: [],
       historyGrinch: [],
       historyKrampus: [],
-      invalidChars: ["-", "+", ".", "e", "E"]
+      invalidChars: ["-", "+", ".", "e", "E"],
+      isLoggedIn: false,
+      currentUser: false
     };
   },
   
@@ -150,6 +152,7 @@ export default {
         this.number = parseInt(res.questions[this.currentQuestion].answer); // för att få svaret
       });
   },
+  
   computed: {
     minutes: function() {
       const minutes = Math.floor(this.totalTime / 60);
@@ -168,8 +171,8 @@ export default {
     },
 
     startGame: function() {
-      this.answer = ""; /* tillagd, för att nollställa vid nytt spel */
-      (this.opponent = 0),
+        this.answer = ""; /* tillagd, för att nollställa vid nytt spel */
+        (this.opponent = 0),
         (this.opponent2 = 0),
         (this.game = false),
         (this.inputClosed = false),
@@ -186,8 +189,12 @@ export default {
         (this.history = []);
         (this.historyGrinch = []);
         (this.historyKrampus = []);
-      (this.gameOver = false), (this.timer = null), (this.totalTime = this.diffTime);
-      this.startTimer();
+        (this.gameOver = false), (this.timer = null), (this.totalTime = this.diffTime);
+        this.startTimer();
+        if (firebase.auth().currentUser) {
+            this.isLoggedIn = true;
+            this.currentUser = firebase.auth().currentUser.email;
+        }
     },
     highscore: function() {
       this.guestName.push(this.newNameText);
@@ -213,12 +220,13 @@ export default {
         this.totalTime;
         this.resetTimer();
         this.gameOver = true;
-        this.answer = "Time Out!, The correct answer was " + this.number;
+        this.answer = "Time Out! The correct answer was " + this.number;
         this.inputClosed = true;
         this.inputBtnClosed = true;
         this.timer = null;
      
       }
+         
     },
     userInput: function() {
       function userGuessToMax(min, max) {
@@ -336,7 +344,9 @@ export default {
 </script>
 
 <style scoped>
-
+h2 {
+  font-size: 2em;
+}
 .grinch {
   width: 25%;
 }
