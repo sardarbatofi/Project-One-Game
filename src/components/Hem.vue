@@ -21,14 +21,14 @@
       <div class="container">
           <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
            <div class="middle">
-      <div class="text">Grinchen - The one who stole X-mas. Spends his days, watchinng documetery, so he knews his shit. 
+      <div class="text">Grinchen - The one who stole X-mas. Spends his days, watching documentary, so he knows his shit.
         </div> 
          </div>
           </div>
       <div class="container">
           <img class="krampus"  src="../assets/krampus.png" alt="Krampus!">
            <div class="middle">
-      <div class="text">Krampus - The devil of X-mas. A tricky basterd, knews nothing about the quastion, but is extremly luckey, be awere!
+      <div class="text">Krampus - The devil of X-mas. A tricky basterd, knows nothing about the question, but is extremely lucky, be aware!
         </div> 
          </div>
           </div>
