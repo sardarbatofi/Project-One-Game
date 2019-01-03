@@ -233,7 +233,9 @@ export default {
 </script>
 
 <style scoped>
-
+    h3 {
+        font-size: 2.5em;
+    }
 .login{
   margin: 0 10%;
   padding: 1%;

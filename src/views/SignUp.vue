@@ -228,6 +228,9 @@ export default {
 </script>
 
 <style scoped>
+    h3 {
+        font-size: 2.5em;
+    }
 .loginbox{
         background: linear-gradient( rgba(255,255,255,0.1),rgba(255,255,255,0.9),rgba(255,255,255,0.9));
         padding: 5%;
