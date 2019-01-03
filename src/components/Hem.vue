@@ -36,7 +36,7 @@
   <div class="item4">
 
     <h2>High Score!</h2>
-<ol>
+<ol class="highScore">
   <li>12sekunder</li>
   <li>37sekunder</li>
   <li>57sekunder</li>
@@ -79,6 +79,11 @@ export default {
 
 </script>
 <style scoped>
+
+.highScore{
+  list-style: none;
+}
+
 #opp{
   padding: 0% 0% 5% 0%;
 }
@@ -184,9 +189,7 @@ button:active {
 }
 /*Bootstap/jQuary-killer*/
 
-img{
- width: 200px;
-}
+
 button{
   margin: 25px;
 }

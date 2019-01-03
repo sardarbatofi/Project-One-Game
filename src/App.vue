@@ -95,9 +95,7 @@ grid-column: 1 / 4;
   {
 grid-column: 1/4;
   }
-img{
-  width: 25%;
-}
+
 } 
 
 </style>
