@@ -249,4 +249,16 @@ inset 0 80px 80px -40px #dd4330, /* gradient */
 
       }
 
+@media (max-width: 721px){
+  .item1, .item2, .item3, .item4, .item5, .item6, .item7, .item8
+  {
+grid-column: 1/4;
+  }
+  .grinch, .krampus{
+  width: 20%;
+}
+
+} 
+
+
 </style>
