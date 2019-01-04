@@ -31,7 +31,6 @@
         >
         <router-link :to="{name:'home'}">
           <button>Add to High Score</button>
-          <!-- error fix -->
         </router-link>
       </form>
     </div>
@@ -458,14 +457,12 @@ img {
 }
 
 .jmTimer {
-    -webkit-border-radius: 100%;
     border-radius: 100%;
     width: 40px;
     height: 41px;
     overflow: hidden;
     border: 1px solid #999999;
     transform: scale(2,2);
-    -webkit-transform: scale(2,2);
     position: absolute;
     left: 38px;
     top: 72px;
@@ -499,26 +496,21 @@ img {
 }
 
 .jmTicker {
-  -webkit-animation: jm-cycle 30s 1 linear; 
   animation: jm-cycle 30s 1 linear; 
   background-color:#b7d035;
   bottom:50%;
   left:50%;
-  -webkit-border-top-right-radius: 100%;
   border-top-right-radius: 100%;
   transform-origin:0 100%;
-  -webkit-transform-origin:0 100%;
-  -webkit-transform-origin:0 100%;
-  -webkit-transform: rotate(-90deg);
   transform:rotate(-90deg);
   z-index:1;
 }
 
 
 .jmMask {
-  -webkit-animation: jm-cycle-jmMask 30s 1 linear; 
+  animation: jm-cycle-jmMask 30s 1 linear; 
   animation: jm-cycle-jmMask 30s 10 linear; 
-  -webkit-border-top-left-radius: 50px;
+  border-top-left-radius: 50px;
   background-color:#00703c;
   bottom:50%;
   left:0;
@@ -526,12 +518,12 @@ img {
 }
 
 
-@-webkit-keyframes jm-cycle-jmMask {
+@keyframes jm-cycle-jmMask {
    0% {
-    -webkit-border-top-right-radius:0;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(0deg);
-    -webkit-transform-origin:100% 100%;
+    border-top-right-radius:0;
+    border-top-left-radius: 100px;
+    transform: rotate(0deg);
+    transform-origin:100% 100%;
     background-color:#00703c;
     width:50%;
     bottom:50%;
@@ -541,10 +533,10 @@ img {
 
   
    50% {
-    -webkit-border-top-right-radius:0;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(0deg);
-    -webkit-transform-origin:100% 100%;
+    border-top-right-radius:0;
+    border-top-left-radius: 100px;
+    transform: rotate(0deg);
+    transform-origin:100% 100%;
     background-color:#00703c;
     width:50%;
     bottom:50%;
@@ -553,10 +545,10 @@ img {
   }
    
   50.01% {
-    -webkit-border-top-right-radius:0px;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(90deg);
-    -webkit-transform-origin:100% 100%;
+    border-top-right-radius:0px;
+    border-top-left-radius: 100px;
+    transform: rotate(90deg);
+    transform-origin:100% 100%;
     background-color:#b7d035;
     width:50%;
     bottom:50%;
@@ -565,10 +557,10 @@ img {
   }
     
   75% {
-    -webkit-border-top-right-radius:0px;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(90deg);
-    -webkit-transform-origin:100% 100%;
+    border-top-right-radius:0px;
+    border-top-left-radius: 100px;
+    transform: rotate(90deg);
+    transform-origin:100% 100%;
     background-color:#b7d035;
     width:50%;
     bottom:50%;
@@ -576,10 +568,10 @@ img {
   }
     
   75.01% {
-    -webkit-border-top-right-radius:100px;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(90deg);
-    -webkit-transform-origin:50% 100%;
+    border-top-right-radius:100px;
+    border-top-left-radius: 100px;
+    transform: rotate(90deg);
+    transform-origin:50% 100%;
     background-color:#b7d035;
     width:100%;
     bottom:50%;
@@ -587,10 +579,10 @@ img {
   }
     
   100% {
-    -webkit-border-top-right-radius:100px;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(90deg);
-    -webkit-transform-origin:50% 100%;
+    border-top-right-radius:100px;
+    border-top-left-radius: 100px;
+    transform: rotate(90deg);
+    transform-origin:50% 100%;
     background-color:#b7d035;
     width:100%;
     bottom:50%;
@@ -598,38 +590,38 @@ img {
   }
 }
    
-@-webkit-keyframes jm-cycle {
+@keyframes jm-cycle {
   0% {
-    -webkit-border-top-right-radius: 100px;
-    -webkit-border-top-left-radius: 0;
-    -webkit-transform: rotate(-90deg);
-    -webkit-transform-origin:0 100%;
+    border-top-right-radius: 100px;
+    border-top-left-radius: 0;
+    transform: rotate(-90deg);
+    transform-origin:0 100%;
     width:50%;
   }
 
   25%  { 
-    -webkit-border-top-right-radius: 100px;
-    -webkit-border-top-left-radius: 0;
-    -webkit-transform: rotate(0deg);
-    -webkit-transform-origin:0 100%;
+    border-top-right-radius: 100px;
+    border-top-left-radius: 0;
+    transform: rotate(0deg);
+    transform-origin:0 100%;
     width:50%;
     left:50%;
   }
 
   25.01%  { 
-    -webkit-border-top-right-radius: 100px;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(0deg);
-    -webkit-transform-origin:50% 100%;
+    border-top-right-radius: 100px;
+    border-top-left-radius: 100px;
+    transform: rotate(0deg);
+    transform-origin:50% 100%;
     width:100%;
     left:0;
   }
 
   100% {
-    -webkit-border-top-right-radius: 100px;
-    -webkit-border-top-left-radius: 100px;
-    -webkit-transform: rotate(270deg);
-    -webkit-transform-origin:50% 100%;
+    border-top-right-radius: 100px;
+    border-top-left-radius: 100px;
+    transform: rotate(270deg);
+    transform-origin:50% 100%;
     width:100%;
     left:0;
   }
@@ -637,7 +629,8 @@ img {
 
 
 .jmWatch {
-  background-image:url('../img/clock.jpeg');
+  background-image:url('../img/clock.jpeg'); 
+  mix-blend-mode:multiply; /* för att ta bort de vita ur bilden */
   background-repeat: no-repeat;
   background-size: 120px;
   background-position: 0 0;
