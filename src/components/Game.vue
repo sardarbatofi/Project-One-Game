@@ -53,6 +53,9 @@
           :disabled="inputClosed"
         >
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
+       <!-- This is a test -->
+        <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Go Again</button>
+       
         <div id="timer" v-show="!gameOver">
         
         <!--Sardar animation clock-->
@@ -179,7 +182,7 @@ export default {
         e.preventDefault();
       }
     },
-
+ 
     startGame: function() {
         this.answer = ""; /* tillagd, för att nollställa vid nytt spel */
         (this.opponent = 0),
@@ -205,6 +208,7 @@ export default {
             this.isLoggedIn = true;
             this.currentUser = firebase.auth().currentUser.email;
         }
+        
     },
     highscore: function() {
       this.guestName.push(this.newNameText);
@@ -236,7 +240,7 @@ export default {
         this.timer = null;
      
       }
-         
+   
     },
     userInput: function() {
       function userGuessToMax(min, max) {
@@ -345,9 +349,9 @@ export default {
           this.inputBtnClosed = true;
           this.gameOver = true;
           this.timer = null;
-         
         }
       }, 250);
+     
     }
   }
 };
