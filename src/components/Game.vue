@@ -629,8 +629,8 @@ img {
 
 
 .jmWatch {
-  background-image:url('../img/clock.jpeg'); 
-  mix-blend-mode:multiply; /* för att ta bort de vita ur bilden */
+  background-image:url('../assets/timer.png'); 
+  /* mix-blend-mode:multiply; för att ta bort de vita ur bilden */
   background-repeat: no-repeat;
   background-size: 120px;
   background-position: 0 0;
