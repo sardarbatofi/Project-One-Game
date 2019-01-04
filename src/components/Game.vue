@@ -55,8 +55,19 @@
         >
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
         <div id="timer" v-show="!gameOver">
-          <span id="seconds">Seconds left:{{ seconds }}</span>
-        </div>
+        
+        <!--Sardar animation clock-->
+         
+        
+           <div class="jmWatch">
+              <div class="jmTimer">
+                 <div class="jmTicker"></div>
+                 <div class="jmMask"></div>
+                 <div class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
+              </div>
+          </div>    
+         </div>
+        
       <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
         <p>Grinchen: {{opponent}}</p>
         <p>Krampus: {{opponent2}}</p>
@@ -436,6 +447,215 @@ img {
   color: rgb(255, 233, 37);
   /*10sek*/
   color: rgb(235, 54, 30);
+}
+
+/*Animation timmer sardar*/
+.jmTimer, .jmTicker, .jmMask {
+  width:100px;
+  height:100px;
+  background-color:#00703c;
+  position:relative;
+}
+
+.jmTimer {
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    width: 40px;
+    height: 41px;
+    overflow: hidden;
+    border: 1px solid #999999;
+    transform: scale(2,2);
+    -webkit-transform: scale(2,2);
+    position: absolute;
+    left: 38px;
+    top: 72px;
+    opacity: 0.5;
+}
+
+.jmFace {
+  border-radius: 100%;
+    width: 22px;
+    height: 20px;
+    position: absolute;
+    left: 24.5%;
+    top: 26.5%;
+    background-color: #ffffff;
+    z-index: 2;
+}
+
+.jmFace p {
+    position: absolute;
+    top: -3px;
+    left: 0px;
+    right: 0;
+    text-align: center;
+    font-size: 8px;
+}
+
+.jmTicker, .jmMask {
+  position:absolute;
+  width:50%;
+  height:50%;
+}
+
+.jmTicker {
+  -webkit-animation: jm-cycle 30s 1 linear; 
+  animation: jm-cycle 30s 1 linear; 
+  background-color:#b7d035;
+  bottom:50%;
+  left:50%;
+  -webkit-border-top-right-radius: 100%;
+  border-top-right-radius: 100%;
+  transform-origin:0 100%;
+  -webkit-transform-origin:0 100%;
+  -webkit-transform-origin:0 100%;
+  -webkit-transform: rotate(-90deg);
+  transform:rotate(-90deg);
+  z-index:1;
+}
+
+
+.jmMask {
+  -webkit-animation: jm-cycle-jmMask 30s 1 linear; 
+  animation: jm-cycle-jmMask 30s 10 linear; 
+  -webkit-border-top-left-radius: 50px;
+  background-color:#00703c;
+  bottom:50%;
+  left:0;
+  z-index:1;
+}
+
+
+@-webkit-keyframes jm-cycle-jmMask {
+   0% {
+    -webkit-border-top-right-radius:0;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin:100% 100%;
+    background-color:#00703c;
+    width:50%;
+    bottom:50%;
+    left:0;
+    z-index:1;
+  }
+
+  
+   50% {
+    -webkit-border-top-right-radius:0;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin:100% 100%;
+    background-color:#00703c;
+    width:50%;
+    bottom:50%;
+    left:0;
+    z-index:1;
+  }
+   
+  50.01% {
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin:100% 100%;
+    background-color:#b7d035;
+    width:50%;
+    bottom:50%;
+    left:0;
+    z-index:0;
+  }
+    
+  75% {
+    -webkit-border-top-right-radius:0px;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin:100% 100%;
+    background-color:#b7d035;
+    width:50%;
+    bottom:50%;
+    left:0;
+  }
+    
+  75.01% {
+    -webkit-border-top-right-radius:100px;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin:50% 100%;
+    background-color:#b7d035;
+    width:100%;
+    bottom:50%;
+    left:0;
+  }
+    
+  100% {
+    -webkit-border-top-right-radius:100px;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin:50% 100%;
+    background-color:#b7d035;
+    width:100%;
+    bottom:50%;
+    left:0;
+  }
+}
+   
+@-webkit-keyframes jm-cycle {
+  0% {
+    -webkit-border-top-right-radius: 100px;
+    -webkit-border-top-left-radius: 0;
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin:0 100%;
+    width:50%;
+  }
+
+  25%  { 
+    -webkit-border-top-right-radius: 100px;
+    -webkit-border-top-left-radius: 0;
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin:0 100%;
+    width:50%;
+    left:50%;
+  }
+
+  25.01%  { 
+    -webkit-border-top-right-radius: 100px;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin:50% 100%;
+    width:100%;
+    left:0;
+  }
+
+  100% {
+    -webkit-border-top-right-radius: 100px;
+    -webkit-border-top-left-radius: 100px;
+    -webkit-transform: rotate(270deg);
+    -webkit-transform-origin:50% 100%;
+    width:100%;
+    left:0;
+  }
+}
+
+
+.jmWatch {
+  background-image:url('../img/clock.jpeg');
+  background-repeat: no-repeat;
+  background-size: 120px;
+  background-position: 0 0;
+  width: 122px;
+  height: 161px;
+  position: relative;
+  margin: 0 auto;
+}
+
+#linkage {
+  position:fixed;
+  top:145px;
+  left:0px;
+  background-color:#3d3d3d;
+  color:#ffffff;
+  text-decoration:none;
+  padding:5px;
+  width:10%;
 }
 #win {
   animation-duration: 2s;
