@@ -496,7 +496,7 @@ img {
 }
 
 .jmTicker {
-  animation: jm-cycle 30s 1 linear; 
+  animation: jm-cycle 30s 1 linear; /*en för 40 och en för 15*/
   background-color:#b7d035;
   bottom:50%;
   left:50%;
@@ -508,8 +508,8 @@ img {
 
 
 .jmMask {
-  animation: jm-cycle-jmMask 30s 1 linear; 
-  animation: jm-cycle-jmMask 30s 10 linear; 
+  animation: jm-cycle-jmMask 30s 1 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle-jmMask 30s 10 linear; /*en för 40 och en för 15*/
   border-top-left-radius: 50px;
   background-color:#00703c;
   bottom:50%;
