@@ -71,7 +71,7 @@
          </div>
         
       <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
-        <p>Grinchen: {{opponent}}</p>
+        <p>The Grinch: {{opponent}}</p>
         <p>Krampus: {{opponent2}}</p>
         <p>{{ answer }}</p>
              <div id="watch-example">
@@ -85,13 +85,13 @@
     </div>
     <div class="item4"></div>
     <div class="item5">
-   <p>Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
+   <p>The Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
       <br>
       <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
     </div>
    
     <div class="item6">
-    <p v-if="isLoggedIn">{{currentUser}}</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
+    <p class="currentUser" v-if="isLoggedIn">{{currentUser}}:</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
       
     </div>
 
@@ -126,7 +126,7 @@ export default {
       timer: null,
       totalTime: 30,
       questions: [],
-      currentQuestion: Math.floor(Math.random() * 23) + 1,
+      currentQuestion: Math.floor(Math.random() * 22) + 1,
       answer: "",
       opponent: 10,
       opponent2: 10,
@@ -321,7 +321,7 @@ export default {
             this.gameOver = true;
             this.timer = null;
            
-          } else this.lower = "Wrong guess lower";
+          } else this.lower = "Wrong, guess lower!!";
           this.answer = "";
           this.higher = "";
           this.history.push(this.userGuess);
@@ -330,7 +330,7 @@ export default {
           this.userGuess == this.number &&
           this.numberOfGuess < this.tries
         ) {
-          this.win = "WINNER.... The correct answer is " + this.number;
+          this.win = "WINNER!! You saved Christmas! The correct answer is " + this.number;
           this.answer = "";
           this.higher = "";
           this.lower = "";
@@ -359,10 +359,15 @@ export default {
 
 <style scoped>
 h2 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 .grinch {
   width: 25%;
+}
+@media screen and (max-width: 721px){
+    .currentUser{
+        font-size: 10px;
+    }
 }
 .item5, .item7{
 background-color:#ce1329ee;
@@ -374,9 +379,7 @@ background-color: rgb(194, 183, 89);
 margin: 0% 2% 2% 2%;
 height: 175px;
 }
-
-
-
+    
 /*BootstapjQuary-killer*/
 :disabled {
   color: gray;
@@ -657,7 +660,7 @@ img {
 #win {
   animation-duration: 2s;
   animation-name: bounceIn;
-  font-size: 40px;
+  font-size: 2em;
   animation-fill-mode: both;
 }
 @keyframes bounceIn {

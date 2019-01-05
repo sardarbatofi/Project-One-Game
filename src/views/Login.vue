@@ -183,9 +183,9 @@
               <input type="password" id="password" v-model="password">
               <label class="black-text" for="password">Password</label>
             </div>
-            <button v-on:click="login">Login</button>
+            <button v-on:click="login">Log in</button>
           <br><p>Create account? <router-link to="/sign-up"> Click here! </router-link> </p>
-          <p>Login with Google? <br>
+          <p>Log in with Google? <br>
       <button @click="google" class="google">
           <img src="../assets/google-logo.png" alt="Google logo"></button></p>
           </div>

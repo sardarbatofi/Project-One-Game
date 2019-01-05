@@ -1,50 +1,53 @@
 <template>
 <div>
-<p v-if="isLoggedIn"><span id="email" >You´re logged in as: {{currentUser}}</span></p><br>
+    <p v-if="isLoggedIn"><span id="email" >You´re logged in as: {{currentUser}}</span></p><br>
   <div class="grid-container">
- <div class="item1"> 
-   <h3>Hello and welcome to One Game!</h3>
-  <p>Christmas is in danger...</p>
-  </div>
+    <div class="item1"> 
+        <h3>Welcome to One Game!</h3>
+        <p id="santatext">Hello, Santa here! The Grinch and Krampus are trying to steel Christmas again. Please help me to save it!! If you win against them in the game, they will leave and never come back, and then you have saved Christmas forever! Good luck!</p>
+        <img class="santa" src="../assets/Santa_Claus.png" alt="santa!">
+    </div>
 
     <div class="item2">
-      <h2>Rules of the game</h2>
-      <p>You play against the Grinch and Krampus, I will ask you a question that has a numerical answer,
-      try to guess it right! pst…I’m going to help you by telling you to go higher or lower after your guess!
-      You have 10 guesses by default, but you can make it easier (15 tries, wow!) or harder (only 5 tries or you are dead!) Enjoy!</p>
-  </div>
+        <img id="santa" src="../assets/Santa_Claus.png" alt="santa!">
+         <h2>Rules of the game</h2>
+         <p>You play against The Grinch and Krampus, I will ask you a question that has a numerical answer,
+         try to guess it right! Pst…I’m going to help you by telling you to go higher or lower after your guess!
+         You have 10 guesses by default, but you can make it easier (15 tries, wow!) or harder (only 5 tries or you are dead!) Enjoy!</p>
+    </div>
 
  
-  <div class="item3">
-      <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link><br>
-      <p id="opp">Your Opponents:</p>
-      <div class="container">
+    <div class="item3">
+          <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link><br>
+          <p id="opp">Your Opponents:</p>
+        <div class="container">
           <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
            <div class="middle">
-      <div class="text">Grinchen - The one who stole X-mas. Spends his days, watching documentary, so he knows his shit.
-        </div> 
-         </div>
-          </div>
-      <div class="container">
+                <div class="text">The Grinch - The one who stole X-mas. Spends his days, watching documentary, so he knows his shit.
+                </div> 
+            </div>
+        </div>
+        <div class="container">
           <img class="krampus"  src="../assets/krampus.png" alt="Krampus!">
-           <div class="middle">
-      <div class="text">Krampus - The devil of X-mas. A tricky basterd, knows nothing about the question, but is extremely lucky, be aware!
-        </div> 
-         </div>
+          <div class="middle">
+              <div class="text">Krampus - The devil of X-mas. A tricky bastard, knows nothing about the questions, but is extremely lucky, be aware!
+              </div> 
           </div>
+        </div>
   </div>
+      
   <div class="item4">
-
     <h2>High Score!</h2>
-<ol class="highScore">
-  <li>12sekunder</li>
-  <li>37sekunder</li>
-  <li>57sekunder</li>
-  </ol> 
+    <ol class="highScore">
+      <li>12 seconds</li>
+      <li>37 seconds</li>
+      <li>57 seconds</li>
+    </ol> 
   </div>
+      
   <div class="item5"></div>
   <div class="item6">
-  <button @click="logout">Logga ut</button> 
+    <button @click="logout">Log out</button> 
   </div>
   <div class="item7"></div>
   </div>
@@ -129,7 +132,63 @@ export default {
 .krampus {
   width: 50%;
 }
-
+#santatext {
+  animation-duration: 2s;
+  animation-name: santaText;
+  font-size: 1em;
+  animation-fill-mode: both;
+}
+@keyframes santaText {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#santa {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
+  animation: santa1 10s;
+  animation-fill-mode: forwards;
+}
+@media screen and (max-width: 721px){
+@keyframes santa1 {
+  0%   {opacity: 0;}
+  50%  {opacity: 50;}
+  100% {opacity: 100;}
+    }
+@keyframes santa2 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+    }
+    .item1{
+        margin-bottom:-15%;
+    }
+}
+.santa{
+  width: 8%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  animation: santa2 10s;
+  animation-fill-mode: forwards;
+}
+@media screen and (min-width: 721px){
+@keyframes santa2 {
+  0%   {opacity: 0;}
+  50%  {opacity: 50;}
+  100% {opacity: 100;}
+    }
+@keyframes santa1 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+    }
+}
 #email {
   float: right;
   top: 8px;
