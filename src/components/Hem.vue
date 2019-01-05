@@ -23,7 +23,7 @@
         <div class="container">
           <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
            <div class="middle">
-                <div class="text">The Grinch - The one who stole X-mas. Spends his days, watching documentary, so he knows his shit.
+                <div class="text">The Grinch - The one who stole X-mas. Spends his days, watching documentary, so he knows his shit. Watch out!
                 </div> 
             </div>
         </div>
@@ -187,6 +187,9 @@ export default {
 @keyframes santa1 {
   0%   {opacity: 0;}
   100% {opacity: 0;}
+    }
+.item2{
+        margin-top:-20%;
     }
 }
 #email {

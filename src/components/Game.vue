@@ -150,8 +150,9 @@ export default {
       historyGrinch: [],
       historyKrampus: [],
       invalidChars: ["-", "+", ".", "e", "E"],
+      currentUser: false,
       isLoggedIn: false,
-      currentUser: false
+    displayName: false
     };
   },
   
@@ -204,12 +205,9 @@ export default {
         (this.historyKrampus = []);
         (this.gameOver = false), (this.timer = null), (this.totalTime = this.diffTime);
         this.startTimer();
-        if (firebase.auth().currentUser) {
-            this.isLoggedIn = true;
-            this.currentUser = firebase.auth().currentUser.displayName;
-        }
-        
-    },
+        this.isLoggedIn = true
+        this.currentUser = firebase.auth().currentUser.email
+       },
     highscore: function() {
       this.guestName.push(this.newNameText);
       this.newNameText = "";
