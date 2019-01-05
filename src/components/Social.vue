@@ -44,17 +44,11 @@ export default{
   line-height: 48px;
   background: #000;
   position: relative;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 .model-0 {
   position: absolute;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   left: 0;
   top: 50px;

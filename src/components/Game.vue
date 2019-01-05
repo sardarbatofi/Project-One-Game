@@ -657,6 +657,7 @@ img {
   padding:5px;
   width:10%;
 }
+
 #win {
   animation-duration: 2s;
   animation-name: bounceIn;

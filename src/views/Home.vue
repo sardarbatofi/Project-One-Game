@@ -1,6 +1,7 @@
 <template>
   <div class="home">
 <Hem />
+
   </div>
 </template>
 <script>

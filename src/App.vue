@@ -25,7 +25,6 @@ p {
         max-width: 900px;
         width: 100%;
         margin: 0 auto;
-        padding: 2%;
     }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -59,7 +58,8 @@ p {
   background-color:wheat;
   border-radius: 10px;
   padding: 2%;
-
+  margin: 4%;
+ 
 }
 .item1{
 grid-column: 1 / 4;
