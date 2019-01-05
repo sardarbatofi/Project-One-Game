@@ -149,10 +149,9 @@ export default {
       history: [],
       historyGrinch: [],
       historyKrampus: [],
-      invalidChars: ["-", "+", ".", "e", "E"],
-      currentUser: false,
-      isLoggedIn: false,
-    displayName: false
+      invalidChars: ["-", "+", ".", ",", "e", "E"],
+      currentUser: "",
+      isLoggedIn: false
     };
   },
   
@@ -205,7 +204,7 @@ export default {
         (this.historyKrampus = []);
         (this.gameOver = false), (this.timer = null), (this.totalTime = this.diffTime);
         this.startTimer();
-        this.isLoggedIn = true
+        this.isLoggedIn = true,
         this.currentUser = firebase.auth().currentUser.email
        },
     highscore: function() {
