@@ -3,14 +3,14 @@
     <p v-if="isLoggedIn"><span id="email" >You´re logged in as: {{currentUser}}</span></p><br>
   <div class="grid-container">
     <div class="item1"> 
-        <h3>Welcome to One Game!</h3>
+        <h4>Welcome to One Game!</h4>
         <p id="santatext">Hello, Santa here! The Grinch and Krampus are trying to steel Christmas again. Please help me to save it!! If you win against them in the game, they will leave and never come back, and then you have saved Christmas forever! Good luck!</p>
         <img class="santa" src="../assets/Santa_Claus.png" alt="santa!">
     </div>
 
     <div class="item2">
         <img id="santa" src="../assets/Santa_Claus.png" alt="santa!">
-         <h2>Rules of the game</h2>
+         <h5>Rules of the game</h5>
          <p>You play against The Grinch and Krampus, I will ask you a question that has a numerical answer,
          try to guess it right! Pst…I’m going to help you by telling you to go higher or lower after your guess!
          You have 10 guesses by default, but you can make it easier (15 tries, wow!) or harder (only 5 tries or you are dead!) Enjoy!</p>
@@ -37,7 +37,7 @@
   </div>
       
   <div class="item4">
-    <h2>High Score!</h2>
+    <h5>High Score!</h5>
     <ol class="highScore">
       <li>12 seconds</li>
       <li>37 seconds</li>
@@ -192,13 +192,19 @@ export default {
         margin-top:-20%;
     }
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  background-color:wheat;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 0% 2% 2% 2%;
+}
 #email {
   float: right;
-  top: 8px;
-  right: 16px;
   color: wheat;
+  padding-right: 3%;
 }
-
 /*BootstapjQuary-killer*/
 h2 {
   font-size: 2em;
