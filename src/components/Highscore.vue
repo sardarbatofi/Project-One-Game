@@ -3,11 +3,11 @@
     <p>Enter your name
       <input type="text" v-model="nameField">
     </p>
-    <p>Enter your score
+    <p>Enter your lucky guess number
       <input type="number" v-model="score">
     </p>
 
-    <button @click="saveScoreButton">Save High Score</button>
+    <button @click="saveScoreButton">Save to Highscore</button>
   </div>
 </template>
 

@@ -22,15 +22,17 @@
     </div>
 
       <br>
-      <form class="form-inline" @submit.prevent="highscore" v-if="this.win">
-        <input
+      <form class="form-inline"  v-if="this.win">
+   <!--      <input
           id="bootstrap-overrides"
           type="text"
           placeholder="Add Name here..."
           v-model="newNameText"
-        >
+        > -->
+<!--           <button>Add to High Score</button>
+ -->                  <highscore></highscore> 
         <router-link :to="{name:'home'}">
-          <button>Add to High Score</button>
+
         </router-link>
       </form>
     </div>
@@ -207,10 +209,10 @@ export default {
         this.isLoggedIn = true,
         this.currentUser = firebase.auth().currentUser.email
        },
-    highscore: function() {
+   /*  highscore: function() {
       this.guestName.push(this.newNameText);
       this.newNameText = "";
-    },
+    }, */
     startTimer: function() {
       this.timer = setInterval(() => this.countdown(), 1000);
     },
