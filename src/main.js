@@ -5,6 +5,7 @@ import {fb, db} from '../firebase-config'
 import firebase from 'firebase'
 import Social from './components/Social.vue'
 import Highscore from './components/Highscore.vue'
+import Admin from './components/Admin.vue'
 
 
 Vue.config.productionTip = false
@@ -12,6 +13,8 @@ Vue.config.productionTip = false
 
 Vue.component('social', Social)
 Vue.component('highscore', Highscore)
+Vue.component('admin', Admin)
+
 
 /* för att slippa importera firebase överallt */
 

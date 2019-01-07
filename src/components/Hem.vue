@@ -40,11 +40,12 @@
 
     <h5>High Score!</h5>
         <highscore></highscore> 
-    <ol class="highScore">
+        <admin></admin>
+    <!-- <ol class="highScore">
       <li>12 seconds</li>
       <li>37 seconds</li>
       <li>57 seconds</li>
-    </ol> 
+    </ol>  -->
   </div>
       
   <div class="item5"></div>

@@ -7,6 +7,7 @@
 <script>
 import Hem from "@/components/Hem.vue";
 import Highscore from "@/components/Highscore.vue";
+import Admin from "@/components/Admin.vue";
 
 import firebase from "firebase";
 

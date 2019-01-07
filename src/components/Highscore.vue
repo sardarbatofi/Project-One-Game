@@ -39,7 +39,7 @@ export default {
     //rewrite the last score
     saveScoreButton() {
       let path = "scores2/" + this.nameField;
-      firebase
+      fb
         .database()
         .ref(path)
         .set({
