@@ -328,7 +328,17 @@ grid-column: 1/4;
   .grinch, .krampus{
   width: 20%;
 }
-
+h4{
+  font-size: 16px;
+  font-weight: bold;
+}
+h5{
+  font-size: 14px;
+  font-weight: bold;
+}
+#santa{
+  width: 10%;
+}
 } 
 
 
