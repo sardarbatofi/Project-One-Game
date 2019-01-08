@@ -49,6 +49,7 @@
   <div class="item7"></div>
   </div>
 </div>
+</div>
 </template>
 
 <script>
