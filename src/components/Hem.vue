@@ -41,13 +41,13 @@
     
         <admin></admin>
   
-      
+  </div>
   <div class="item5"></div>
   <div class="item6">
     <button @click="logout">Log out</button> 
-  </div>
+  </div><br>
   <div class="item7"></div>
-  </div>
+  
 </div>
 </div>
 </template>
