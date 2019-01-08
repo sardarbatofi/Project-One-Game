@@ -1,7 +1,7 @@
 <template>
   <div class="game">
           <Game />
-          <social /> 
+
  </div>
  </template>
 
@@ -10,6 +10,8 @@
 
 import Game from '@/components/Game.vue'
 import firebase from 'firebase'
+import Highscore from "@/components/Highscore.vue";
+
 
 
 export default {
