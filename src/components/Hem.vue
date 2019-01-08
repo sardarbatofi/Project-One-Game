@@ -197,14 +197,14 @@ export default {
 .grid-container {
   display: grid;
   grid-template-columns: 30% 40% 30%;
-  background-color:wheat;
+  background-color: #fff0db;
   border-radius: 10px;
   padding: 2%;
   margin: 0% 2% 2% 2%;
 }
 #email {
   float: right;
-  color: wheat;
+  color: #f9f8eb;
   padding-right: 3%;
 }
 /*BootstapjQuary-killer*/
