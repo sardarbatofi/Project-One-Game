@@ -37,7 +37,7 @@
   </div>
       
   <div class="item4">
-
+<h5>High Score</h5>
     
         <admin></admin>
   

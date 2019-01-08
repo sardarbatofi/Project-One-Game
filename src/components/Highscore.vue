@@ -7,7 +7,7 @@
       <input id="bootstrap-overrides"  type="text" v-model="nameField">
     
     
-    <p>Enter your lucky guess number
+    <p>Enter number of tries: 
       <input id="bootstrap-overrides" type="number" v-model="score">
     </p>
 
