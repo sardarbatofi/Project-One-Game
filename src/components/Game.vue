@@ -56,7 +56,7 @@
         >
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
        <!-- This is a test -->
-        <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Go Again</button>
+        <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
        
         <div id="timer" v-show="!gameOver">
         
@@ -367,6 +367,7 @@ h2 {
     .currentUser{
         font-size: 10px;
     }
+    
 }
 .item5, .item7{
 background-color:#ce1329ee;

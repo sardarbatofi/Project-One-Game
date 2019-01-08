@@ -38,14 +38,9 @@
       
   <div class="item4">
 
-    <h5>High Score!</h5>
+    
         <admin></admin>
-    <!-- <ol class="highScore">
-      <li>12 seconds</li>
-      <li>37 seconds</li>
-      <li>57 seconds</li>
-    </ol>  -->
-  </div>
+  
       
   <div class="item5"></div>
   <div class="item6">
