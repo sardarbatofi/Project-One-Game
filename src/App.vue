@@ -21,7 +21,7 @@ p {
 
     body{
         overflow: scroll;
-        background-color: rgba(12, 70, 26, 0.795);
+        background-color: #28544b;
         max-width: 900px;
         width: 100%;
         margin: 0 auto;

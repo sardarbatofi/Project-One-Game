@@ -357,6 +357,10 @@ export default {
 </script>
 
 <style scoped>
+
+.grid-container {
+  background-color: #fff0db; 
+}
 h2 {
   font-size: 1.5em;
 }
@@ -370,14 +374,19 @@ h2 {
     
 }
 .item5, .item7{
-background-color:#ce1329ee;
-height: 175px;
-margin: 0% 2% 2% 2%;  /* Ta bort om ej behövs */
+  border-radius: 15px;
+  color: #decdc3;
+  background-color: #990000;
+  height: 300px;
+  margin: 0% 2% 2% 2%;  /* Ta bort om ej behövs */
+  display: table; 
 }
 .item6 {
-background-color: rgb(194, 183, 89);
-margin: 0% 2% 2% 2%;
-height: 175px;
+  border-radius: 15px;
+  background-color: #74b49b;
+  margin: 0% 2% 2% 2%;
+  height: 300px;
+  display: table; 
 }
     
 /*BootstapjQuary-killer*/
