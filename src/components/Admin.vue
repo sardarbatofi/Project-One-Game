@@ -2,7 +2,7 @@
 <div>
  <p>{{makeMagic}}</p>
 
-<ul id="scoresList"><li>No data yet!</li></ul>
+<ul id="scoresList"><li>Start and check your fortune level!</li></ul>
 
 </div>
 </template>
@@ -34,7 +34,7 @@ export default {
  let bigString="";
   for (let key in obj){   // use for..in to interate through object keys
     let row = obj[key];
-    bigString += `<li>${row.userID } :  ${row.score}</li>`;
+    bigString += `<li>${row.userID }: ${row.score} try(ies)</li>`;
     console.log(row);
   }	
   scoresList.innerHTML = bigString;}
