@@ -19,47 +19,129 @@ export default{
 
 </script>
 
-
-
 <style scoped>
-.social-nav {
-  padding: 0;
-  list-style: none;
-  display: inline-block;
-  margin: 200px auto;
-}
-.social-nav li {
-  display: inline-block;
-}
-.social-nav a {
-  display: inline-block;
-  float: left;
-  width: 48px;
-  height: 48px;
-  font-size: 20px;
-  color: #FFF;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-  line-height: 48px;
-  background: #000;
-  position: relative;
-  transition: 0.5s;
+@media screen and (max-width: 915px){ /* iphone 5 */
+    .social-nav a {
+      display: inline-block;
+      float: left;
+      width: 35px;
+      height: 35px;
+      font-size: 21px;
+      color: #FFF;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+      line-height: 34px;
+      background: #000;
+      position: relative;
+      transition: 0.5s;
+    }
+    .social-nav {
+      padding: 0;
+      list-style: none;
+      display: inline-block;
+      margin: 50px auto;
+    }
+    .social-nav li {
+      display: inline-block;
+    }
+    .model-0 {
+      position: absolute;
+      transition: 0.5s;
+      left: 0;
+      top: 600px;
+    }
+    .model-0 li {
+      float: none;
+      display: block;
+    }
+    .model-0 a:hover {
+      padding-left: 20px;
+      width: 56px;
+    }
+    
 }
 
-.model-0 {
-  position: absolute;
-  transition: 0.5s;
-  left: 0;
-  top: 50px;
+@media screen and (min-width: 719px){ /* ipad */
+    .social-nav a {
+      display: inline-block;
+      float: left;
+      width: 38px;
+      height: 38px;
+      font-size: 23px;
+      color: #FFF;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+      line-height: 38px;
+      background: #000;
+      position: relative;
+      transition: 0.5s;
+    }
+    .social-nav {
+      padding: 0;
+      list-style: none;
+      display: inline-block;
+      margin: 50px auto;
+    }
+    .social-nav li {
+      display: inline-block;
+    }
+    .model-0 {
+      position: absolute;
+      transition: 0.5s;
+      left: 0;
+      top: 470px;
+    }
+    .model-0 li {
+      float: none;
+      display: block;
+    }
+    .model-0 a:hover {
+      padding-left: 20px;
+      width: 55px;
+    }
+    
 }
-.model-0 li {
-  float: none;
-  display: block;
-}
-.model-0 a:hover {
-  padding-left: 20px;
-  width: 65px;
+@media screen and (min-width: 916px){ /* desktop */
+    .social-nav a {
+      display: inline-block;
+      float: left;
+      width: 48px;
+      height: 48px;
+      font-size: 20px;
+      color: #FFF;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+      line-height: 48px;
+      background: #000;
+      position: relative;
+      transition: 0.5s;
+    }
+    .social-nav {
+      padding: 0;
+      list-style: none;
+      display: inline-block;
+      margin: 200px auto;
+    }
+    .social-nav li {
+      display: inline-block;
+    }
+    .model-0 {
+      position: absolute;
+      transition: 0.5s;
+      left: 0;
+      top: 50px;
+    }
+    .model-0 li {
+      float: none;
+      display: block;
+    }
+    .model-0 a:hover {
+      padding-left: 20px;
+      width: 65px;
+    }
 }
 .model-0 .twitter {
   background: #00ACED;
