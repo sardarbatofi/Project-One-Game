@@ -60,9 +60,9 @@
 
     <div class="difficulty" v-show="!game">
       <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur.-->
-      <button class="button" @click="tries=15, diffTime=40, easy=!easy" >Easy</button>
-      <button class="button" @click="tries=10, diffTime=30, medium=!medium">Medium</button>
-      <button class="button" @click="tries=5, diffTime=15, hard=!hard">Hard</button>
+      <button class="button" @click="tries=15, diffTime=40, easy=!easy ,startGame(), game = !game" >Easy</button>
+      <button class="button" @click="tries=10, diffTime=30, medium=!medium,startGame(), game = !game">Medium</button>
+      <button class="button" @click="tries=5, diffTime=15, hard=!hard,startGame(),game = !game" >Hard</button>
     </div>
 
       <br>
@@ -85,7 +85,6 @@
 
     <div class="item3">
       <p id="win" v-if="this.win">{{ this.win }}</p>
-      <button @click="startGame" v-on:click="game = !game" :disabled="startBtnClosed">Start Game</button> <!-- startknappen blir oanvändbar efter startat spel -->
       <br>
       <br>
       <div v-show="game">
