@@ -11,7 +11,7 @@
       <h2 v-show="game">{{questions}}</h2>
    
     <div class="difficulty" v-show="!game">
-      <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt -->
+      <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur.-->
       <button @click="tries=15, diffTime=40, easy=!easy" >Easy</button>  
       <button @click="tries=10, diffTime=30, medium=!medium">Medium</button>
       <button @click="tries=5, diffTime=15, hard=!hard">Hard</button>
@@ -37,7 +37,7 @@
 
     <div class="item3">
       <p id="win" v-if="this.win">{{ this.win }}</p>
-      <button @click="startGame" v-on:click="game = !game" :disabled="startBtnClosed">Start Game</button>
+      <button @click="startGame" v-on:click="game = !game" :disabled="startBtnClosed">Start Game</button> <!-- startknappen blir oanvändbar efter startat spel -->
       <br>
       <br>
       <div v-show="game">
@@ -49,12 +49,13 @@
           @keydown="key"
           min="0"
           :disabled="inputClosed"
-        >
+        > <!-- visas när game är sant -->
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
         <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
        
         <div id="timer" v-show="!gameOver">
         
+<!-- tycker verkligen att v-if bör ha fungerar här, men icke, denna kod duger änsålänge -->
 
            <div v-show="easy" class="jmWatch">
               <div  class="jmTimerE">
@@ -71,7 +72,7 @@
                  <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
           </div>    
-                     <div v-show="hard" class="jmWatch">
+             <div v-show="hard" class="jmWatch">
               <div  class="jmTimerH">
                  <div  class="jmTickerH" ></div>
                  <div class="jmMaskH"></div>
@@ -104,7 +105,7 @@
     </div>
    
     <div class="item6">
-    <p class="currentUser" v-if="isLoggedIn">{{currentUser}}:</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
+    <p class="currentUser" v-if="isLoggedIn">{{currentUser}}:</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div> <!-- föregående gissningar skrivs ut, även namnet(email) på den inloggade -->
       
     </div>
 
@@ -408,12 +409,12 @@ h2 {
 /*BootstapjQuary-killer*/
 :disabled {
   color: gray;
-  text-decoration: line-through;
+  text-decoration: line-through; /* FÖR ATT VI KAN */
   cursor: not-allowed;
 }
 #bootstrap-overrides {
   margin: 10px;
-  width: 150px;
+  width: 110px;
   border: 1px solid black;
   height: 25px;
   border-bottom: 1px solid black;
@@ -425,13 +426,14 @@ h2 {
 #bootstrap-overrides:focus {
   padding: 2px 5px;
   margin: 10px;
-  width: 150px;
+  width: 110px;
   border: 1px solid black;
   height: 25px;
   border-bottom: 1px solid black;
   box-shadow: 2px 2px 2px grey;
   background-color: white;
   border-radius: 5px;
+  transform:scale(1.1);
 }
 button {
   border-radius: 5px;
