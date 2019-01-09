@@ -9,12 +9,9 @@
   <span class="bg-2 width-3 blur-2 anim-5 left-40"></span>
   <span class="bg-1 width-1 blur-2 anim-5 left-10"></span>
   <span class="bg-1 width-2 blur-2 anim-5 left-20"></span>
-  <span class="bg-3 width-1 blur-2 left-45 shaking-1"></span>
   <span class="bg-2 width-2 blur-3 anim-3 left-94"></span>
   <span class="bg-2 width-3 blur-2 anim-4 left-49"></span>
-  <span class="bg-1 width-1 blur-1 left-42 shaking-2"></span>
   <span class="bg-1 width-2 blur-2 anim-6 left-45"></span>
-  <span class="bg-2 width-1 blur-2 left-50 shaking-2"></span>
   <span class="bg-1 width-3 blur-3 anim-4 left-27"></span>
   <span class="bg-1 width-1 blur-3 anim-5 left-23"></span>
   
@@ -25,7 +22,6 @@
   <span class="bg-3 width-3 blur-3 anim-4 left-90 delaying"></span>
   <span class="bg-1 width-1 blur-1 anim-6 left-10 delaying"></span>
   <span class="bg-1 width-3 blur-2 anim-4 left-5 delaying"></span>
-  <span class="bg-1 width-1 blur-3 left-56 delaying shaking-2"></span>
   <span class="bg-2 width-3 blur-2 anim-5 left-40 delaying"></span>
   <span class="bg-1 width-1 blur-1 anim-3 left-9 delaying"></span>
   <span class="bg-1 width-1 blur-2 anim-5 left-100 delaying"></span>
@@ -33,7 +29,6 @@
   <span class="bg-3 width-1 blur-2 left-3 delaying shaking-2"></span>
   <span class="bg-2 width-2 blur-3 anim-3 left-94 delaying"></span>
   <span class="bg-2 width-3 blur-2 anim-4 left-7 delaying"></span>
-  <span class="bg-1 width-1 blur-1 left-42 delaying shaking-1"></span>
   <span class="bg-3 width-1 blur-2 naim-2 left-37 delaying"></span>
   <span class="bg-4 width-3 blur-1 anim-3 left-87 delaying"></span>
   <span class="bg-1 width-2 blur-2 anim-6 left-45 delaying"></span>
@@ -44,12 +39,9 @@
   <span class="bg-1 width-1 blur-1 anim-2 left-45 delaying-1"></span>
   <span class="bg-1 width-1 blur-2 anim-3 left-5 delaying-1"></span>
   <span class="bg-3 width-3 blur-3 anim-4 left-90 delaying-1"></span>
-  <span class="bg-1 width-1 blur-1 left-10 delaying-1 shaking-2"></span>
   <span class="bg-1 width-1 blur-2 anim-7 left-15 delaying-1"></span>
   <span class="bg-1 width-1 blur-3 anim-5 left-56 delaying-1"></span>
-  <span class="bg-2 width-3 blur-2 left-40 delaying-1 shaking-1"></span>
   <span class="bg-1 width-1 blur-2 anim-5 left-10 delaying-1"></span>
-  <span class="bg-1 width-2 blur-2 left-20 delaying-1 shaking-2"></span>
   <span class="bg-3 width-1 blur-2 anim-4 left-45 delaying-1"></span>
   <span class="bg-2 width-2 blur-3 anim-3 left-94 delaying-1"></span>
   <span class="bg-2 width-3 blur-2 anim-4 left-49 delaying-1"></span>
@@ -205,21 +197,12 @@ input {
 }
 span{
   position: absolute;
-  left: 0px;
+  left: 10px; /*snygga till snöns position lite //Jimmy */
   top: -10px;
   border-radius: 50%;
 }
-.shaking-1{
-  top: -10vh;
-  animation: shaking1 15s linear infinite;
-}
-.shaking-2{
-  top: -40vh;
-  animation: shaking2 10s linear infinite;
-}
-.anim-1{
-  animation: animate 5s linear infinite;
-}
+
+
 .anim-2{
   animation: animate 8s linear infinite;
 }
@@ -346,14 +329,8 @@ span{
   left: 9%;
   top: -78px;
 }
-.left-10{
-  left: 10%;
-  top: -33px;
-}
-.left-20{
-  left: 20%;
-  top: -63px;
-}
+
+
 .left-21{
   left: 21%;
   top: -65px;
@@ -394,18 +371,12 @@ span{
   left: 30%;
   top: -75px;
 } 
-.left-40{
-  left: 40%;
-  top: -21px;
-}
+
 .left-41{
   left: 41%;
   top: -11px;
 }
-.left-42{
-  left: 42%;
-  top: -95px;
-}
+
 .left-43{
   left: 43%;
   top: -54px;
@@ -414,10 +385,7 @@ span{
   left: 44%;
   top: -61px;
 }
-.left-45{
-  left: 45%;
-  top: -95px;
-}
+
 .left-46{
   left: 46%;
   top: -5px;
@@ -434,10 +402,7 @@ span{
   left: 49%;
   top: -65px;
 }
-.left-50{
-  left: 50%;
-  top: -46px;
-}
+
 
 .left-90{
   left: 90%;

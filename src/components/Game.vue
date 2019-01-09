@@ -9,16 +9,12 @@
     <div class="item1">
 
       <h2 v-show="game">{{questions}}</h2>
-    <!-- -->
-
-
-    <!-- -->
-
+   
     <div class="difficulty" v-show="!game">
-      <div>Choose difficulty:</div>
-      <button @click="tries=15" v-on:click="diffTime=40" >Easy</button>  
-      <button @click="tries=10" v-on:click="diffTime=30">Medium</button>
-      <button @click="tries=5" v-on:click="diffTime=15">Hard</button>
+      <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt -->
+      <button @click="tries=15, diffTime=40" >Easy</button>  
+      <button @click="tries=10, diffTime=30">Medium</button>
+      <button @click="tries=5, diffTime=15">Hard</button>
     </div>
 
       <br>
@@ -55,21 +51,20 @@
           :disabled="inputClosed"
         >
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
-       <!-- This is a test -->
         <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
        
         <div id="timer" v-show="!gameOver">
         
-        <!--Sardar animation clock-->
-         
-        
+
            <div class="jmWatch">
               <div class="jmTimer">
-                 <div class="jmTicker"></div>
-                 <div class="jmMask"></div>
+                 <div class="jmTickerM"></div>
+                 <div class="jmMaskM"></div>
                  <div class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
           </div>    
+
+        
          </div>
         
       <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
@@ -125,6 +120,9 @@ const quizData = "https://api.myjson.com/bins/1e3s5g";
 export default {
   data() {
     return {
+      easy: false,
+      medium: false,
+      hard: false,
       timer: null,
       totalTime: 30,
       questions: [],
@@ -437,12 +435,10 @@ img {
 .clicked {
   background-color: red;
 }
-.history{                               
-  /*  background-color: peachpuff; */
+.history {
   margin: 10px;
   display: inline-block;
   padding: 0.5%;
- /* border: 1px solid #cccccc; */
 }
 
 #higher {
@@ -455,16 +451,9 @@ img {
   font-size: 20px;
 }
 #seconds {
- 
-  /*30sek*/
-  color: rgb(26, 153, 15);
-  /*20sek*/
-  color: rgb(255, 233, 37);
-  /*10sek*/
   color: rgb(235, 54, 30);
 }
 
-/*Animation timmer sardar*/
 .jmTimer, .jmTicker, .jmMask {
   width:100px;
   height:100px;
@@ -505,13 +494,12 @@ img {
     font-size: 8px;
 }
 
-.jmTicker, .jmMask {
+.jmTickerE, .jmMaskE {
   position:absolute;
   width:50%;
   height:50%;
 }
-
-.jmTicker {
+.jmTickerE {
   animation: jm-cycle 30s 1 linear; /*en för 40 och en för 15*/
   background-color:#b7d035;
   bottom:50%;
@@ -521,9 +509,7 @@ img {
   transform:rotate(-90deg);
   z-index:1;
 }
-
-
-.jmMask {
+.jmMaskE {
   animation: jm-cycle-jmMask 30s 1 linear; /*en för 40 och en för 15*/
   animation: jm-cycle-jmMask 30s 10 linear; /*en för 40 och en för 15*/
   border-top-left-radius: 50px;
@@ -532,7 +518,54 @@ img {
   left:0;
   z-index:1;
 }
-
+.jmTickerM, .jmMaskM {
+  position:absolute;
+  width:50%;
+  height:50%;
+}
+.jmTickerM {
+  animation: jm-cycle 30s 1 linear; /*en för 40 och en för 15*/
+  background-color:#b7d035;
+  bottom:50%;
+  left:50%;
+  border-top-right-radius: 100%;
+  transform-origin:0 100%;
+  transform:rotate(-90deg);
+  z-index:1;
+}
+.jmMaskM {
+  animation: jm-cycle-jmMask 30s 1 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle-jmMask 30s 10 linear; /*en för 40 och en för 15*/
+  border-top-left-radius: 50px;
+  background-color:#00703c;
+  bottom:50%;
+  left:0;
+  z-index:1;
+}
+.jmTickerH, .jmMaskH {
+  position:absolute;
+  width:50%;
+  height:50%;
+}
+.jmTickerH {
+  animation: jm-cycle 30s 1 linear; /*en för 40 och en för 15*/
+  background-color:#b7d035;
+  bottom:50%;
+  left:50%;
+  border-top-right-radius: 100%;
+  transform-origin:0 100%;
+  transform:rotate(-90deg);
+  z-index:1;
+}
+.jmMaskH {
+  animation: jm-cycle-jmMask 30s 1 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle-jmMask 30s 10 linear; /*en för 40 och en för 15*/
+  border-top-left-radius: 50px;
+  background-color:#00703c;
+  bottom:50%;
+  left:0;
+  z-index:1;
+}
 
 @keyframes jm-cycle-jmMask {
    0% {
@@ -646,7 +679,7 @@ img {
 
 .jmWatch {
   background-image:url('../assets/timer.png'); 
-  /* mix-blend-mode:multiply; för att ta bort de vita ur bilden */
+  /* mix-blend-mode:multiply; för att få bilden att smällt in mer i backgrunden */
   background-repeat: no-repeat;
   background-size: 120px;
   background-position: 0 0;
