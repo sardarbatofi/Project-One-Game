@@ -12,9 +12,9 @@
    
     <div class="difficulty" v-show="!game">
       <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt -->
-      <button @click="tries=15, diffTime=40" >Easy</button>  
-      <button @click="tries=10, diffTime=30">Medium</button>
-      <button @click="tries=5, diffTime=15">Hard</button>
+      <button @click="tries=15, diffTime=40, easy=!easy" >Easy</button>  
+      <button @click="tries=10, diffTime=30, medium=!medium">Medium</button>
+      <button @click="tries=5, diffTime=15, hard=!hard">Hard</button>
     </div>
 
       <br>
@@ -56,13 +56,29 @@
         <div id="timer" v-show="!gameOver">
         
 
-           <div class="jmWatch">
-              <div class="jmTimerM">
-                 <div class="jmTickerM"></div>
-                 <div class="jmMaskM"></div>
-                 <div class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
+           <div v-show="easy" class="jmWatch">
+              <div  class="jmTimerE">
+                 <div  class="jmTickerE" ></div>
+                 <div class="jmMaskE"></div>
+                 <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
           </div>    
+
+           <div  v-show="medium" class="jmWatch">
+              <div  class="jmTimerM">
+                 <div  class="jmTickerM" ></div>
+                 <div class="jmMaskM"></div>
+                 <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
+              </div>
+          </div>    
+                     <div v-show="hard" class="jmWatch">
+              <div  class="jmTimerH">
+                 <div  class="jmTickerH" ></div>
+                 <div class="jmMaskH"></div>
+                 <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
+              </div>
+          </div>    
+         
 
         
          </div>
@@ -120,6 +136,10 @@ const quizData = "https://api.myjson.com/bins/1e3s5g";
 export default {
   data() {
     return {
+      gameOver: false,
+      easy: false,
+      medium:false,
+      hard:false,
       timer: null,
       totalTime: 30,
       questions: [],
@@ -164,6 +184,7 @@ export default {
   },
   
   computed: {
+    
     minutes: function() {
       const minutes = Math.floor(this.totalTime / 60);
       return this.padTime(minutes);
@@ -234,7 +255,7 @@ export default {
         this.timer = null;
      
       }
-   
+  
     },
     userInput: function() {
       function userGuessToMax(min, max) {
@@ -472,7 +493,7 @@ img {
     font-size: 8px;
 }
 
-.jmTimer, .jmTicker, .jmMask {
+.jmTimerE, .jmTickerE, .jmMaskE {
   width:100px;
   height:100px;
   background-color:#00703c;
@@ -516,7 +537,12 @@ img {
   z-index:1;
 }
 
-
+.jmTimerM, .jmTickerM, .jmMaskM {
+  width:100px;
+  height:100px;
+  background-color:#00703c;
+  position:relative;
+}
 
 .jmTimerM {
     border-radius: 100%;
@@ -554,7 +580,12 @@ img {
   left:0;
   z-index:1;
 }
-
+.jmTimerH, .jmTickerH, .jmMaskH {
+  width:100px;
+  height:100px;
+  background-color:#00703c;
+  position:relative;
+}
 
 .jmTimerH {
     border-radius: 100%;
