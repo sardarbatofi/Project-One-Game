@@ -384,12 +384,7 @@ h2 {
 .grinch {
   width: 25%;
 }
-@media screen and (max-width: 721px){
-    .currentUser{
-        font-size: 10px;
-    }
-    
-}
+
 .item5, .item7{
   border-radius: 15px;
   color: #decdc3;
@@ -883,5 +878,16 @@ img {
 
 .difficulty :focus {
   background-color: red;
+}
+@media screen and (max-width: 721px){
+    .currentUser{
+        font-size: 10px;
+    }
+    #bootstrap-overrides{
+      width: 100px;
+    }
+    #bootstrap-overrides:focus{
+       width: 100px;
+    }
 }
 </style>

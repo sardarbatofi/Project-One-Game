@@ -197,7 +197,7 @@ input {
 }
 span{
   position: absolute;
-  left: 10px; /*snygga till snöns position lite //Jimmy */
+  left: 10px; /*snygga till snöns position lite //Jimmy*/
   top: -10px;
   border-radius: 50%;
 }

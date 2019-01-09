@@ -55,7 +55,6 @@ p {
 .grid-container {
   display: grid;
   grid-template-columns: 30% 40% 30%;
-  background-color:wheat;
   border-radius: 10px;
   padding: 2%;
   margin: 4%;
