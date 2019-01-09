@@ -884,10 +884,10 @@ img {
         font-size: 10px;
     }
     #bootstrap-overrides{
-      width: 100px;
+      width: 75px;
     }
     #bootstrap-overrides:focus{
-       width: 100px;
+       width: 75px;
     }
 }
 </style>
