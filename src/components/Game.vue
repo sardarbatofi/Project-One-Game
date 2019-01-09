@@ -1,4 +1,49 @@
 <template>
+
+  <div class="över">
+
+    <div class="snowflakes" aria-hidden="true" v-show="!game">
+  <div class="snowflake" >
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+  ❅
+  </div>
+  <div class="snowflake">
+  ❆
+  </div>
+  <div class="snowflake">
+    ❅
+  </div>
+  <div class="snowflake">
+    ❆
+  </div>
+  <div class="snowflake">
+    ❅
+  </div>
+  <div class="snowflake">
+    ❆
+  </div>
+  <div class="snowflake">
+    ❅
+  </div>
+  <div class="snowflake">
+    ❆
+
+  </div>
+
+</div>
+
+
   <div class="grid-container">
     <div class="pyro" v-if="this.win">
       <div class="before" v-if="this.win"></div>
@@ -6,15 +51,18 @@
     </div>
 
 
+
     <div class="item1">
 
+
+
       <h2 v-show="game">{{questions}}</h2>
-   
+
     <div class="difficulty" v-show="!game">
       <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur.-->
-      <button @click="tries=15, diffTime=40, easy=!easy" >Easy</button>  
-      <button @click="tries=10, diffTime=30, medium=!medium">Medium</button>
-      <button @click="tries=5, diffTime=15, hard=!hard">Hard</button>
+      <button class="button" @click="tries=15, diffTime=40, easy=!easy" >Easy</button>
+      <button class="button" @click="tries=10, diffTime=30, medium=!medium">Medium</button>
+      <button class="button" @click="tries=5, diffTime=15, hard=!hard">Hard</button>
     </div>
 
       <br>
@@ -26,7 +74,7 @@
           v-model="newNameText"
         > -->
 <!--           <button>Add to High Score</button>
- -->                  <highscore></highscore> 
+ -->                  <highscore></highscore>
         <router-link :to="{name:'home'}">
 
         </router-link>
@@ -52,9 +100,9 @@
         > <!-- visas när game är sant -->
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
         <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
-       
+
         <div id="timer" v-show="!gameOver">
-        
+
 <!-- tycker verkligen att v-if bör ha fungerar här, men icke, denna kod duger änsålänge -->
 
            <div v-show="easy" class="jmWatch">
@@ -63,7 +111,7 @@
                  <div class="jmMaskE"></div>
                  <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
-          </div>    
+          </div>
 
            <div  v-show="medium" class="jmWatch">
               <div  class="jmTimerM">
@@ -71,19 +119,20 @@
                  <div class="jmMaskM"></div>
                  <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
-          </div>    
+          </div>
              <div v-show="hard" class="jmWatch">
               <div  class="jmTimerH">
                  <div  class="jmTickerH" ></div>
                  <div class="jmMaskH"></div>
                  <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
-          </div>    
-         
+          </div>
 
-        
+
+
          </div>
-        
+
+
       <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
         <p>The Grinch: {{opponent}}</p>
         <p>Krampus: {{opponent2}}</p>
@@ -94,19 +143,19 @@
               <p id="lower">{{ this.lower }}</p>
                <p id="gameo">{{ this.gameo }}</p>
             </div>
-        
+
       </div>
     </div>
     <div class="item4"></div>
-    <div class="item5">
+    <div class="item5" v-show="game">
    <p>The Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
       <br>
       <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
     </div>
-   
-    <div class="item6">
+
+    <div class="item6" v-show="game">
     <p class="currentUser" v-if="isLoggedIn">{{currentUser}}:</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div> <!-- föregående gissningar skrivs ut, även namnet(email) på den inloggade -->
-      
+
     </div>
 
     <!--
@@ -114,12 +163,12 @@
         <h3>Results:</h3>
         <h5>Number of guesses: </h5>
       <div class="success"
-      v-for="namn in guestName" :key="namn"> 
+      v-for="namn in guestName" :key="namn">
     {{ namn }}
   </div>
     </div>
     -->
-    <div class="item7">
+    <div class="item7" v-show="game">
       <p>Krampus: </p><div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
       <br>
       <img class="krampus" src="../assets/krampus.png" alt="Krampus!">
@@ -130,6 +179,7 @@
             </router-link>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -172,7 +222,7 @@ export default {
       isLoggedIn: false
     };
   },
-  
+
   created() {
     fetch(quizData)
       .then(res => res.json())
@@ -183,9 +233,9 @@ export default {
         this.number = parseInt(res.questions[this.currentQuestion].answer); // för att få svaret
       });
   },
-  
+
   computed: {
-    
+
     minutes: function() {
       const minutes = Math.floor(this.totalTime / 60);
       return this.padTime(minutes);
@@ -201,7 +251,7 @@ export default {
         e.preventDefault();
       }
     },
- 
+
     startGame: function() {
         this.answer = ""; /* tillagd, för att nollställa vid nytt spel */
         (this.opponent = 0),
@@ -254,9 +304,9 @@ export default {
         this.inputClosed = true;
         this.inputBtnClosed = true;
         this.timer = null;
-     
+
       }
-  
+
     },
     userInput: function() {
       function userGuessToMax(min, max) {
@@ -295,7 +345,7 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-          
+
           } else if (this.opponent2 == this.number) {
             this.loser =
               "Krampus is the winner! The correct answer is " + this.number;
@@ -306,7 +356,7 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-           
+
           } else this.higher = "Wrong, guess higher!!";
           this.lower = "";
           this.answer = "";
@@ -325,7 +375,7 @@ export default {
             this.inputClosed = true;
             this.inputBtnClosed = true;
             this.gameOver = true;
-         
+
           } else if (this.opponent2 == this.number) {
             this.loser =
               "Krampus is the winner! The correct answer is " + this.number;
@@ -336,7 +386,7 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-           
+
           } else this.lower = "Wrong, guess lower!!";
           this.answer = "";
           this.higher = "";
@@ -367,7 +417,7 @@ export default {
           this.timer = null;
         }
       }, 250);
-     
+
     }
   }
 };
@@ -376,7 +426,7 @@ export default {
 <style scoped>
 
 .grid-container {
-  background-color: #fff0db; 
+  background-color: #fff0db;
 }
 h2 {
   font-size: 1.5em;
@@ -391,16 +441,16 @@ h2 {
   background-color: #990000;
   height: 300px;
   margin: 0% 2% 2% 2%;  /* Ta bort om ej behövs */
-  display: table; 
+  display: table;
 }
 .item6 {
   border-radius: 15px;
   background-color: #74b49b;
   margin: 0% 2% 2% 2%;
   height: 300px;
-  display: table; 
+  display: table;
 }
-    
+
 /*BootstapjQuary-killer*/
 :disabled {
   color: gray;
@@ -634,7 +684,7 @@ img {
     z-index:1;
   }
 
-  
+
    50% {
     border-top-right-radius:0;
     border-top-left-radius: 100px;
@@ -646,7 +696,7 @@ img {
     left:0;
     z-index:1;
   }
-   
+
   50.01% {
     border-top-right-radius:0px;
     border-top-left-radius: 100px;
@@ -658,7 +708,7 @@ img {
     left:0;
     z-index:0;
   }
-    
+
   75% {
     border-top-right-radius:0px;
     border-top-left-radius: 100px;
@@ -669,7 +719,7 @@ img {
     bottom:50%;
     left:0;
   }
-    
+
   75.01% {
     border-top-right-radius:100px;
     border-top-left-radius: 100px;
@@ -680,7 +730,7 @@ img {
     bottom:50%;
     left:0;
   }
-    
+
   100% {
     border-top-right-radius:100px;
     border-top-left-radius: 100px;
@@ -692,7 +742,7 @@ img {
     left:0;
   }
 }
-   
+
 @keyframes jm-cycle {
   0% {
     border-top-right-radius: 100px;
@@ -702,7 +752,7 @@ img {
     width:50%;
   }
 
-  25%  { 
+  25%  {
     border-top-right-radius: 100px;
     border-top-left-radius: 0;
     transform: rotate(0deg);
@@ -711,7 +761,7 @@ img {
     left:50%;
   }
 
-  25.01%  { 
+  25.01%  {
     border-top-right-radius: 100px;
     border-top-left-radius: 100px;
     transform: rotate(0deg);
@@ -732,7 +782,7 @@ img {
 
 
 .jmWatch {
-  background-image:url('../assets/timer.png'); 
+  background-image:url('../assets/timer.png');
   /* mix-blend-mode:multiply; för att få bilden att smällt in mer i backgrunden */
   background-repeat: no-repeat;
   background-size: 120px;
@@ -890,4 +940,94 @@ img {
        width: 75px;
     }
 }
+
+
+button{
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+   background-color: white;
+}
+button:active {
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 1px 1px 1px black;
+    color: white;
+  border-radius: 15px;
+
+}
+/*Bootstap/jQuary-killer*/
+
+
+button{
+  margin: 15px;
+}
+
+
+.button {
+display: inline-block;
+min-width:100px;
+padding: 22px 33px;
+font-family: 'Lobster', cursive;
+font-size: 26px;
+line-height: 26px;
+text-decoration: none;
+color: #FFF;
+text-shadow: 0 1px 2px rgba(0,0,0,0.75);
+background: #5e0d0c;
+outline: none;
+border-radius: 15px;
+border: 1px solid #4c0300;
+box-shadow:
+inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+inset 0 0 6px #a23227, /* inner glow */
+inset 0 80px 80px -40px #ac3223, /* gradient */
+1px 1px 3px rgba(0,0,0,0.75); /* shadow */
+position: relative;
+overflow: visible; /* IE9 & 10 */
+      transition: 500ms linear;
+}
+.button::before {
+content: '';
+display: block;
+position: absolute;
+top: -7px;
+left: -3px;
+right: 0;
+height: 23px;
+background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAXCAYAAACS5bYWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABFpJREFUeNrUV0tIo1cUvpkYjQ4xxSA6DxuNqG0dtaUKOgs3s6i0dFd3pSsXdjeIixakiGA34sZuXCkoONLFwJTK4GMYLYXg29gatTpiXurkbd7vv9/5ub+IxuhA7eiFQ5Kbc8/57ne/e87/ywRBYLdl3GG3aNwqsLJ0k0tLS+fmcnNzWUVFBVMoFGx2djarvLxcm5OTw+bm5iytra2xc4ExNjY27iqVyvvwK6CpeDzuCYVC1urq6qDA9UcfPp+PHR4esmAwKK6tr68/l5/8rgQ2Ozub1dbWyiYmJooaGxt/VqvV38jlchX9l0qlwoFA4DWS/RKLxRxFRUVf5+XlPcaaT2AP0sVPJBL2SCRiAPBpu93+vKamZo/Ae71eZjabWV1dXVqw7CKwp43ksrCw8Bhg7MJ/PLDZ5PHx8cz29vYT5JGD/bSYLgTrcDgYdk6siSc6NjZWDaAe4ZoHQL+cmZnRpZPnhWDpD8kw7uKo9ML/NMCsd2tr61vkzboMrEyv138M7TyLRqMWMBsX3sMgaZhMpp+AR5EJrCocDpuEGzKg4x8khs+CVWxubvZfR9JkMik4nU7BarUKLpeLmLsKuwIqTLynp4fqmIzASrqQT09Pf1VVVfX0KsWZ6uHBwQHTaDSsoKAgo6/H4xHLEcrVyRwuEisrKzs5XrrIVAVwiUVDKRRrL+YI32ewdVhMApuHWvcj6vids6J2u90MF4yBHUZNgKoEBaRBQalJqFSqtJfUYrGIlQX+ydXVVTN+u0tKSjQNDQ1axJVl2iTypebn55d7e3v/kqoDgZU1NTU9LCws/Py0M+2ekuGincxJ3yF+18jIyHJLS0slQJUWFxczrBeBE0vE5tHRkbixlZWVfSR8gTX/0P5gH7S1tX3Z3t7+BW8qAvwSfr8/jA0EIRM/qoFtampqbW9vTw+XA+ojUruVd3Z2tvb19T2TQFEim81GgVJoCvvj4+NLOJZgaWmpemdn5y3a6BbcnJDAw8HBwac6ne6eqCW5XDwB3qVSqM9/DAwMUNy/eVLabT7sI25qwgujThCBhWE+mAt2yNc4SQKSZrOQQE1HS22VJkmPAGTr7+//fX19fRk+Zgq0trbGeFAKEAQT98BSqKOj47vm5uaa/Px8JeIk4GcaHh6eWlxcfAU/A8xG67BxAX3fwdcbYUpSDJ06Z49Ak8ZC3OL8f3YiA4PBYKdLQ2AJ9OTk5GpXV9cQiCVh79M94QtlPLDUE/1gPNrd3f0W33W4cBoco48zQuy/IZYAMnGqlSc4c66L9JruQUaSARXeT8HGKzxAqFBekni6+h46+pMzGiJGMgTOJh1yU/KNEGDvZWvfBawkA9ppwGg0mrRa7SOI2g+gxOgbJIpdFpj72PnxSnPX8vqRxTURgBQWKisrH+GThOm+CtAzoK/9/Uiqq/6hoaHfdnd3jaOjo7/yY7yxbwqkWy3sQzpS2C6YirwvUJk0y7hurfyGRrnduPGvAAMASmo8wzeVwfsAAAAASUVORK5CYII=) no-repeat 0 0,
+url(data:image/png;base64,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) no-repeat 50% 0,
+url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAXCAYAAACFxybfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAodJREFUeNrsVb1rWlEUv2pN/GqspKRSKFYXWzEloIWif0Fn6dJChQ7OQil0qd3EzcEpg0OgdHDr4CQODk7VRlLMEIVqApX4We0zflR9/Z1Ui4T34ksaaAYP/Hzc673n/M6550PG8zz73yKjn0wm83fDYDAwo9HINBrNnwOQg4MDs0ql2lQqlfdAWont7ng8Pjw+Ps44nc4G1pI9EXWaSOzt7TGO42aH5Pv7+08ajUZ0MBiUeXEZd7vdL5VK5fX29rZ+5tQiEmdxKrlcjsEYczgcynK5/BKKv/IXFNz/XiqVXkHdjUuRIA9SqdRD8or/R8Ez9fr9fqHVakUR4c2z0REjIQuHw2ZcrPBXLCA0RHTezEdHjIQqkUhEr9I4HOILhQLf6/VoOUFEvDMiQiToDx1Cdz+bzZ6bUFarlel0OkkVUK/XWbvdPoVer5fh3ntsfwJ+CJ2XA4p0Op1bpBgJyxDehQQ6nQ5DZXHBYDBZq9V+EhFUndnr9drEqoc2bwJbwGPgtohuVSwWe2Gz2TZMJpNgRKi6qtUqg2EWj8dTgUDgo0KhWPN4PC70EvXOzs67fD6/S6kiRIKeZA1YJ2MiJNbdbvfTUCjkV6vVK2hcDF8GI2w0GrGTkxM2HA5PDxaLxSOfz/cWEfk81X0XIMMFgJJ/srBjCgk8IdcfuVyuZ36//7nFYtkQyAMumUzuRiKRD0jMFLa+AZOpYwqgB/ziBVqmVBKUO7eAB/R0WG/Z7XaTVqtdbTabHJL6EK2djBaBPHA0NSqpbUsiMUeEBgpF4Q5AbZrmSJ/yEWgBTaBNHl9kdkgmMUeG7qwAq9PqovceTA3zlxlgsuswyuXsGsiSxJLEkoSY/BZgAEjRodi+uBruAAAAAElFTkSuQmCC) no-repeat 100% 0;
+}
+.button:hover {
+background: #a61715;
+text-shadow: 0 1px 2px rgba(0,0,0,0.75), 0 0 40px #FFF;
+box-shadow:
+inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+inset 0 0 6px #da3b2c, /* inner glow */
+inset 0 80px 80px -40px #dd4330, /* gradient */
+1px 1px 3px rgba(0,0,0,0.75); /* shadow */
+}
+
+.button:active {
+box-shadow:
+inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
+inset 0 0 6px #da3b2c, /* inner glow */
+inset 0 80px 80px -40px #dd4330, /* gradient */
+0px 1px 0px rgba(255,255,255,0.25); /* shadow */
+      transition: 50ms linear;
+
+      }
+
+.snowflake {
+  color: #fff;
+  font-size: 3em;
+  font-family: Arial, sans-serif;
+  text-shadow: 0 0 5px #000;
+}
+
+@-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes snowflakes-shake{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}}@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:snowflakes-fall,snowflakes-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.snowflake:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.snowflake:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.snowflake:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.snowflake:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.snowflake:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.snowflake:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.snowflake:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.snowflake:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.snowflake:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.snowflake:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}.snowflake:nth-of-type(10){left:25%;-webkit-animation-delay:2s,0s;animation-delay:2s,0s}.snowflake:nth-of-type(11){left:65%;-webkit-animation-delay:4s,2.5s;animation-delay:4s,2.5s}
+
+
 </style>

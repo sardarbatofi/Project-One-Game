@@ -7,14 +7,14 @@
   <li><a href="https://www.plus.google.com/+JimmySvensson" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
   <li><a href="https://www.linkedin.com/in/troinicz/" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
   <li><a href="https://github.com/one-awesome-game/Project-One-Game" class="github"><i class="fa fa-github"></i></a></li>
-  
+
 </ul>
 </div>
 </template>
 
 <script>
 export default{
- 
+
 }
 
 </script>
@@ -59,7 +59,7 @@ export default{
       padding-left: 20px;
       width: 56px;
     }
-    
+
 }
 
 @media screen and (min-width: 719px){ /* ipad */
@@ -101,7 +101,7 @@ export default{
       padding-left: 20px;
       width: 55px;
     }
-    
+
 }
 @media screen and (min-width: 916px){ /* desktop */
     .social-nav a {
