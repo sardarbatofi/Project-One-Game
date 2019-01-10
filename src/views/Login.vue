@@ -14,9 +14,9 @@
   <span class="bg-1 width-2 blur-2 anim-6 left-45"></span>
   <span class="bg-1 width-3 blur-3 anim-4 left-27"></span>
   <span class="bg-1 width-1 blur-3 anim-5 left-23"></span>
-
-
-
+  
+  
+  
   <span class="bg-1 width-1 blur-1 anim-2 left-45 delaying"></span>
   <span class="bg-1 width-1 blur-2 anim-3 left-5 delaying"></span>
   <span class="bg-3 width-3 blur-3 anim-4 left-90 delaying"></span>
@@ -26,7 +26,6 @@
   <span class="bg-1 width-1 blur-1 anim-3 left-9 delaying"></span>
   <span class="bg-1 width-1 blur-2 anim-5 left-100 delaying"></span>
   <span class="bg-1 width-2 blur-2 anim-5 left-95 delaying"></span>
-  <span class="bg-3 width-1 blur-2 left-3 delaying shaking-2"></span>
   <span class="bg-2 width-2 blur-3 anim-3 left-94 delaying"></span>
   <span class="bg-2 width-3 blur-2 anim-4 left-7 delaying"></span>
   <span class="bg-3 width-1 blur-2 naim-2 left-37 delaying"></span>
@@ -35,7 +34,7 @@
   <span class="bg-2 width-1 blur-2 anim-3 left-50 delaying"></span>
   <span class="bg-1 width-3 blur-3 anim-4 left-27 delaying"></span>
   <span class="bg-1 width-1 blur-3 anim-5 left-23 delaying"></span>
-
+  
   <span class="bg-1 width-1 blur-1 anim-2 left-45 delaying-1"></span>
   <span class="bg-1 width-1 blur-2 anim-3 left-5 delaying-1"></span>
   <span class="bg-3 width-3 blur-3 anim-4 left-90 delaying-1"></span>
@@ -51,7 +50,7 @@
   <span class="bg-2 width-1 blur-2 anim-3 left-50 delaying-1"></span>
   <span class="bg-1 width-3 blur-3 anim-4 left-27 delaying-1"></span>
   <span class="bg-1 width-1 blur-3 anim-5 left-23 delaying-1"></span>
-
+  
   <span class="bg-1 width-1 blur-1 anim-2 left-45 delaying-2"></span>
   <span class="bg-1 width-1 blur-2 anim-3 left-5 delaying-2"></span>
   <span class="bg-3 width-3 blur-3 anim-4 left-90 delaying-2"></span>
@@ -90,14 +89,14 @@
       <button @click="google" class="google">
           <img src="../assets/google-logo.png" alt="Google logo"></button></p>
 
-          <router-link id="contact" to="/contact"> Contact Us </router-link>
+          <router-link id="contact" to="/contact"> Contact Us </router-link> 
           </div>
       </div>
     </div>
   </div>
-   </div>
+   </div> 
   </div>
-
+    
 
 </template>
 
@@ -110,7 +109,7 @@ export default {
         password:''
     };
   },
-
+  
   methods:{
       login: function(){
           var user = firebase.auth().currentUser;
@@ -137,7 +136,7 @@ export default {
 
 <style scoped>
 #contact{
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 15px;
   padding:1.5%;
 }
@@ -149,7 +148,7 @@ export default {
   padding: 1%;
   border-radius: 5px;
   background-color: #fff;
-
+    
 }
     img{
         border-radius: 10px;
@@ -162,7 +161,7 @@ export default {
     }
 p{
     display: block;
-
+   
 }
 button, a {
 cursor: pointer;
@@ -200,7 +199,7 @@ input {
   left: 0px;
   width: 100%;
   height: 100%;
-
+  
 }
 span{
   position: absolute;
@@ -262,9 +261,6 @@ span{
   filter: blur(2px);
 }
 .blur-3{
-  filter: blur(3px);
-}
-.blur-5{
   filter: blur(3px);
 }
 @keyframes animate{
@@ -377,7 +373,7 @@ span{
 .left-30{
   left: 30%;
   top: -75px;
-}
+} 
 
 .left-41{
   left: 41%;
