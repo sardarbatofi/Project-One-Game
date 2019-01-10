@@ -9,7 +9,7 @@
       <input id="bootstrap-overrides" type="number" v-model="score">
     
 <br>
-    <button @click="saveScoreButton">Save to Highscore</button>
+    <button id="hsBtn" @click="saveScoreButton">Save to Highscore</button>
   </div>
 </template>
 
@@ -31,14 +31,6 @@ export default {
   },
 
   methods: {
-    /*    saveScoreButton() {
-	firebase.database().ref('scores').push({
-		userID: this.nameField,
-		score: this.score
-	});
-} */
-
-    //rewrite the last score
     saveScoreButton() {
       let path = "scores2/" + this.nameField;
       fb
@@ -54,6 +46,9 @@ export default {
 };
 </script>
 <style scoped>
+#hsBtn {
+  margin: 1.5em;
+}
 #small{
   max-height: 15%;
 }
