@@ -136,6 +136,7 @@ export default {
 </script>
 
 <style scoped>
+
 #contact{
   color:black;
 }
@@ -156,7 +157,7 @@ export default {
         background: linear-gradient( rgba(255,255,255,0.1),rgba(255,255,255,0.9),rgba(255,255,255,0.9),rgba(255,255,255,0.1));
         padding: 5%;
         border-radius: 10px;
-        margin: 7%;
+        margin: 5%;
     }
 p{
     display: block;

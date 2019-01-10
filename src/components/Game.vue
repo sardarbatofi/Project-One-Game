@@ -77,6 +77,7 @@
           @keydown="key"
           min="0"
           :disabled="inputClosed"
+          autocomplete="off"
         > <!-- visas när game är sant -->
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
         <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
