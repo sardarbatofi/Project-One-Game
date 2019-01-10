@@ -1,21 +1,15 @@
 <template>
-<div class="grid-container">
-  <div class="item1" ></div>
-  <div class="ite2" ></div>
+
   <div class="item3">
-    <p>Enter your name: </p>
+    <p>Enter your name: </p> 
       <input id="bootstrap-overrides"  type="text" v-model="nameField">
     
     
-    <p>Enter number of tries: 
+    <p>Enter number of tries: </p>
       <input id="bootstrap-overrides" type="number" v-model="score">
-    </p>
-
+    
+<br>
     <button @click="saveScoreButton">Save to Highscore</button>
-  </div>
-  <div class="item4" ></div>
-  <div class="item5" ></div>
-  <div class="item6" ></div>
   </div>
 </template>
 
@@ -60,6 +54,9 @@ export default {
 };
 </script>
 <style scoped>
+#small{
+  max-height: 15%;
+}
 p{
   text-align: center;
 }
@@ -108,7 +105,7 @@ button:active {
 color:black;
 }
 /*Bootstap/jQuary-killer*/
-@media screen and (max-width: 721px){
+@media screen and (max-width: 770px){
     
     #bootstrap-overrides{
       width: 75px;
