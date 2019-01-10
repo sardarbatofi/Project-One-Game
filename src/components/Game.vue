@@ -1,90 +1,69 @@
 <template>
-
   <div class="över">
-
     <div class="snowflakes" aria-hidden="true" v-show="!game">
-  <div class="snowflake" >
-  ❅
+      <div class="snowflake" >
+      ❅
+      </div>
+      <div class="snowflake">
+      ❆
+      </div>
+      <div class="snowflake">
+      ❅
+      </div>
+      <div class="snowflake">
+      ❆
+      </div>
+      <div class="snowflake">
+      ❅
+      </div>
+      <div class="snowflake">
+      ❆
+      </div>
+      <div class="snowflake">
+        ❅
+      </div>
+      <div class="snowflake">
+        ❆
+      </div>
+      <div class="snowflake">
+        ❅
+      </div>
+      <div class="snowflake">
+        ❆
+      </div>
+      <div class="snowflake">
+        ❅
+      </div>
+      <div class="snowflake">
+        ❆
+      </div>
   </div>
-  <div class="snowflake">
-  ❆
-  </div>
-  <div class="snowflake">
-  ❅
-  </div>
-  <div class="snowflake">
-  ❆
-  </div>
-  <div class="snowflake">
-  ❅
-  </div>
-  <div class="snowflake">
-  ❆
-  </div>
-  <div class="snowflake">
-    ❅
-  </div>
-  <div class="snowflake">
-    ❆
-  </div>
-  <div class="snowflake">
-    ❅
-  </div>
-  <div class="snowflake">
-    ❆
-  </div>
-  <div class="snowflake">
-    ❅
-  </div>
-  <div class="snowflake">
-    ❆
-
-  </div>
-
-</div>
-
-
   <div class="grid-container">
     <div class="pyro" v-if="this.win">
       <div class="before" v-if="this.win"></div>
       <div class="after" v-if="this.win"></div>
     </div>
-
-
-
     <div class="item1">
-      <h2 v-show="game">{{questions}}</h2>
+        <h2 v-show="game">{{questions}}</h2>
         <div id="watch-example">
-               <p id="win" v-if="win">{{ win }}</p>
-               <p id="grinch" v-if="grinch">{{ grinch }}</p>
-               <p id="krampus" v-if="krampus">{{ krampus }}</p>
-               <p id="gameo">{{ gameo }}</p>
-               <p id="timeOut">{{ answer }}</p>
-            </div>
-    <div class="difficulty" v-show="!game">
-      <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur.-->
-      <button class="button" @click="tries=15, diffTime=40, easy=!easy ,startGame(), game = !game" >Easy</button>
-      <button class="button" @click="tries=10, diffTime=30, medium=!medium,startGame(), game = !game">Medium</button>
-      <button class="button" @click="tries=5, diffTime=15, hard=!hard,startGame(),game = !game" >Hard</button>
+           <p id="win" v-if="win">{{ win }}</p>
+           <p id="grinch" v-if="grinch">{{ grinch }}</p>
+           <p id="krampus" v-if="krampus">{{ krampus }}</p>
+           <p id="gameo">{{ gameo }}</p>
+           <p id="timeOut">{{ answer }}</p>
+        </div>
+        <div class="difficulty" v-show="!game">
+          <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur.-->
+          <button class="button" @click="tries=15, diffTime=40, easy=!easy ,startGame(), game = !game" >Easy</button>
+          <button class="button" @click="tries=10, diffTime=30, medium=!medium,startGame(), game = !game">Medium</button>
+          <button class="button" @click="tries=5, diffTime=15, hard=!hard,startGame(),game = !game" >Hard</button>
+        </div>
+        <form class="form-inline"  v-if="this.win">
+            <highscore></highscore>
+            <router-link :to="{name:'home'}"></router-link>
+        </form>
     </div>
-
-      <form class="form-inline"  v-if="this.win">
-   <!--      <input
-          id="bootstrap-overrides"
-          type="text"
-          placeholder="Add Name here..."
-          v-model="newNameText"
-        > -->
-<!--           <button>Add to High Score</button>
- -->                  <highscore></highscore>
-        <router-link :to="{name:'home'}">
-
-        </router-link>
-      </form>
-    </div>
-
     <div class="item2"></div>
-
     <div class="item3">
       <div v-show="game">
         <input
@@ -98,11 +77,10 @@
         > <!-- visas när game är sant -->
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
         <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
-
         <div id="timer" v-show="!gameOver">
-
+            
 <!-- tycker verkligen att v-if bör ha fungerar här, men icke, denna kod duger änsålänge -->
-
+            
            <div v-show="easy" class="jmWatch">
               <div  class="jmTimerE">
                  <div  class="jmTickerE" ></div>
@@ -110,41 +88,33 @@
                  <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
           </div>
-
-           <div  v-show="medium" class="jmWatch">
+          <div  v-show="medium" class="jmWatch">
               <div  class="jmTimerM">
                  <div  class="jmTickerM" ></div>
                  <div class="jmMaskM"></div>
                  <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
           </div>
-             <div v-show="hard" class="jmWatch">
+          <div v-show="hard" class="jmWatch">
               <div  class="jmTimerH">
                  <div  class="jmTickerH" ></div>
                  <div class="jmMaskH"></div>
                  <div  class="jmFace"><p><span id="seconds">{{ seconds }}</span></p></div>
               </div>
           </div>
-
-
-
-         </div>
-
+        </div>
           <p id="higher">{{ higher }}</p>
-        <p id="lower">{{ lower }}</p>
-      <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
+          <p id="lower">{{ lower }}</p>
+          <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
       </div>
     </div>
     <div class="item4"></div>
     <div class="item5" v-show="game">
-   <p>The Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
-      
-      
+       <p>The Grinch: </p> 
+       <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
     </div>
-
     <div class="item6" v-show="game">
-    <p class="currentUser">{{currentUser}}</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div> <!-- föregående gissningar skrivs ut, även namnet(email) på den inloggade -->
-
+        <p class="currentUser">{{currentUser}}</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div> <!-- föregående gissningar skrivs ut, även namnet(email) på den inloggade -->
     </div>
 
     <!--
@@ -158,12 +128,17 @@
     </div>
     -->
     <div class="item7" v-show="game">
-      <p>Krampus: </p><div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
+      <p>Krampus: </p>
+      <div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
     </div>
-    <div class="item8"><img class="grinch" v-if="grinch1" src="../assets/grinch.png" alt="Grinch!"><img id="grin" v-if="grin" src="../assets/grinch.png" alt="Grinch!"><img class="krampus" v-if="krampus1" src="../assets/krampus.png" alt="Krampus!"><img id="kramp" v-if="kramp" src="../assets/krampus.png" alt="Krampus!">
-            <router-link :to="{name:'home'}">
-             <button @click="resetTimer()">Home</button>
-            </router-link>
+    <div class="item8">
+        <img class="grinch" v-if="grinch1" src="../assets/grinch.png" alt="Grinch!">
+        <img id="grin" v-if="grin" src="../assets/grinch.png" alt="Grinch!">
+        <img class="krampus" v-if="krampus1" src="../assets/krampus.png" alt="Krampus!">
+        <img id="kramp" v-if="kramp" src="../assets/krampus.png" alt="Krampus!">
+        <router-link :to="{name:'home'}">
+         <button @click="resetTimer()">Home</button>
+        </router-link>
     </div>
   </div>
 </div>
