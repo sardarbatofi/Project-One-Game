@@ -138,8 +138,8 @@
     <div class="item4"></div>
     <div class="item5" v-show="game">
    <p>The Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
-      
-      
+
+
     </div>
 
     <div class="item6" v-show="game">
@@ -430,6 +430,7 @@ export default {
 
 .grid-container {
   background-color: #fff0db;
+  height: 500px;
 }
 h2 {
   font-size: 1.3em;
@@ -457,7 +458,7 @@ h2 {
   animation-fill-mode: both;
   color: #990000;
   position: absolute;
-  left:0%; 
+  left:0%;
   bottom:0%;
 }
 @keyframes grinchenWin{
@@ -468,13 +469,13 @@ h2 {
   100% {opacity: 0;}
         }
     }
-}   
+}
 @media screen and (min-width: 770px){
 .grinch {
   width: 18%;
   animation: grinch2 2s;
   position: absolute;
-  left:0%; 
+  left:0%;
   bottom:0%;
   animation-fill-mode: forwards;
 }
@@ -488,7 +489,7 @@ h2 {
   animation-fill-mode: both;
   color: #990000;
   position: absolute;
-  left:0%; 
+  left:0%;
   bottom:0%;
 }
 @keyframes grinchenWin {
@@ -530,7 +531,7 @@ h2 {
   animation-fill-mode: both;
   color: #990000;
   position: absolute;
-  right:0%; 
+  right:0%;
   bottom:0%;
 }
 @keyframes krampusWin{
@@ -547,7 +548,7 @@ h2 {
   width: 23%;
   animation: krampus2 2s;
   position: absolute;
-  right:0%; 
+  right:0%;
   bottom:-2%;
   animation-fill-mode: forwards;
 }
@@ -561,7 +562,7 @@ h2 {
   animation-fill-mode: both;
   color: #990000;
   position: absolute;
-  right:0%; 
+  right:0%;
   bottom:0%;
 }
 @keyframes KrampusWin {
