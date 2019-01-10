@@ -133,8 +133,6 @@
           <p id="higher">{{ higher }}</p>
         <p id="lower">{{ lower }}</p>
       <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
-       <!-- <p>The Grinch: {{opponent}}</p>
-        <p>Krampus: {{opponent2}}</p>-->
       </div>
     </div>
     <div class="item4"></div>
@@ -145,7 +143,7 @@
     </div>
 
     <div class="item6" v-show="game">
-    <p class="currentUser" v-if="isLoggedIn">{{currentUser}}:</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div> <!-- föregående gissningar skrivs ut, även namnet(email) på den inloggade -->
+    <p class="currentUser">{{currentUser}}</p>  <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div> <!-- föregående gissningar skrivs ut, även namnet(email) på den inloggade -->
 
     </div>
 
@@ -162,7 +160,7 @@
     <div class="item7" v-show="game">
       <p>Krampus: </p><div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
     </div>
-    <div class="item8"><img class="grinch" src="../assets/grinch.png" alt="Grinch!"><img class="krampus" src="../assets/krampus.png" alt="Krampus!">
+    <div class="item8"><img class="grinch" v-if="grinch1" src="../assets/grinch.png" alt="Grinch!"><img id="grin" v-if="grin" src="../assets/grinch.png" alt="Grinch!"><img class="krampus" v-if="krampus1" src="../assets/krampus.png" alt="Krampus!"><img id="kramp" v-if="kramp" src="../assets/krampus.png" alt="Krampus!">
             <router-link :to="{name:'home'}">
              <button @click="resetTimer()">Home</button>
             </router-link>
@@ -209,7 +207,10 @@ export default {
       historyKrampus: [],
       invalidChars: ["-", "+", ".", ",", "e", "E"],
       currentUser: "",
-      isLoggedIn: false
+      grin: false,
+      kramp: false,
+      krampus1: false,
+      grinch1: false
     };
   },
 
@@ -264,8 +265,11 @@ export default {
         (this.historyKrampus = []);
         (this.gameOver = false), (this.timer = null), (this.totalTime = this.diffTime);
         this.startTimer();
-        this.isLoggedIn = true,
-        this.currentUser = firebase.auth().currentUser.email+":"
+        this.currentUser = firebase.auth().currentUser.email+":",
+        this.grin= false,
+        this.kramp= false,
+        this.krampus1= true,
+        this.grinch1= true
        },
    /*  highscore: function() {
       this.guestName.push(this.newNameText);
@@ -336,6 +340,8 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
+              this.grin=true;
+              this.grinch1= false;
 
           } else if (this.opponent2 == this.number) {
             this.krampus =
@@ -347,6 +353,8 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
+              this.kramp=true;
+              this.krampus1= false;
 
           } else this.higher = "Wrong, guess higher!!";
           this.lower = "";
@@ -366,6 +374,8 @@ export default {
             this.inputClosed = true;
             this.inputBtnClosed = true;
             this.gameOver = true;
+              this.grin=true;
+              this.grinch1= false;
 
           } else if (this.opponent2 == this.number) {
             this.krampus =
@@ -377,6 +387,8 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
+              this.kramp=true;
+              this.krampus1= false;
 
           } else this.lower = "Wrong, guess lower!!";
           this.answer = "";
@@ -424,23 +436,40 @@ h2 {
   font-weight: bold;
   margin: 1.5% 2% 0% 2%;
 }
-@media screen and (max-width: 721px){
+@media screen and (max-width: 770px){
 .grinch{
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 15%;
-  animation: fade 10s;
+  animation: grinch1 10s;
   animation-fill-mode: forwards;
   float: left;
 }
-@keyframes fade {
+@keyframes grinch1 {
   0%   {opacity: 0;}
   50%  {opacity: 50;}
   100% {opacity: 100;}
     }
+#grin{
+  animation-duration: 2s;
+  animation-name: grinchenWin;
+  animation-fill-mode: both;
+  color: #990000;
+  position: absolute;
+  left:0%; 
+  bottom:0%;
+}
+@keyframes grinchenWin{
+  0%   {left:0%; bottom:0%;}
+  100% {left:0%; bottom:40%;}
+@keyframes grinch1 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+        }
+    }
 }   
-@media screen and (min-width: 721px){
+@media screen and (min-width: 770px){
 .grinch {
   width: 18%;
   animation: grinch2 2s;
@@ -453,8 +482,34 @@ h2 {
   0%   {left:-20%; bottom:0%;}
   100% {left:0%; bottom:0%;}
         }
+#grin{
+  animation-duration: 2s;
+  animation-name: grinchenWin;
+  animation-fill-mode: both;
+  color: #990000;
+  position: absolute;
+  left:0%; 
+  bottom:0%;
 }
-@media screen and (max-width: 721px){
+@keyframes grinchenWin {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+@keyframes grinch2 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+        }
+    }
+}
+@media screen and (max-width: 770px){
 .krampus {
   display: block;
   margin-left: auto;
@@ -463,15 +518,31 @@ h2 {
   float: right;
   animation: krampus1 10s;
   animation-fill-mode: forwards;
-    }
-
+}
 @keyframes krampus1 {
   0%   {opacity: 0;}
   50%  {opacity: 50;}
   100% {opacity: 100;}
     }
+#kramp{
+  animation-duration: 2s;
+  animation-name: krampusWin;
+  animation-fill-mode: both;
+  color: #990000;
+  position: absolute;
+  right:0%; 
+  bottom:0%;
 }
-@media screen and (min-width: 721px){
+@keyframes krampusWin{
+  0%   {right:0%; bottom:0%;}
+  100% {right:0%; bottom:40%;}
+ @keyframes krampus1 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+        }
+    }
+}
+@media screen and (min-width: 770px){
 .krampus {
   width: 23%;
   animation: krampus2 2s;
@@ -480,12 +551,37 @@ h2 {
   bottom:-2%;
   animation-fill-mode: forwards;
 }
-
 @keyframes krampus2 {
   0%   {right:-20%; bottom:-2%;}
   100%  {right:0%; bottom:-2%;}
 }
+#kramp{
+  animation-duration: 2s;
+  animation-name: KrampusWin;
+  animation-fill-mode: both;
+  color: #990000;
+  position: absolute;
+  right:0%; 
+  bottom:0%;
+}
+@keyframes KrampusWin {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+  }
+@keyframes krampus2 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+        }
     }
+}
 .item5, .item7{
   border-radius: 15px;
   color: #decdc3;
@@ -553,7 +649,7 @@ img {
     font-size: 1.2em;
     font-weight: bold;
     }
-#grinch, #krampus{
+#grinch, #krampus {
   animation-duration: 2s;
   animation-name: opponentWin;
   font-size: 1em;
