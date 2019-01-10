@@ -4,10 +4,7 @@ import Game from './views/Game.vue'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
-<<<<<<< HEAD
 import Contact from './views/Contact.vue'
-=======
->>>>>>> 7f00ac369a5ff97a22fc853fd5ff3e3697f9bbba
 import {fb, db} from '../firebase-config'
 
 Vue.use(Router)
@@ -50,14 +47,11 @@ const router = new Router({
       path: '/sign-up',
       name: 'SignUp',
       component: SignUp
-<<<<<<< HEAD
     },
     {
       path: '/contact',
       name: 'Contact',
       component: Contact
-=======
->>>>>>> 7f00ac369a5ff97a22fc853fd5ff3e3697f9bbba
     }
   ]
 });
