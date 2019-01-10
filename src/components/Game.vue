@@ -430,7 +430,7 @@ export default {
 
 .grid-container {
   background-color: #fff0db;
-  height: 500px;
+  min-height: 500px;
 }
 h2 {
   font-size: 1.3em;
