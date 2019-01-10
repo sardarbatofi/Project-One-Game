@@ -588,13 +588,6 @@ img {
   display: block;
   padding: 0.5%;
 }
-
-#higher {
-  color: red;
-}
-#lower {
-  color: red;
-}
 #timer {
   font-size: 20px;
 }
