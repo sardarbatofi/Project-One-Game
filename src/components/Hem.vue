@@ -1,6 +1,6 @@
 <template>
 <div>
-    <p v-if="isLoggedIn"><span id="email" >You´re logged in as: {{currentUser}}</span></p><br>
+    <p v-if="isLoggedIn"><span id="email" >User: {{currentUser}}</span></p><br>
   <div class="grid-container">
     <div class="item1"> 
         <h4>Welcome to One Game!</h4>

@@ -53,11 +53,14 @@
 
 
     <div class="item1">
-
-
-
       <h2 v-show="game">{{questions}}</h2>
-
+        <div id="watch-example">
+               <p id="win" v-if="win">{{ win }}</p>
+               <p id="grinch" v-if="grinch">{{ grinch }}</p>
+               <p id="krampus" v-if="krampus">{{ krampus }}</p>
+               <p id="gameo">{{ gameo }}</p>
+               <p id="timeOut">{{ answer }}</p>
+            </div>
     <div class="difficulty" v-show="!game">
       <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur.-->
       <button class="button" @click="tries=15, diffTime=40, easy=!easy ,startGame(), game = !game" >Easy</button>
@@ -83,8 +86,6 @@
     <div class="item2"></div>
 
     <div class="item3">
-      <p id="win" v-if="this.win">{{ this.win }}</p>
-    
       <div v-show="game">
         <input
           id="bootstrap-overrides"
@@ -129,25 +130,18 @@
 
          </div>
 
-
+          <p id="higher">{{ higher }}</p>
+        <p id="lower">{{ lower }}</p>
       <p v-show="game">You have used {{numberOfGuess}} of {{tries}} Guesses.</p>
-        <p>The Grinch: {{opponent}}</p>
-        <p>Krampus: {{opponent2}}</p>
-        <p>{{ answer }}</p>
-             <div id="watch-example">
-               <p id="higher">{{ this.higher }}</p>
-              <p id="loser">{{ this.loser }}</p>
-              <p id="lower">{{ this.lower }}</p>
-               <p id="gameo">{{ this.gameo }}</p>
-            </div>
-
+       <!-- <p>The Grinch: {{opponent}}</p>
+        <p>Krampus: {{opponent2}}</p>-->
       </div>
     </div>
     <div class="item4"></div>
     <div class="item5" v-show="game">
    <p>The Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
       
-      <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
+      
     </div>
 
     <div class="item6" v-show="game">
@@ -167,10 +161,8 @@
     -->
     <div class="item7" v-show="game">
       <p>Krampus: </p><div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
-     
-      <img class="krampus" src="../assets/krampus.png" alt="Krampus!">
     </div>
-    <div class="item8">
+    <div class="item8"><img class="grinch" src="../assets/grinch.png" alt="Grinch!"><img class="krampus" src="../assets/krampus.png" alt="Krampus!">
             <router-link :to="{name:'home'}">
              <button @click="resetTimer()">Home</button>
             </router-link>
@@ -204,7 +196,8 @@ export default {
       diffTime: 30,
       number: 0,
       win: "",
-      loser: "",
+      grinch: "",
+      krampus: "",
       higher: "",
       lower: "",
       gameo: "",
@@ -259,7 +252,8 @@ export default {
         (this.startBtnClosed = false),
         (this.numberOfGuess = 0),
         (this.win = ""),
-        (this.loser = ""),
+        (this.grinch = ""),
+        (this.krampus = ""),
         (this.higher = ""),
         (this.lower = ""),
         (this.gameo = ""),
@@ -271,7 +265,7 @@ export default {
         (this.gameOver = false), (this.timer = null), (this.totalTime = this.diffTime);
         this.startTimer();
         this.isLoggedIn = true,
-        this.currentUser = firebase.auth().currentUser.email
+        this.currentUser = firebase.auth().currentUser.email+":"
        },
    /*  highscore: function() {
       this.guestName.push(this.newNameText);
@@ -333,7 +327,7 @@ export default {
         // utan den vinner motståndarna först nästa omgång. Detta löser även higer/lower som blev problem när botarna fick fördröjningen.
         if (this.userGuess < this.number && this.numberOfGuess < this.tries) {
           if (this.opponent == this.number) {
-            this.loser =
+            this.grinch =
               "Grinchen is the winner! The correct answer is " + this.number;
             this.higher = "";
             this.answer = "";
@@ -344,7 +338,7 @@ export default {
             this.timer = null;
 
           } else if (this.opponent2 == this.number) {
-            this.loser =
+            this.krampus =
               "Krampus is the winner! The correct answer is " + this.number;
             this.answer = "";
             this.higher = "";
@@ -364,7 +358,7 @@ export default {
           this.numberOfGuess < this.tries
         ) {
           if (this.opponent == this.number) {
-            this.loser =
+            this.grinch =
               "Grinchen is the winner! The correct answer is " + this.number;
             this.higher = "";
             this.lower = "";
@@ -374,7 +368,7 @@ export default {
             this.gameOver = true;
 
           } else if (this.opponent2 == this.number) {
-            this.loser =
+            this.krampus =
               "Krampus is the winner! The correct answer is " + this.number;
             this.answer = "";
             this.higher = "";
@@ -430,15 +424,73 @@ h2 {
   font-weight: bold;
   margin: 1.5% 2% 0% 2%;
 }
+@media screen and (max-width: 721px){
+.grinch{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
+  animation: fade 10s;
+  animation-fill-mode: forwards;
+  float: left;
+}
+@keyframes fade {
+  0%   {opacity: 0;}
+  50%  {opacity: 50;}
+  100% {opacity: 100;}
+    }
+}   
+@media screen and (min-width: 721px){
 .grinch {
-  width: 25%;
+  width: 18%;
+  animation: grinch2 2s;
+  position: absolute;
+  left:0%; 
+  bottom:0%;
+  animation-fill-mode: forwards;
+}
+@keyframes grinch2 {
+  0%   {left:-20%; bottom:0%;}
+  100% {left:0%; bottom:0%;}
+        }
+}
+@media screen and (max-width: 721px){
+.krampus {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18%;
+  float: right;
+  animation: krampus1 10s;
+  animation-fill-mode: forwards;
+    }
+
+@keyframes krampus1 {
+  0%   {opacity: 0;}
+  50%  {opacity: 50;}
+  100% {opacity: 100;}
+    }
+}
+@media screen and (min-width: 721px){
+.krampus {
+  width: 23%;
+  animation: krampus2 2s;
+  position: absolute;
+  right:0%; 
+  bottom:-2%;
+  animation-fill-mode: forwards;
 }
 
+@keyframes krampus2 {
+  0%   {right:-20%; bottom:-2%;}
+  100%  {right:0%; bottom:-2%;}
+}
+    }
 .item5, .item7{
   border-radius: 15px;
   color: #decdc3;
   background-color: #990000;
-  height: 300px;
+  height: 100px;
   margin: 0% 2% 2% 2%;  /* Ta bort om ej behövs */
   display: table;
 }
@@ -446,7 +498,7 @@ h2 {
   border-radius: 15px;
   background-color: #74b49b;
   margin: 0% 2% 2% 2%;
-  height: 300px;
+  height: 100px;
   display: table;
 }
 
@@ -495,6 +547,37 @@ button:active {
 /*Bootstap/jQuary-killer*/
 img {
   width: 30%;
+}
+#gameo, #timeOut{
+    color: #990000;
+    font-size: 1.2em;
+    font-weight: bold;
+    }
+#grinch, #krampus{
+  animation-duration: 2s;
+  animation-name: opponentWin;
+  font-size: 1em;
+  animation-fill-mode: both;
+  color: #990000;
+  font-weight: bold;
+}
+@keyframes opponentWin {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#higher, #lower {
+  color: #990000;
+  font-weight: bold;
 }
 .clicked {
   background-color: red;
@@ -807,8 +890,10 @@ img {
 #win {
   animation-duration: 2s;
   animation-name: bounceIn;
-  font-size: 2em;
+  font-size: 1em;
   animation-fill-mode: both;
+  color: #28544b;
+  font-weight: bold;
 }
 @keyframes bounceIn {
   0% {
@@ -816,11 +901,11 @@ img {
     opacity: 0;
   }
   60% {
-    transform: scale(1.2);
+    transform: scale(2);
     opacity: 1;
   }
   100% {
-    transform: scale(0.6);
+    transform: scale(1);
   }
 }
 .pyro > .before,
@@ -938,6 +1023,9 @@ img {
     }
     #bootstrap-overrides:focus{
        width: 75px;
+    }
+    .item5, .item6, .item7 {
+        font-size: 10px;
     }
 }
 
