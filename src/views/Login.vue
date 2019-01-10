@@ -89,6 +89,11 @@
           <p>Log in with Google? <br>
       <button @click="google" class="google">
           <img src="../assets/google-logo.png" alt="Google logo"></button></p>
+<<<<<<< HEAD
+
+          <router-link to="/contact"> Contact Us</router-link> 
+=======
+>>>>>>> 7f00ac369a5ff97a22fc853fd5ff3e3697f9bbba
           </div>
       </div>
     </div>
