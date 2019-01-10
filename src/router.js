@@ -4,6 +4,7 @@ import Game from './views/Game.vue'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
+import Contact from './views/Contact.vue'
 import {fb, db} from '../firebase-config'
 
 Vue.use(Router)
@@ -46,6 +47,11 @@ const router = new Router({
       path: '/sign-up',
       name: 'SignUp',
       component: SignUp
+    },
+    {
+      path: '/contact',
+      name: 'Contact',
+      component: Contact
     }
   ]
 });
