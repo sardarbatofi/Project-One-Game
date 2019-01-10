@@ -2,11 +2,11 @@
 
   <div class="item3">
     <p>Enter your name: </p> 
-      <input id="bootstrap-overrides"  type="text" v-model="nameField">
+      <input id="bootstrap-overrides"  type="text" v-model="nameField" autocomplete="off" >
     
     
     <p>Enter number of tries: </p>
-      <input id="bootstrap-overrides" type="number" v-model="score">
+      <input id="bootstrap-overrides" type="number" v-model="score" autocomplete="off" >
     
 <br>
     <button id="hsBtn" @click="saveScoreButton">Save to Highscore</button>
