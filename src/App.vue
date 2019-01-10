@@ -12,9 +12,9 @@ export default {
 
 <style>
 * {
-  box-sizing: border-box;
-  
+  box-sizing: border-box; 
 }
+
 p {
   font-size: 0.95em;
 }

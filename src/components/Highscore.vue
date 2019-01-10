@@ -65,42 +65,35 @@ p{
 }
 
 /*BootstapjQuary-killer*/
-
-h2 {
-  font-size: 2em;
-}
-h2 {
-  font-size: 1.7em;
-}
 :disabled {
   color: gray;
-  text-decoration: line-through;
+  text-decoration: line-through; /* FÖR ATT VI KAN */
   cursor: not-allowed;
 }
-
 #bootstrap-overrides {
-   padding: 2px 5px;
-margin: 10px;
- width: 110px;
- border: 1px solid black;
- height: 25px;
- border-bottom: 1px solid black;
+  margin: 10px;
+  width: 110px;
+  border: 1px solid black;
+  height: 25px;
+  border-bottom: 1px solid black;
   box-shadow: 2px 2px 2px grey;
- background-color: white;
- border-radius: 5px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px 5px;
+}*
+#bootstrap-overrides:focus {
+  padding: 2px 5px;
+  margin: 10px;
+  width: 110px;
+  border: 1px solid black;
+  height: 25px;
+  border-bottom: 1px solid black;
+  box-shadow: 2px 2px 2px grey;
+  background-color: white;
+  border-radius: 5px;
+  transform:scale(1.1);
 }
-#bootstrap-overrides:focus{
-   padding: 2px 5px;
-margin: 10px;
- width: 110px;
- border: 1px solid black;
- height: 25px;
- border-bottom: 1px solid black;
- box-shadow: 2px 2px 2px grey;
- background-color: white;
- border-radius: 5px;
-} 
-button{
+button {
   border-radius: 5px;
   border: 1px solid black;
   color: black;
@@ -111,12 +104,10 @@ button:active {
   border: 1px solid black;
   background-color: white;
   box-shadow: 1px 1px 1px black;
-    color: white;                  
-  border-radius: 15px;   
-
+   border-radius: 5px;
+color:black;
 }
 /*Bootstap/jQuary-killer*/
-
 @media screen and (max-width: 721px){
     
     #bootstrap-overrides{

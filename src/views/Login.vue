@@ -88,8 +88,9 @@
           <p>Log in with Google? <br>
       <button @click="google" class="google">
           <img src="../assets/google-logo.png" alt="Google logo"></button></p>
-
+<button>
           <router-link id="contact" to="/contact"> Contact Us </router-link> 
+          </button>
           </div>
       </div>
     </div>
@@ -136,9 +137,7 @@ export default {
 
 <style scoped>
 #contact{
-  background-color: #fff;
-  border-radius: 15px;
-  padding:1.5%;
+  color:black;
 }
     h3 {
         font-size: 2.5em;

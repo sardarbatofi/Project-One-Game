@@ -39,8 +39,9 @@
 
 <br>
 <br>
-
-<router-link to="/login">Login Page</router-link>
+<button>
+<router-link  id="contact" to="/login">Login Page</router-link>
+</button>
 </form>
   </div>
     </div>
@@ -58,6 +59,9 @@
 </script>
 
 <style scoped>
+#contact{
+  color:black;
+}
 .loginbox{
         display: table;
         background: white;
