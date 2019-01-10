@@ -449,24 +449,22 @@ h2 {
   0%   {opacity: 0;}
   50%  {opacity: 50;}
   100% {opacity: 100;}
-    }
-#grin{
-  animation-duration: 2s;
-  animation-name: grinchenWin;
-  animation-fill-mode: both;
-  color: #990000;
-  position: absolute;
-  left:0%; 
-  bottom:0%;
 }
-@keyframes grinchenWin{
-  0%   {left:0%; bottom:0%;}
-  100% {left:0%; bottom:40%;}
-@keyframes grinch1 {
+@keyframes grinchenWin {
+    @keyframes grinch1{
   0%   {opacity: 0;}
   100% {opacity: 0;}
-        }
     }
+}
+#grin{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
+  animation: grinchWin 10s;
+  animation-fill-mode: forwards;
+  float: left;
+    }  
 }   
 @media screen and (min-width: 770px){
 .grinch {
@@ -480,7 +478,7 @@ h2 {
 @keyframes grinch2 {
   0%   {left:-20%; bottom:0%;}
   100% {left:0%; bottom:0%;}
-        }
+}
 #grin{
   animation-duration: 2s;
   animation-name: grinchenWin;
@@ -518,32 +516,27 @@ h2 {
   animation: krampus1 10s;
   animation-fill-mode: forwards;
 }
-@keyframes krampus1 {
+@keyframes krampus1{
   0%   {opacity: 0;}
   50%  {opacity: 50;}
   100% {opacity: 100;}
-    }
-#kramp{
-  animation-duration: 2s;
-  animation-name: krampusWin;
-  animation-fill-mode: both;
-  color: #990000;
-  position: absolute;
-  right:0%; 
-  bottom:0%;
 }
-@keyframes krampusWin{
-  0%   {right:0%; bottom:0%;}
-  100% {right:0%; bottom:40%;}
- @keyframes krampus1 {
+@keyframes krampusWin {
+    @keyframes krampus1 {
   0%   {opacity: 0;}
   100% {opacity: 0;}
-        }
     }
 }
-
-
-
+#kramp{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18%;
+  float: right;
+  animation: krampusWin 10s;
+  animation-fill-mode: forwards;
+    }
+}
 @media screen and (min-width: 770px){
 .krampus {
   width: 23%;
@@ -559,14 +552,14 @@ h2 {
 }
 #kramp{
   animation-duration: 2s;
-  animation-name: KrampusWin;
+  animation-name: krampusWin;
   animation-fill-mode: both;
   color: #990000;
   position: absolute;
   right:0%; 
   bottom:0%;
 }
-@keyframes KrampusWin {
+@keyframes krampusWin {
   0% {
     transform: scale(0.1);
     opacity: 0;
@@ -581,8 +574,8 @@ h2 {
     @keyframes krampus2 {
   0%   {opacity: 0;}
   100% {opacity: 0;}
-    }
         }
+    }
 }
 .item5, .item7{
   border-radius: 15px;
