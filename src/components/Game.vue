@@ -1154,8 +1154,8 @@ inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
 inset 0 0 6px #da3b2c, /* inner glow */
 inset 0 80px 80px -40px #dd4330, /* gradient */
 0px 1px 0px rgba(255,255,255,0.25); /* shadow */
-      transition: 50ms linear;
-
+transition: 50ms linear;
+border-radius: 15px;
       }
 
 .snowflake {

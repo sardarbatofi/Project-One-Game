@@ -245,7 +245,7 @@ button:active {
   background-color: white;
   box-shadow: 1px 1px 1px black;
    border-radius: 5px;
-color:black;
+   color:black;
 }
 /*Bootstap/jQuary-killer*/
 
@@ -308,7 +308,7 @@ inset 0 0 6px #da3b2c, /* inner glow */
 inset 0 80px 80px -40px #dd4330, /* gradient */
 0px 1px 0px rgba(255,255,255,0.25); /* shadow */
       transition: 50ms linear;
-
+border-radius: 15px;
       }
 
 @media (max-width: 721px){
