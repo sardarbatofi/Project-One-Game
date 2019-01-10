@@ -81,7 +81,7 @@ h2 {
 #bootstrap-overrides {
    padding: 2px 5px;
 margin: 10px;
- width: 150px;
+ width: 110px;
  border: 1px solid black;
  height: 25px;
  border-bottom: 1px solid black;
@@ -92,7 +92,7 @@ margin: 10px;
 #bootstrap-overrides:focus{
    padding: 2px 5px;
 margin: 10px;
- width: 150px;
+ width: 110px;
  border: 1px solid black;
  height: 25px;
  border-bottom: 1px solid black;
@@ -116,4 +116,14 @@ button:active {
 
 }
 /*Bootstap/jQuary-killer*/
+
+@media screen and (max-width: 721px){
+    
+    #bootstrap-overrides{
+      width: 75px;
+    }
+    #bootstrap-overrides:focus{
+       width: 75px;
+    }
+}
 </style>

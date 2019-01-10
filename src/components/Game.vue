@@ -65,7 +65,6 @@
       <button class="button" @click="tries=5, diffTime=15, hard=!hard,startGame(),game = !game" >Hard</button>
     </div>
 
-      <br>
       <form class="form-inline"  v-if="this.win">
    <!--      <input
           id="bootstrap-overrides"
@@ -85,8 +84,7 @@
 
     <div class="item3">
       <p id="win" v-if="this.win">{{ this.win }}</p>
-      <br>
-      <br>
+    
       <div v-show="game">
         <input
           id="bootstrap-overrides"
@@ -148,7 +146,7 @@
     <div class="item4"></div>
     <div class="item5" v-show="game">
    <p>The Grinch: </p> <div class="history" v-for="historG in historyGrinch" :key="historG">{{ historG }}</div>
-      <br>
+      
       <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
     </div>
 
@@ -169,7 +167,7 @@
     -->
     <div class="item7" v-show="game">
       <p>Krampus: </p><div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
-      <br>
+     
       <img class="krampus" src="../assets/krampus.png" alt="Krampus!">
     </div>
     <div class="item8">
@@ -320,14 +318,14 @@ export default {
           this.opponent = userGuessToMin(1, this.userGuess);
         } else if (this.userGuess < this.number)
           this.opponent = userGuessToMax(100, this.userGuess);
-        this.historyGrinch.push(this.opponent);
+        this.historyGrinch.unshift(this.opponent);
       }, Math.floor(Math.random() * 245) + 1);
       setTimeout(() => {
         if (this.userGuess > this.number) {
           this.opponent2 = userGuessToMin(1, this.userGuess);
         } else if (this.userGuess < this.number)
           this.opponent2 = userGuessToMax(100, this.userGuess);
-        this.historyKrampus.push(this.opponent2);
+        this.historyKrampus.unshift(this.opponent2);
       }, Math.floor(Math.random() * 245) + 1);
       this.numberOfGuess++;
       setTimeout(() => {
@@ -359,7 +357,7 @@ export default {
           } else this.higher = "Wrong, guess higher!!";
           this.lower = "";
           this.answer = "";
-          this.history.push(this.userGuess);
+          this.history.unshift(this.userGuess);
           this.userGuess = null;
         } else if (
           this.userGuess > this.number &&
@@ -389,7 +387,7 @@ export default {
           } else this.lower = "Wrong, guess lower!!";
           this.answer = "";
           this.higher = "";
-          this.history.push(this.userGuess);
+          this.history.unshift(this.userGuess);
           this.userGuess = null;
         } else if (
           this.userGuess == this.number &&
@@ -399,8 +397,8 @@ export default {
           this.answer = "";
           this.higher = "";
           this.lower = "";
-          this.history.push(this.userGuess);
-          this.guestName.push(this.numberOfGuess);
+          this.history.unshift(this.userGuess);
+          this.guestName.unshift(this.numberOfGuess);
           this.inputClosed = true;
           this.inputBtnClosed = true;
           this.gameOver = true;
@@ -428,7 +426,9 @@ export default {
   background-color: #fff0db;
 }
 h2 {
-  font-size: 1.5em;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 1.5% 2% 0% 2%;
 }
 .grinch {
   width: 25%;
@@ -500,8 +500,9 @@ img {
   background-color: red;
 }
 .history {
-  margin: 10px;
-  display: inline-block;
+  font-size: calc(0.5em + 5px);
+  margin: 3px;
+  display: block;
   padding: 0.5%;
 }
 
