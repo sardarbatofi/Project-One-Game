@@ -27,3 +27,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+
+a school project,
+Together we have created a game in which the user meets Krampus and Grinchen in quiz, the questions are only numeric based and the computer helps the user answer correctly by answering higher or lower
