@@ -1,12 +1,14 @@
 <template>
   <div class="item3">
-    <p>Enter your name:</p>
-    <input id="bootstrap-overrides" type="text" maxlength="12" v-model="nameField">
-
-    <p>Enter number of tries:</p>
-    <input id="bootstrap-overrides" type="number" v-model="score">
-
-    <br>
+ 
+    <p>Enter your name: </p> 
+      <input id="bootstrap-overrides"  type="text" v-model="nameField"  maxlength="12"  autocomplete="off" >
+    
+    
+    <p>Enter number of tries: </p>
+      <input id="bootstrap-overrides" type="number" v-model="score" autocomplete="off" >
+    
+<br>
     <button id="hsBtn" @click="saveScoreButton">Save to Highscore</button>
   </div>
 </template>
