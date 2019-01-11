@@ -31,7 +31,7 @@ export default {
         fb.database()
           .ref(path)
           .set({
-            // over-writes old values
+            // overwrites old values
             userID: this.nameField,
             score: this.score
           });
